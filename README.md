@@ -1,5 +1,5 @@
 <p align="center">
-   <a href="https://github.com/bwp91/homebridge-ewelink"><img alt="Homebridge Verified" src="https://user-images.githubusercontent.com/43026681/101325266-63126600-3863-11eb-9382-4a2924f0e540.png" width="600px"></a>
+   <a href="https://github.com/homebridge-plugins/homebridge-ewelink"><img alt="Homebridge Verified" src="https://user-images.githubusercontent.com/43026681/101325266-63126600-3863-11eb-9382-4a2924f0e540.png" width="600px"></a>
 </p>
 <span align="center">
 
@@ -8,7 +8,7 @@
 Homebridge plugin to integrate eWeLink devices into HomeKit
 
 [![npm](https://img.shields.io/npm/v/homebridge-ewelink/latest?label=latest)](https://www.npmjs.com/package/homebridge-ewelink)
-[![npm](https://img.shields.io/npm/v/homebridge-ewelink/beta?label=beta)](https://github.com/bwp91/homebridge-ewelink/wiki/Beta-Version)
+[![npm](https://img.shields.io/npm/v/homebridge-ewelink/beta?label=beta)](https://github.com/homebridge-plugins/homebridge-ewelink/wiki/Beta-Version)
 
 [![verified-by-homebridge](https://badgen.net/badge/homebridge/verified/purple)](https://github.com/homebridge/homebridge/wiki/Verified-Plugins)
 [![hoobs-certified](https://badgen.net/badge/HOOBS/certified/yellow?label=hoobs)](https://plugins.hoobs.org/plugin/homebridge-ewelink)
@@ -24,7 +24,7 @@ Homebridge plugin to integrate eWeLink devices into HomeKit
   - requires your eWeLink credentials to download a device list
   - attempts to control your supported devices locally, reverting to cloud control if necessary
   - listens for real-time device updates when controlled externally
-  - supports removing your eWeLink credentials from the configuration in certain situations, see [wiki](https://github.com/bwp91/homebridge-ewelink/wiki/Connection-Methods#lan-mode-without-ewelink-credentials)
+  - supports removing your eWeLink credentials from the configuration in certain situations, see [wiki](https://github.com/homebridge-plugins/homebridge-ewelink/wiki/Connection-Methods#lan-mode-without-ewelink-credentials)
 
 ### Prerequisites
 
@@ -34,23 +34,23 @@ Homebridge plugin to integrate eWeLink devices into HomeKit
 
 ### Setup
 
-- [Installation](https://github.com/bwp91/homebridge-ewelink/wiki/Installation)
-- [Configuration](https://github.com/bwp91/homebridge-ewelink/wiki/Configuration)
+- [Installation](https://github.com/homebridge-plugins/homebridge-ewelink/wiki/Installation)
+- [Configuration](https://github.com/homebridge-plugins/homebridge-ewelink/wiki/Configuration)
 - [Beta Version](https://github.com/homebridge/homebridge/wiki/How-to-Install-Alternate-Plugin-Versions)
-- [Node Version](https://github.com/bwp91/homebridge-ewelink/wiki/Node-Version)
+- [Node Version](https://github.com/homebridge-plugins/homebridge-ewelink/wiki/Node-Version)
 
 ### Features
 
-- [Supported Devices](https://github.com/bwp91/homebridge-ewelink/wiki/Supported-Devices)
-- [Accessory Simulations](https://github.com/bwp91/homebridge-ewelink/wiki/Accessory-Simulations)
-- [Connection Methods](https://github.com/bwp91/homebridge-ewelink/wiki/Connection-Methods)
-- [Internal API](https://github.com/bwp91/homebridge-ewelink/wiki/Internal-API)
+- [Supported Devices](https://github.com/homebridge-plugins/homebridge-ewelink/wiki/Supported-Devices)
+- [Accessory Simulations](https://github.com/homebridge-plugins/homebridge-ewelink/wiki/Accessory-Simulations)
+- [Connection Methods](https://github.com/homebridge-plugins/homebridge-ewelink/wiki/Connection-Methods)
+- [Internal API](https://github.com/homebridge-plugins/homebridge-ewelink/wiki/Internal-API)
 
 ### Help/About
 
-- [Common Errors](https://github.com/bwp91/homebridge-ewelink/wiki/Common-Errors)
-- [Support Request](https://github.com/bwp91/homebridge-ewelink/issues/new/choose)
-- [Changelog](https://github.com/bwp91/homebridge-ewelink/blob/latest/CHANGELOG.md)
+- [Common Errors](https://github.com/homebridge-plugins/homebridge-ewelink/wiki/Common-Errors)
+- [Support Request](https://github.com/homebridge-plugins/homebridge-ewelink/issues/new/choose)
+- [Changelog](https://github.com/homebridge-plugins/homebridge-ewelink/blob/latest/CHANGELOG.md)
 - [About Me](https://github.com/sponsors/bwp91)
 
 ### Credits

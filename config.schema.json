@@ -4,7 +4,7 @@
   "singular": true,
   "customUi": true,
   "customUiPath": "./lib/homebridge-ui",
-  "headerDisplay": "<p align=\"center\"><img width=\"60%\" src=\"https://user-images.githubusercontent.com/43026681/101325266-63126600-3863-11eb-9382-4a2924f0e540.png\"></p><p align=\"center\">For help and support please visit our <a href=\"https://github.com/bwp91/homebridge-ewelink/wiki\">GitHub Wiki</a>. We hope you find this plugin useful!</p>",
+  "headerDisplay": "<p align=\"center\"><img width=\"60%\" src=\"https://user-images.githubusercontent.com/43026681/101325266-63126600-3863-11eb-9382-4a2924f0e540.png\"></p><p align=\"center\">For help and support please visit our <a href=\"https://github.com/homebridge-plugins/homebridge-ewelink/wiki\">GitHub Wiki</a>. We hope you find this plugin useful!</p>",
   "schema": {
     "type": "object",
     "properties": {
@@ -29,7 +29,7 @@
       "mode": {
         "type": "string",
         "title": "Connection Mode",
-        "description": "This setting defines how the plugin communicates with your devices. For further guidance, please refer to <a href=\"https://github.com/bwp91/homebridge-ewelink/wiki/Connection-Methods\" target=\"_blank\">this wiki article</a>.",
+        "description": "This setting defines how the plugin communicates with your devices. For further guidance, please refer to <a href=\"https://github.com/homebridge-plugins/homebridge-ewelink/wiki/Connection-Methods\" target=\"_blank\">this wiki article</a>.",
         "default": "auto",
         "oneOf": [
           {
@@ -1352,7 +1352,7 @@
       },
       "bridgeSensors": {
         "title": "RF Sensor Devices",
-        "description": "Optional settings for RF Bridge subdevices to expose different sensor types (<a href=\"https://github.com/bwp91/homebridge-ewelink/wiki/RF-Bridge-Sensors\" target=\"_blank\">more info</a>).",
+        "description": "Optional settings for RF Bridge subdevices to expose different sensor types (<a href=\"https://github.com/homebridge-plugins/homebridge-ewelink/wiki/RF-Bridge-Sensors\" target=\"_blank\">more info</a>).",
         "type": "array",
         "items": {
           "type": "object",
@@ -1731,7 +1731,7 @@
     {
       "key": "bridgeSensors",
       "title": "RF Subdevices",
-      "description": "Optional settings for RF Bridge subdevices to expose different sensor types (<a href=\"https://github.com/bwp91/homebridge-ewelink/wiki/RF-Bridge-Sensors\" target=\"_blank\">more info</a>).",
+      "description": "Optional settings for RF Bridge subdevices to expose different sensor types (<a href=\"https://github.com/homebridge-plugins/homebridge-ewelink/wiki/RF-Bridge-Sensors\" target=\"_blank\">more info</a>).",
       "expandable": true,
       "add": "Add Another Sensor",
       "type": "array",

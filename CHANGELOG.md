@@ -225,7 +225,7 @@ This project tries to adhere to [Semantic Versioning](http://semver.org/). In pr
 
 ## 9.1.0 (2022-07-07)
 
-⚠️ This update may remove some devices from your Homebridge instance. Unfortunately this is out my control. See [this link](https://github.com/bwp91/homebridge-ewelink/issues/385#issuecomment-1176457283).
+⚠️ This update may remove some devices from your Homebridge instance. Unfortunately this is out my control. See [this link](https://github.com/homebridge-plugins/homebridge-ewelink/issues/385#issuecomment-1176457283).
 
 ### Added
 
@@ -265,7 +265,7 @@ This project tries to adhere to [Semantic Versioning](http://semver.org/). In pr
 - **New Devices**
   - Sonoff S40
 - **New Log Languages**
-  - Thai (thanks [@tomzt](https://github.com/bwp91/homebridge-ewelink/pull/367))
+  - Thai (thanks [@tomzt](https://github.com/homebridge-plugins/homebridge-ewelink/pull/367))
 - **Configuration**
   - `offlineAsOff` option for light devices - enable to show offline devices as 'off' in Homebridge/HomeKit
 
@@ -649,7 +649,7 @@ This project tries to adhere to [Semantic Versioning](http://semver.org/). In pr
 ### Added
 
 - **LAN Mode (without eWeLink credentials)**
-  - The plugin now supports removing eWeLink credentials from the config when in LAN mode. It is important to read about this feature before enabling it - [read more](https://github.com/bwp91/homebridge-ewelink/wiki/Connection-Methods#lan-mode-without-ewelink-credentials)
+  - The plugin now supports removing eWeLink credentials from the config when in LAN mode. It is important to read about this feature before enabling it - [read more](https://github.com/homebridge-plugins/homebridge-ewelink/wiki/Connection-Methods#lan-mode-without-ewelink-credentials)
 - **Homebridge UI**
   - Device-specific settings will show and hide depending on the new 'Device Model' (`deviceModel`) option
   - This showing/hiding of options will hopefully be available in the HOOBS UI soon
@@ -851,7 +851,7 @@ This project tries to adhere to [Semantic Versioning](http://semver.org/). In pr
 - RF Bridge remote buttons will turn on for 3 seconds in HomeKit when pressed
 - Link a Zigbee contact sensor to a single garage door to report the garage door state
 - Set a temperature offset for the Zigbee temperature/humidity sensor
-- Configuration options to manually set account http host and country code [#249](https://github.com/bwp91/homebridge-ewelink/pull/249)
+- Configuration options to manually set account http host and country code [#249](https://github.com/homebridge-plugins/homebridge-ewelink/pull/249)
 
 ### Changed
 
@@ -979,13 +979,13 @@ This project tries to adhere to [Semantic Versioning](http://semver.org/). In pr
 
 ### Added
 
-- Enter your eWeLink password as a base64 encoded string and use the option `encodedPassword` to let the plugin know ([#223](https://github.com/bwp91/homebridge-ewelink/issues/223))
-- Support for zigbee colour temperature lights (ewelink uiid 1258) ([#222](https://github.com/bwp91/homebridge-ewelink/issues/222)), including:
+- Enter your eWeLink password as a base64 encoded string and use the option `encodedPassword` to let the plugin know ([#223](https://github.com/homebridge-plugins/homebridge-ewelink/issues/223))
+- Support for zigbee colour temperature lights (ewelink uiid 1258) ([#222](https://github.com/homebridge-plugins/homebridge-ewelink/issues/222)), including:
   - Ikea Tradfri E14 600 lumen
 
 ### Changed
 
-- Improvements to web socket connection: ([#224](https://github.com/bwp91/homebridge-ewelink/issues/224))
+- Improvements to web socket connection: ([#224](https://github.com/homebridge-plugins/homebridge-ewelink/issues/224))
   - On startup, the plugin will wait to connect to the web socket before initialising devices
   - A new web socket address will be requested if the provided address causes errors
   - In particular this should fix the `ENOTFOUND as-pconnect4.coolkit.cc` error that some users in the Asia continent were receiving
@@ -1257,7 +1257,7 @@ This project tries to adhere to [Semantic Versioning](http://semver.org/). In pr
 
 ### Added
 
-- **[Experimental]** Use a TH10/16 device as a thermostat using an Accessory Simulation [more info](https://github.com/bwp91/homebridge-ewelink/issues/161#issuecomment-770230157)
+- **[Experimental]** Use a TH10/16 device as a thermostat using an Accessory Simulation [more info](https://github.com/homebridge-plugins/homebridge-ewelink/issues/161#issuecomment-770230157)
 - Support for the Zigbee type white bulb
 
 ### Changed
