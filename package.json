@@ -1,5 +1,5 @@
 {
-  "name": "homebridge-ewelink",
+  "name": "@homebridge-plugins/homebridge-ewelink",
   "displayName": "Homebridge eWeLink",
   "alias": "eWeLink",
   "type": "module",
@@ -31,7 +31,7 @@
   "homepage": "https://github.com/homebridge-plugins/homebridge-ewelink",
   "repository": {
     "type": "git",
-    "url": "https://github.com/homebridge-plugins/homebridge-ewelink.git"
+    "url": "git+https://github.com/homebridge-plugins/homebridge-ewelink.git"
   },
   "bugs": {
     "url": "https://github.com/homebridge-plugins/homebridge-ewelink/issues"
