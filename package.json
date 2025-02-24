@@ -54,22 +54,22 @@
   "main": "lib/index.js",
   "engines": {
     "homebridge": "^1.6.0 || ^2.0.0-beta.0",
-    "node": "^18.20.4 || ^20.18.0 || ^22.10.0"
+    "node": "^18.20.7 || ^20.18.3 || ^22.14.0"
   },
   "scripts": {
     "lint": "eslint . --fix",
     "rebuild": "rm -rf package-lock.json && rm -rf node_modules && npm install"
   },
   "dependencies": {
-    "@homebridge/plugin-ui-utils": "^1.0.3",
-    "axios": "^1.7.7",
-    "node-persist": "^4.0.3",
-    "p-queue": "^8.0.1",
+    "@homebridge/plugin-ui-utils": "^2.0.1",
+    "axios": "^1.7.9",
+    "node-persist": "^4.0.4",
+    "p-queue": "^8.1.0",
     "websocket-as-promised": "^3.0.0",
-    "ws": "^8.18.0"
+    "ws": "^8.18.1"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "^3.8.0",
-    "eslint": "^9.13.0"
+    "@antfu/eslint-config": "^4.3.0",
+    "eslint": "^9.21.0"
   }
 }

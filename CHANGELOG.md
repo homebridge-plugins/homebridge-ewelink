@@ -8,6 +8,17 @@ This project tries to adhere to [Semantic Versioning](http://semver.org/). In pr
 - `MINOR` version when a new device type is added, or when a new feature is added that is backwards-compatible
 - `PATCH` version when backwards-compatible bug fixes are implemented
 
+## 12.4.0 (2025-02-24)
+
+### Added
+
+- add support for Zigbee Smart Water Valve (SWV-BSP) (#646) (@etienne678)
+- models with UIIDs `226` and `7010`
+
+### Changed
+
+- updated dependencies
+
 ## 12.3.3 (2024-10-12)
 
 ### Changed
