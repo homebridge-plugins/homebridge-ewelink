@@ -14,6 +14,10 @@ This project tries to adhere to [Semantic Versioning](http://semver.org/). In pr
 
 - updated dependencies
 
+### Fixed
+
+- fix hap-nodejs permissions for hb2
+
 ## 12.4.0 (2025-02-24)
 
 ### Added
