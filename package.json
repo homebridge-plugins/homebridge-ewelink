@@ -54,7 +54,7 @@
   "main": "lib/index.js",
   "engines": {
     "homebridge": "^1.6.0 || ^2.0.0-beta.0",
-    "node": "^18.20.7 || ^20.18.3 || ^22.14.0"
+    "node": "^18.20.7 || ^20.19.0 || ^22.14.0"
   },
   "scripts": {
     "lint": "eslint . --fix",
@@ -62,14 +62,14 @@
   },
   "dependencies": {
     "@homebridge/plugin-ui-utils": "^2.0.1",
-    "axios": "^1.7.9",
+    "axios": "^1.8.4",
     "node-persist": "^4.0.4",
     "p-queue": "^8.1.0",
     "websocket-as-promised": "^3.0.0",
     "ws": "^8.18.1"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "^4.3.0",
-    "eslint": "^9.21.0"
+    "@antfu/eslint-config": "^4.10.2",
+    "eslint": "^9.23.0"
   }
 }
