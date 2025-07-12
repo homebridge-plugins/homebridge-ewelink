@@ -8,6 +8,7 @@ All notable changes to homebridge-ewelink will be documented in this file.
 
 - fix plugin name in release workflow
 - add permissions to workflows
+- improvements to the deprecate workflow
 
 ## v12.5.0 (2025-07-12)
 
