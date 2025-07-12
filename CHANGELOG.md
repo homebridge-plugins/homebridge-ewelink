@@ -2,7 +2,7 @@
 
 All notable changes to homebridge-ewelink will be documented in this file.
 
-## v12.5.0 (Unreleased)
+## v12.5.0 (2025-07-12)
 
 ⚠️ This plugin no longer officially supports Node `v16` and `v18`, however there is no reason why it shouldn't work on these versions.
 
