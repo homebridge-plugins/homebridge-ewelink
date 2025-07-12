@@ -9,7 +9,9 @@ name: Release (Beta)
 on:
   push:
     branches: [beta-*.*.*]
-  workflow_dispatch:
+
+permissions:
+  contents: read
 
 jobs:
   eslint:
