@@ -6,6 +6,10 @@ All notable changes to homebridge-ewelink will be documented in this file.
 
 ⚠️ This plugin no longer officially supports Node `v16` and `v18`, however there is no reason why it shouldn't work on these versions.
 
+### Notable Changes
+
+- set `strictValidation` to `true` in the config schema file
+
 ### Other Changes
 
 - github repo maintenance
