@@ -1,0 +1,91 @@
+name: Release (Latest)
+
+# To publish a new plugin version (to the npm 'latest' tag):
+# 1. Update the version in package.json and package-lock.json and commit to the 'latest' branch
+# 2. Create a new release on GitHub with the tag vX.Y.Z which points to the 'latest' branch
+# 3. The release will trigger this workflow, which will publish the new version to npm
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  eslint:
+    uses: homebridge/.github/.github/workflows/eslint.yml@latest
+
+  publish:
+    if: ${{ github.repository == 'homebridge-plugins/homebridge-ewelink' }}
+    needs: eslint
+    permissions:
+      id-token: write
+    uses: homebridge/.github/.github/workflows/npm-publish-esm.yml@latest
+    secrets:
+      npm_auth_token: ${{ secrets.npm_token }}
+
+  deprecate-previous-pre-release-data:
+    if: ${{ github.repository == 'homebridge-plugins/homebridge-ewelink' }}
+    runs-on: ubuntu-latest
+    needs:
+      - eslint
+      - publish
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          registry-url: https://registry.npmjs.org/
+
+      - name: Deprecate previous pre-release NPM versions
+        run: |
+          # Read local package version
+          LATEST_VERSION=$(jq -r .version package.json)
+          echo "Latest version found in package.json: $LATEST_VERSION"
+          DEPRECATED_VERSIONS=()
+          # Get all beta versions (versions with a hyphen)
+          mapfile -t BETA_VERSIONS < <(npm view @homebridge-plugins/homebridge-ewelink versions --json | jq -r '.[]' | grep -- '-')
+          for VERSION in "${BETA_VERSIONS[@]}"; do
+            BASE_VERSION="${VERSION%%-*}"
+            # Compare base version to latest version using sort -V
+            if [ "$(printf "%s\n%s" "$BASE_VERSION" "$LATEST_VERSION" | sort -V | head -n1)" != "$LATEST_VERSION" ]; then
+              npm deprecate @homebridge-plugins/homebridge-ecovacs@"$VERSION" "This beta version is deprecated in favor of the latest release."
+              echo "- Deprecated version: $VERSION (base: $BASE_VERSION)"
+              DEPRECATED_VERSIONS+=("$VERSION")
+            else
+              echo "- Skipped version: $VERSION (base: $BASE_VERSION)"
+            fi
+          done
+          if [ ${#DEPRECATED_VERSIONS[@]} -eq 0 ]; then
+            echo "No versions were deprecated."
+          else
+            echo "Deprecated versions:"
+            for VERSION in "${DEPRECATED_VERSIONS[@]}"; do
+              echo "- $VERSION"
+            done
+          fi
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.npm_token }}
+
+      - name: Delete previous pre-release GitHub releases
+        run: |
+          echo "Finding GitHub releases with a hyphen in the tag name..."
+          gh release list --limit 100 --json tagName,name --jq '.[] | select(.tagName | test("-"; "i")) | .tagName' | while read -r TAG; do
+            echo "Deleting GitHub release: $TAG"
+            gh release delete "$TAG" --yes
+          done
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Delete previous pre-release Git tags
+        run: |
+          echo "Fetching tags from origin..."
+          git fetch --tags
+          echo "Finding tags with a hyphen in the name..."
+          git tag -l "*-*" | while read -r TAG; do
+            echo "Deleting tag: $TAG"
+            git push origin ":refs/tags/$TAG"
+          done
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}

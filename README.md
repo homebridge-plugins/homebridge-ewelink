@@ -7,13 +7,13 @@
 
 Homebridge plugin to integrate eWeLink devices into HomeKit
 
-[![npm](https://img.shields.io/npm/v/homebridge-ewelink/latest?label=latest)](https://www.npmjs.com/package/homebridge-ewelink)
-[![npm](https://img.shields.io/npm/v/homebridge-ewelink/beta?label=beta)](https://github.com/homebridge-plugins/homebridge-ewelink/wiki/Beta-Version)
+[![npm](https://img.shields.io/npm/v/@homebridge-plugins/homebridge-ewelink/latest?label=latest)](https://www.npmjs.com/package/@homebridge-plugins/homebridge-ewelink)
+[![npm](https://img.shields.io/npm/v/@homebridge-plugins/homebridge-ewelink/beta?label=beta)](https://github.com/homebridge-plugins/homebridge-ewelink/wiki/Beta-Version)
 
 [![verified-by-homebridge](https://badgen.net/badge/homebridge/verified/purple)](https://github.com/homebridge/homebridge/wiki/Verified-Plugins)
 [![hoobs-certified](https://badgen.net/badge/HOOBS/certified/yellow?label=hoobs)](https://plugins.hoobs.org/plugin/homebridge-ewelink)
 
-[![npm](https://img.shields.io/npm/dt/homebridge-ewelink)](https://www.npmjs.com/package/homebridge-ewelink)
+[![npm](https://img.shields.io/npm/dt/@homebridge-plugins/homebridge-ewelink)](https://www.npmjs.com/package/@homebridge-plugins/homebridge-ewelink)
 [![Discord](https://img.shields.io/discord/432663330281226270?color=728ED5&logo=discord&label=hb-discord)](https://discord.com/channels/432663330281226270/742733745743855627)
 
 </span>
@@ -29,7 +29,7 @@ Homebridge plugin to integrate eWeLink devices into HomeKit
 ### Prerequisites
 
 - To use this plugin, you will need to already have:
-  - [Node](https://nodejs.org): latest version of `v18`, `v20` or `v22` - any other major version is not supported.
+  - [Node](https://nodejs.org): latest version of `v20`, `v22` or `v24` - any other major version is not supported.
   - [Homebridge](https://homebridge.io): `v1.6` - refer to link for more information and installation instructions.
 
 ### Setup

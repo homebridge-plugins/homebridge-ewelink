@@ -8,8 +8,6 @@ export default antfu(
     rules: {
       'curly': ['error', 'multi-line'],
       'new-cap': 'off',
-      'import/extensions': ['error', 'ignorePackages'],
-      'import/order': 0,
       'jsdoc/check-alignment': 'warn',
       'jsdoc/check-line-alignment': 'warn',
       'jsdoc/require-returns-check': 0,

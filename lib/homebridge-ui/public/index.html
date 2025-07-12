@@ -223,10 +223,10 @@
     try {
       const currentConfig = await homebridge.getPluginConfig()
       showIntro = () => {
+        homebridge.disableSaveButton?.()
         const introContinue = document.getElementById('introContinue')
         introContinue.addEventListener('click', () => {
           homebridge.showSpinner()
-          homebridge.disableSaveButton?.()
           document.getElementById('pageIntro').style.display = 'none'
           document.getElementById('menuWrapper').style.display = 'inline-flex'
           showSettings()

@@ -2,13 +2,15 @@
 
 All notable changes to homebridge-ewelink will be documented in this file.
 
-This project tries to adhere to [Semantic Versioning](http://semver.org/). In practice, this means that the version number will be incremented based on the following:
+## v12.5.0 (Unreleased)
 
-- `MAJOR` version when a minimum supported version of `homebridge` or `node` is increased to a new major version, or when a breaking change is made to the plugin config
-- `MINOR` version when a new device type is added, or when a new feature is added that is backwards-compatible
-- `PATCH` version when backwards-compatible bug fixes are implemented
+⚠️ This plugin no longer officially supports Node `v16` and `v18`, however there is no reason why it shouldn't work on these versions.
 
-## 12.4.1 (2025-03-22)
+### Other Changes
+
+- github repo maintenance
+
+## v12.4.1 (2025-03-22)
 
 ### Changed
 
@@ -18,7 +20,7 @@ This project tries to adhere to [Semantic Versioning](http://semver.org/). In pr
 
 - fix hap-nodejs permissions for hb2
 
-## 12.4.0 (2025-02-24)
+## v12.4.0 (2025-02-24)
 
 ### Added
 
@@ -29,14 +31,14 @@ This project tries to adhere to [Semantic Versioning](http://semver.org/). In pr
 
 - updated dependencies
 
-## 12.3.3 (2024-10-12)
+## v12.3.3 (2024-10-12)
 
 ### Changed
 
 - added `homepage` to `package.json`
 - updated dependencies
 
-## 12.3.2 (2024-10-12)
+## v12.3.2 (2024-10-12)
 
 ### Changed
 
@@ -47,7 +49,7 @@ This project tries to adhere to [Semantic Versioning](http://semver.org/). In pr
 
 - fixed cases where the plugin would crash when a device update fails
 
-## 12.3.1 (2024-07-15)
+## v12.3.1 (2024-07-15)
 
 ### Changed
 
@@ -57,14 +59,14 @@ This project tries to adhere to [Semantic Versioning](http://semver.org/). In pr
 
 - fix `hap-nodejs` api refs
 
-## 12.3.0 (2024-07-13)
+## v12.3.0 (2024-07-13)
 
 ### Added
 
 - Support for ZigBee Bridge Ultra with UIID `243`
 - Support for Sonoff TX-4 Ultimate with UIID `212`
 
-## 12.2.1 (2024-07-13)
+## v12.2.1 (2024-07-13)
 
 ### Changed
 
@@ -72,7 +74,7 @@ This project tries to adhere to [Semantic Versioning](http://semver.org/). In pr
 - Updated dependencies
 - Bump `node` recommended versions to v18.20.4 or v20.15.1
 
-## 12.2.0 (2024-03-27)
+## v12.2.0 (2024-03-27)
 
 ### Added
 
@@ -89,7 +91,7 @@ This project tries to adhere to [Semantic Versioning](http://semver.org/). In pr
 
 - Fix UIID 182/190 power readings
 
-## 12.1.0 (2023-12-16)
+## v12.1.0 (2023-12-16)
 
 ### Added
 
@@ -103,7 +105,7 @@ This project tries to adhere to [Semantic Versioning](http://semver.org/). In pr
 - Bump `node` recommended versions to v18.19.0 or v20.10.0
 - Updated dependencies
 
-## 12.0.0 (2023-10-24)
+## v12.0.0 (2023-10-24)
 
 ### Added
 
@@ -119,7 +121,7 @@ This project tries to adhere to [Semantic Versioning](http://semver.org/). In pr
 
 - Support for node 16
 
-## 11.0.2 (2023-08-28)
+## v11.0.2 (2023-08-28)
 
 ⚠️ Note this will be the last version of the plugin to support Node 16.
 - Node 16 moves to 'end of life' on 2023-09-11 ([more info](https://nodejs.org/en/blog/announcements/nodejs16-eol))
@@ -130,14 +132,14 @@ This project tries to adhere to [Semantic Versioning](http://semver.org/). In pr
 
 - Update `axios` to `v1.5.0`
 
-## 11.0.1 (2023-08-19)
+## v11.0.1 (2023-08-19)
 
 ### Changed
 
 - Bump `node` recommended versions to v16.20.2 or v18.17.1 or v20.5.1
 - Some code refactoring
 
-## 11.0.0 (2023-07-24)
+## v11.0.0 (2023-07-24)
 
 ### Added
 
@@ -159,7 +161,7 @@ This project tries to adhere to [Semantic Versioning](http://semver.org/). In pr
 - Bump `node` recommended versions to v16.20.1 or v18.17.0 or v20.5.0
 - Updated dependencies
 
-## 10.4.0 (2023-01-07)
+## v10.4.0 (2023-01-07)
 
 ### Added
 
@@ -176,7 +178,7 @@ This project tries to adhere to [Semantic Versioning](http://semver.org/). In pr
 
 - Power readings for POWR320 now show correctly
 
-## 10.3.0 (2022-11-11)
+## v10.3.0 (2022-11-11)
 
 ### Added
 
@@ -187,7 +189,7 @@ This project tries to adhere to [Semantic Versioning](http://semver.org/). In pr
 - Bump `node` recommended versions to v14.21.1 or v16.18.1 or v18.12.1
 - Bump `ws` to v8.11.0
 
-## 10.2.0 (2022-10-09)
+## v10.2.0 (2022-10-09)
 
 ### Added
 
@@ -207,7 +209,7 @@ This project tries to adhere to [Semantic Versioning](http://semver.org/). In pr
 
 - Incorrectly exposing Sonoff M5 devices as programmable switches
 
-## 10.1.0 (2022-09-25)
+## v10.1.0 (2022-09-25)
 
 ### Added
 
@@ -229,7 +231,7 @@ This project tries to adhere to [Semantic Versioning](http://semver.org/). In pr
 - Bump `ws` to v8.9.0
 - Updated dev dependencies
 
-## 10.0.0 (2022-07-08)
+## v10.0.0 (2022-07-08)
 
 ⚠️ After updating to this version:
   - Each time you start the plugin, you will be logged out the eWeLink app, and so I would recommend:
@@ -244,7 +246,7 @@ This project tries to adhere to [Semantic Versioning](http://semver.org/). In pr
 
 - Bump `node` recommended versions to v14.20.0 or v16.16.0
 
-## 9.1.0 (2022-07-07)
+## v9.1.0 (2022-07-07)
 
 ⚠️ This update may remove some devices from your Homebridge instance. Unfortunately this is out my control. See [this link](https://github.com/homebridge-plugins/homebridge-ewelink/issues/385#issuecomment-1176457283).
 
@@ -257,7 +259,7 @@ This project tries to adhere to [Semantic Versioning](http://semver.org/). In pr
 - Bump `ws` to v8.8.0
 - Updated dev dependencies
 
-## 9.0.1 (2022-06-08)
+## v9.0.1 (2022-06-08)
 
 ### Changed
 
@@ -267,7 +269,7 @@ This project tries to adhere to [Semantic Versioning](http://semver.org/). In pr
 
 - A potential issue showing errors in the logs
 
-## 9.0.0 (2022-05-29)
+## v9.0.0 (2022-05-29)
 
 ### Potentially Breaking Changes
 
@@ -279,7 +281,7 @@ This project tries to adhere to [Semantic Versioning](http://semver.org/). In pr
 - Changed to ESM package
 - Bump `node` recommended versions to v14.19.3 or v16.15.0
 
-## 8.15.0 (2022-05-02)
+## v8.15.0 (2022-05-02)
 
 ### Added
 
@@ -296,7 +298,7 @@ This project tries to adhere to [Semantic Versioning](http://semver.org/). In pr
 - Bump `ws` to v8.6.0
 - Bump `node` recommended versions to v14.19.1 or v16.15.0
 
-## 8.14.0 (2022-04-17)
+## v8.14.0 (2022-04-17)
 
 ### Added
 
@@ -305,20 +307,20 @@ This project tries to adhere to [Semantic Versioning](http://semver.org/). In pr
   - Sonoff MINIR3 (UIID 138 devices) (also supports LAN mode)
   - Sonoff S-Mate (UIID 177 devices) as a Stateless Programmable Sensor
 
-## 8.13.2 (2022-04-03)
+## v8.13.2 (2022-04-03)
 
 ### Changed
 
 - Updated dependencies
 
-## 8.13.1 (2022-03-20)
+## v8.13.1 (2022-03-20)
 
 ### Changed
 
 - Bump `axios` to v0.26.1
 - Bump `node` recommended versions to v14.19.1 or v16.14.2
 
-## 8.13.0 (2022-02-23)
+## v8.13.0 (2022-02-23)
 
 ### Added
 
@@ -328,7 +330,7 @@ This project tries to adhere to [Semantic Versioning](http://semver.org/). In pr
 
 - Bump `axios` to v0.26.0
 
-## 8.12.0 (2022-02-12)
+## v8.12.0 (2022-02-12)
 
 ### Added
 
@@ -342,7 +344,7 @@ This project tries to adhere to [Semantic Versioning](http://semver.org/). In pr
 - Bump `homebridge` recommended version to v1.4.0
 - Bump `ws` to v8.5.0
 
-## 8.11.2 (2022-01-23)
+## v8.11.2 (2022-01-23)
 
 ### Changed
 
@@ -352,7 +354,7 @@ This project tries to adhere to [Semantic Versioning](http://semver.org/). In pr
 
 - Fix LAN mode support for iFan04
 
-## 8.11.1 (2022-01-15)
+## v8.11.1 (2022-01-15)
 
 ### Changed
 
@@ -362,7 +364,7 @@ This project tries to adhere to [Semantic Versioning](http://semver.org/). In pr
 
 - `undefined` log message on web socket error
 
-## 8.11.0 (2022-01-13)
+## v8.11.0 (2022-01-13)
 
 ### Added
 
@@ -377,7 +379,7 @@ This project tries to adhere to [Semantic Versioning](http://semver.org/). In pr
 
 - Minor colour temperature issue for Mangotek RLD60C0E27 (UIID 33)
 
-## 8.10.0 (2022-01-07)
+## v8.10.0 (2022-01-07)
 
 ### Added
 
@@ -389,20 +391,20 @@ This project tries to adhere to [Semantic Versioning](http://semver.org/). In pr
 
 - Plugin crash for older versions of Homebridge
 
-## 8.9.1 (2022-01-05)
+## v8.9.1 (2022-01-05)
 
 ### Changed
 
 - Plugin will log HAPNodeJS version on startup
 - Bump `homebridge` recommended version to v1.3.9
 
-## 8.9.0 (2021-12-27)
+## v8.9.0 (2021-12-27)
 
 ### Added
 
 - Option to show both 'Heat' and 'Cool' modes for the TH10/16 thermostat simulation
 
-## 8.8.0 (2021-12-21)
+## v8.8.0 (2021-12-21)
 
 ### Added
 
@@ -420,13 +422,13 @@ This project tries to adhere to [Semantic Versioning](http://semver.org/). In pr
 - Some config options rearranged for easier access
 - Bump `ws` to v8.4.0
 
-## 8.7.1 (2021-12-09)
+## v8.7.1 (2021-12-09)
 
 ### Fixed
 
 - Show 'Hide Channels' and 'Inched Channels' in config schema form even when no 'Show As' is selected
 
-## 8.7.0 (2021-12-08)
+## v8.7.0 (2021-12-08)
 
 ### Added
 
@@ -445,7 +447,7 @@ This project tries to adhere to [Semantic Versioning](http://semver.org/). In pr
 
 - Potential uncaught errors updating subdevices of an RF bridge
 
-## 8.6.0 (2021-11-18)
+## v8.6.0 (2021-11-18)
 
 ### Added
 
@@ -457,20 +459,20 @@ This project tries to adhere to [Semantic Versioning](http://semver.org/). In pr
 
 - An issue initialising a 2-Garage-Door simulation
 
-## 8.5.0 (2021-11-03)
+## v8.5.0 (2021-11-03)
 
 ### Added
 
 - Ability to use a contact sensor simulation to show the correct state of a garage door/lock simulation
 
-## 8.4.2 (2021-10-31)
+## v8.4.2 (2021-10-31)
 
 ### Changed
 
 - Bump `node` recommended versions to v14.18.1 or v16.13.0
 - Bump `axios` to v0.24.0
 
-## 8.4.1 (2021-10-20)
+## v8.4.1 (2021-10-20)
 
 ### Changed
 
@@ -480,7 +482,7 @@ This project tries to adhere to [Semantic Versioning](http://semver.org/). In pr
 
 - An Eve app 'no data' gap for garage and contact sensor devices when restarting the plugin
 
-## 8.4.0 (2021-10-16)
+## v8.4.0 (2021-10-16)
 
 ### Added
 
@@ -498,31 +500,31 @@ This project tries to adhere to [Semantic Versioning](http://semver.org/). In pr
 
 - An error when trying to unregister a hidden accessory from Homebridge
 
-## 8.3.6 (2021-10-01)
+## v8.3.6 (2021-10-01)
 
 ### Changed
 
 - Bump `ws` to v8.2.3
 
-## 8.3.5 (2021-10-01)
+## v8.3.5 (2021-10-01)
 
 ### Changed
 
 - Bump `axios` to v0.22.0
 
-## 8.3.4 (2021-09-30)
+## v8.3.4 (2021-09-30)
 
 ### Changed
 
 - Recommended node versions bumped to v14.18.0 or v16.10.0
 
-## 8.3.3 (2021-09-14)
+## v8.3.3 (2021-09-14)
 
 ## Fixed
 
 - Fixed an issue where an irrigation valve simulation would not turn off after the set time
 
-## 8.3.2 (2021-09-09)
+## v8.3.2 (2021-09-09)
 
 ### Changed
 
@@ -530,7 +532,7 @@ This project tries to adhere to [Semantic Versioning](http://semver.org/). In pr
 - Bump `axios` to v0.21.4
 - Bump `ws` to v8.2.2
 
-## 8.3.1 (2021-09-05)
+## v8.3.1 (2021-09-05)
 
 ### Changed
 
@@ -538,7 +540,7 @@ This project tries to adhere to [Semantic Versioning](http://semver.org/). In pr
 - Bump `axios` to v0.21.3
 - Bump `ws` to v8.2.1
 
-## 8.3.0 (2021-08-26)
+## v8.3.0 (2021-08-26)
 
 ### Added
 
@@ -550,7 +552,7 @@ This project tries to adhere to [Semantic Versioning](http://semver.org/). In pr
 
 - 'Status By Inching' switches will no longer revert to 'off' when Homebridge is restarted
 
-## 8.2.1 (2021-08-22)
+## v8.2.1 (2021-08-22)
 
 ### Changed
 
@@ -561,33 +563,33 @@ This project tries to adhere to [Semantic Versioning](http://semver.org/). In pr
 - An issue preventing DUALR3 from initialising
 - Fix for uiid `112`
 
-## 8.2.0 (2021-08-22)
+## v8.2.0 (2021-08-22)
 
 ### Added
 
 - Support for UIIDs `138` `139` `140` `141`
 
-## 8.1.0 (2021-08-17)
+## v8.1.0 (2021-08-17)
 
 ### Added
 
 - `inchChannels` option for multi-channel switches and outlets (where the plugin will set on/off status based on inching)
 - `language` option to have the plugin log in French, thanks to @jp-lno
 
-## 8.0.2 (2021-08-12)
+## v8.0.2 (2021-08-12)
 
 ### Changed
 
 - **Platform Versions**
   - Recommended node version bumped to v14.17.5
 
-## 8.0.1 (2021-08-04)
+## v8.0.1 (2021-08-04)
 
 ### Changed
 
 - Improved battery calculations for DW2 sensors
 
-## 8.0.0 (2021-07-29)
+## v8.0.0 (2021-07-29)
 
 ### Important Note
 
@@ -628,7 +630,7 @@ This project tries to adhere to [Semantic Versioning](http://semver.org/). In pr
 - ⚠️ `ignoredDevices` configuration setting - now use the `ignoreDevice` option in the device type sections
 - ⚠️ `groups` configuration setting - now use the `showAs` option in the device type sections
 
-## 7.1.0 (2021-07-10)
+## v7.1.0 (2021-07-10)
 
 ### Added
 
@@ -642,13 +644,13 @@ This project tries to adhere to [Semantic Versioning](http://semver.org/). In pr
   - A device can now be ignored/removed from Homebridge by the `ignoreDevice` setting in the device configuration sections
 - Bump `ws` dependency to v7.5.3
 
-## 7.0.2 (2021-07-08)
+## v7.0.2 (2021-07-08)
 
 ### Changes
 
 - Revert node version bump to v14.17.3 (back to v14.17.2)
 
-### 7.0.1 (2021-07-08)
+### v7.0.1 (2021-07-08)
 
 ### Changes
 
@@ -658,7 +660,7 @@ This project tries to adhere to [Semantic Versioning](http://semver.org/). In pr
 
 - An issue preventing garage doors and locks with a defined sensor from initialising
 
-## 7.0.0 (2021-07-08)
+## v7.0.0 (2021-07-08)
 
 ### Important Notes
 
@@ -763,7 +765,7 @@ This project tries to adhere to [Semantic Versioning](http://semver.org/). In pr
 - `switchDevices[].showAsOutlet` removed - use `switchDevices[].showAs` instead
 - `ContactSensorState` and other unneeded characteristics from garage (simulation) services
 
-## 6.8.0 (2021-06-14)
+## v6.8.0 (2021-06-14)
 
 ### Added
 
@@ -790,14 +792,14 @@ This project tries to adhere to [Semantic Versioning](http://semver.org/). In pr
 
 - Fix a logging issue for the zigbee contact sensor
 
-## 6.7.1 (2021-05-27)
+## v6.7.1 (2021-05-27)
 
 ### Fixed
 
 - Fixes an issue with sensors with a garage simulation
 - Fixes an issue with TH10/16 devices with web socket timeouts
 
-## 6.7.0 (2021-05-26)
+## v6.7.0 (2021-05-26)
 
 ### Added
 
@@ -817,7 +819,7 @@ This project tries to adhere to [Semantic Versioning](http://semver.org/). In pr
 
 - Fix internal API auth issue when using a base64 encoded password
 
-## 6.6.0 (2021-05-10)
+## v6.6.0 (2021-05-10)
 
 ### Added
 
@@ -842,7 +844,7 @@ This project tries to adhere to [Semantic Versioning](http://semver.org/). In pr
 
 - Fixes an issue where the web socket would not close on plugin shutdown
 
-## 6.5.1 (2021-05-07)
+## v6.5.1 (2021-05-07)
 
 ### Changed
 
@@ -853,7 +855,7 @@ This project tries to adhere to [Semantic Versioning](http://semver.org/). In pr
 
 - Fixes an initialisation issue with the 'garage' and 'obstruction detection' switch simulations
 
-## 6.5.0 (2021-05-06)
+## v6.5.0 (2021-05-06)
 
 ### Added
 
@@ -864,7 +866,7 @@ This project tries to adhere to [Semantic Versioning](http://semver.org/). In pr
     - Any higher integer to enable the API on this fixed port
   - Documentation for the API can be seen at the base url (Homebridge IP + API port)
 
-## 6.4.0 (2021-05-04)
+## v6.4.0 (2021-05-04)
 
 ### Added
 
@@ -884,7 +886,7 @@ This project tries to adhere to [Semantic Versioning](http://semver.org/). In pr
 - Accessory 'identify' function will now add an entry to the log
 - Backend refactoring, function and variable name changes
 
-## 6.3.0 (2021-04-28)
+## v6.3.0 (2021-04-28)
 
 ### Added
 
@@ -897,7 +899,7 @@ This project tries to adhere to [Semantic Versioning](http://semver.org/). In pr
 - Increase ws timeout from 5 to 6 seconds
 - Decrease lan-only timeout from 10 to 9 seconds
 
-## 6.2.2 (2021-04-27)
+## v6.2.2 (2021-04-27)
 
 ### Changed
 
@@ -907,14 +909,14 @@ This project tries to adhere to [Semantic Versioning](http://semver.org/). In pr
 - Automatically retry eWeLink login on startup in case of certain error codes
 - Update package description (remove 'with original firmware' as this is redundant for eWeLink devices)
 
-## 6.2.1 (2021-04-18)
+## v6.2.1 (2021-04-18)
 
 ### Changed
 
 - Trim new lines and spaces from password when decoded from base64
 - Updated dependencies (`ws`)
 
-## 6.2.0 (2021-04-16)
+## v6.2.0 (2021-04-16)
 
 ### Added
 
@@ -935,19 +937,19 @@ This project tries to adhere to [Semantic Versioning](http://semver.org/). In pr
 
 - Fix characteristic NaN warning for `LastActivation`
 
-## 6.1.2 (2021-04-14)
+## v6.1.2 (2021-04-14)
 
 ### Fixed
 
 - Remove any existing humidity sensor for TH10/16 if DS18B20 sensor is used
 
-## 6.1.1 (2021-04-13)
+## v6.1.1 (2021-04-13)
 
 ### Fixed
 
 - Fixed an unhandled rejection error when controlling certain CCT bulbs
 
-## 6.1.0 (2021-04-12)
+## v6.1.0 (2021-04-12)
 
 ### Added
 
@@ -960,20 +962,20 @@ This project tries to adhere to [Semantic Versioning](http://semver.org/). In pr
   - No more characteristic warnings for `LastActivation` for motion and contact sensors
   - Removed logs for 'not triggered' if device has since been triggered again
 
-## 6.0.3 (2021-04-08)
+## v6.0.3 (2021-04-08)
 
 ### Fixed
 
 - Revert 'No Response' messages for **DW2** devices as they go on and offline
 - Fixed the interval time length for calculating total energy consumption for relevant devices
 
-## 6.0.2 (2021-04-07)
+## v6.0.2 (2021-04-07)
 
 ### Changed
 
 - Revert 'No Response' messages for **DW2** devices as they go on and offline
 
-## 6.0.1 (2021-04-07)
+## v6.0.1 (2021-04-07)
 
 ### Requirements
 
@@ -996,7 +998,7 @@ This project tries to adhere to [Semantic Versioning](http://semver.org/). In pr
 
 - Fixes a caching issue with the iFan accessory
 
-## 5.6.0 (2021-03-25)
+## v5.6.0 (2021-03-25)
 
 ### Added
 
@@ -1011,7 +1013,7 @@ This project tries to adhere to [Semantic Versioning](http://semver.org/). In pr
   - A new web socket address will be requested if the provided address causes errors
   - In particular this should fix the `ENOTFOUND as-pconnect4.coolkit.cc` error that some users in the Asia continent were receiving
 
-## 5.5.1 (2021-03-21)
+## v5.5.1 (2021-03-21)
 
 ### Changed
 
@@ -1019,7 +1021,7 @@ This project tries to adhere to [Semantic Versioning](http://semver.org/). In pr
 - More welcome messages
 - Updated `plugin-ui-utils` dependency
 
-## 5.5.0 (2021-03-17)
+## v5.5.0 (2021-03-17)
 
 ### Added
 
@@ -1036,7 +1038,7 @@ This project tries to adhere to [Semantic Versioning](http://semver.org/). In pr
 - Updated links on plugin-ui to match GitHub wiki
 - [backend] Eve characteristics abstracted into separate file for better efficiency
 
-## 5.4.0 (2021-03-14)
+## v5.4.0 (2021-03-14)
 
 ### Added
 
@@ -1048,7 +1050,7 @@ This project tries to adhere to [Semantic Versioning](http://semver.org/). In pr
 
 - Attempt to fix outlet polling updates so the device reports updated info rather than the previous info.
 
-## 5.3.0 (2021-03-10)
+## v5.3.0 (2021-03-10)
 
 ### Added
 
@@ -1061,7 +1063,7 @@ This project tries to adhere to [Semantic Versioning](http://semver.org/). In pr
   - For this reason, the `exposeContactSensor` setting is now redundant and so has been removed
 - Outlet intervals for energy calculation and updates will stop on Homebridge shutdown
 
-## 5.2.0 (2021-03-08)
+## v5.2.0 (2021-03-08)
 
 ### Added
 
@@ -1079,13 +1081,13 @@ This project tries to adhere to [Semantic Versioning](http://semver.org/). In pr
 
 - Fixes a `multiple callback` error with CCT bulb accessories
 
-## 5.1.1 (2021-03-02)
+## v5.1.1 (2021-03-02)
 
 ### Fixed
 
 - Fixes an issue sending LAN updates to multi-channel devices
 
-## 5.1.0 (2021-03-02)
+## v5.1.0 (2021-03-02)
 
 ### Added
 
@@ -1103,46 +1105,46 @@ This project tries to adhere to [Semantic Versioning](http://semver.org/). In pr
 
 - Less strict threshold for determining a 'significant' colour change for disabling Adaptive Lighting
 
-## 5.0.6 (2021-02-26)
+## v5.0.6 (2021-02-26)
 
 ### Fixed
 
 - Removes the extra _Switch_ service that was accidentally added to certain bulbs
 
-## 5.0.5 (2021-02-25)
+## v5.0.5 (2021-02-25)
 
 ### Changed
 
 - Reverse the polarity of the leak sensor simulation
   - You can expose a DW2 sensor as a leak sensor using [this guide](https://www.youtube.com/watch?v=YFu2LZfrrqs) as an Accessory Simulation
 
-## 5.0.4 (2021-02-24)
+## v5.0.4 (2021-02-24)
 
 ### Changed
 
 - Plugin will check that certain Accessory Simulations have been setup with the device type
 - Hide IP address field in plugin settings if plugin `mode` is set to `wan`
 
-## 5.0.3 (2021-02-24)
+## v5.0.3 (2021-02-24)
 
 ### Changed
 
 - Remove old _Switch_ services when setting up Accessory Simulations
 - Add the type of Accessory Simulation to the logged options on restart
 
-## 5.0.2 (2021-02-24)
+## v5.0.2 (2021-02-24)
 
 ### Fixed
 
 - Fixes an issue initialising Accessory Simulation Lock devices
 
-## 5.0.1 (2021-02-24)
+## v5.0.1 (2021-02-24)
 
 ### Fixed
 
 - Fixes an issue initialising Contact Sensor devices
 
-## 5.0.0 (2021-02-24)
+## v5.0.0 (2021-02-24)
 
 - ⚠️ This release includes an overhaul of the settings in particular to specific device configuration
 - The following options have been replaced:
@@ -1183,25 +1185,25 @@ This project tries to adhere to [Semantic Versioning](http://semver.org/). In pr
 
 - Fixes a characteristic warning for _MotionDetected_ for Zigbee Motion Sensors
 
-## 4.7.6 (2021-02-17)
+## v4.7.6 (2021-02-17)
 
 ### Fixed
 
 - Fixes an issue with the DW2 detecting garage door states
 
-## 4.7.5 (2021-02-15)
+## v4.7.5 (2021-02-15)
 
 ### Changed
 
 - Fixes an issue with the DW2 detecting garage door states
 
-## 4.7.4 (2021-02-15)
+## v4.7.4 (2021-02-15)
 
 ### Fixed
 
 - Fixes an issue when using custom RF sensors
 
-## 4.7.3 (2021-02-13)
+## v4.7.3 (2021-02-13)
 
 ### Changed
 
@@ -1212,14 +1214,14 @@ This project tries to adhere to [Semantic Versioning](http://semver.org/). In pr
   - Lighter colours appear brighter
   - Solid red is now easier to obtain via the Home app
 
-## 4.7.2 (2021-02-12)
+## v4.7.2 (2021-02-12)
 
 ### Fixed
 
 - Fixes a bug where config items separated by a comma weren't adhered to properly
 - Stop subsequent warning messages if a device fails to initialise
 
-## 4.7.1 (2021-02-11)
+## v4.7.1 (2021-02-11)
 
 ### Changed
 
@@ -1233,7 +1235,7 @@ This project tries to adhere to [Semantic Versioning](http://semver.org/). In pr
 
 - Fixed a bug when initialising lock accessory simulations
 
-## 4.7.0 (2021-02-10)
+## v4.7.0 (2021-02-10)
 
 ### Added
 
@@ -1267,14 +1269,14 @@ This project tries to adhere to [Semantic Versioning](http://semver.org/). In pr
 - Fixed a bug where Adaptive Lighting would not be disabled if the colour was changed from the eWeLink app
 - Fixed an issue with the 'Lock' Accessory Simulation where the status would never update as 'Unlocked'
 
-## 4.6.1 (2021-02-02)
+## v4.6.1 (2021-02-02)
 
 ### Changed
 
 - Extra debug logging for WS reconnection status
 - Updated `ws` dependency to v7.4.3
 
-## 4.6.0 (2021-01-30)
+## v4.6.0 (2021-01-30)
 
 ### Added
 
@@ -1287,7 +1289,7 @@ This project tries to adhere to [Semantic Versioning](http://semver.org/). In pr
 - Increase the timeout for LAN control to 10 seconds for LAN only settings
 - Show LAN update errors in the log
 
-## 4.5.1 (2021-01-28)
+## v4.5.1 (2021-01-28)
 
 ### Changed
 
@@ -1298,7 +1300,7 @@ This project tries to adhere to [Semantic Versioning](http://semver.org/). In pr
 
 - Fixes an issue where RF sensors would not use a custom defined type (again!)
 
-## 4.5.0 (2021-01-28)
+## v4.5.0 (2021-01-28)
 
 ### Added
 
@@ -1314,25 +1316,25 @@ This project tries to adhere to [Semantic Versioning](http://semver.org/). In pr
 - Fix for TH10/16 devices (shown as thermostat) where the plugin would not show the current state of the device
 - Fix for the display of watts/amps/volts for outlets that support this
 
-## 4.4.5 (2021-01-24)
+## v4.4.5 (2021-01-24)
 
 ### Fixed
 
 - Fix where the battery for DW2 device would not update
 
-## 4.4.4 (2021-01-24)
+## v4.4.4 (2021-01-24)
 
 ### Changed
 
 - Backend - better handling of errors
 
-## 4.4.3 (2021-01-20)
+## v4.4.3 (2021-01-20)
 
 ### Fixed
 
 - Fixes an issue where RF sensors would not use a custom defined type
 
-## 4.4.2 (2021-01-20)
+## v4.4.2 (2021-01-20)
 
 ### Changed
 
@@ -1342,13 +1344,13 @@ This project tries to adhere to [Semantic Versioning](http://semver.org/). In pr
 
 - Fixes an issue when adding new RF bridge devices
 
-## 4.4.1 (2021-01-20)
+## v4.4.1 (2021-01-20)
 
 ### Changed
 
 - Fakegato logging disabled in Homebridge `debug` mode, can be explicitly enabled with `debugFakegato`
 
-## 4.4.0 (2021-01-14)
+## v4.4.0 (2021-01-14)
 
 ### Added
 
@@ -1364,7 +1366,7 @@ This project tries to adhere to [Semantic Versioning](http://semver.org/). In pr
 
 - Removed `Obstruction Detected` tests
 
-## 4.3.0 (2021-01-12)
+## v4.3.0 (2021-01-12)
 
 ### Added
 
