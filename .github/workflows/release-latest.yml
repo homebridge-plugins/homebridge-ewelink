@@ -50,7 +50,7 @@ jobs:
             BASE_VERSION="${VERSION%%-*}"
             # Compare base version to latest version using sort -V
             if [ "$(printf "%s\n%s" "$BASE_VERSION" "$LATEST_VERSION" | sort -V | head -n1)" != "$LATEST_VERSION" ]; then
-              npm deprecate @homebridge-plugins/homebridge-ecovacs@"$VERSION" "This beta version is deprecated in favor of the latest release."
+              npm deprecate @homebridge-plugins/homebridge-ewelink@"$VERSION" "This beta version is deprecated in favor of the latest release."
               echo "- Deprecated version: $VERSION (base: $BASE_VERSION)"
               DEPRECATED_VERSIONS+=("$VERSION")
             else
