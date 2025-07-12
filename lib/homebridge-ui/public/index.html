@@ -1,3 +1,39 @@
+<style>
+  .dark-mode {
+    background-color: #242424;
+    color: lightgrey;
+
+    .form-control {
+      background-color: #333333 !important;
+      border: none !important;
+      color: #eeeeee !important;
+    }
+
+    thead, tbody, tr {
+      border-style: hidden;
+    }
+
+    th {
+      color: #eeeeee !important;
+      font-weight: 500 !important;
+    }
+  }
+  select {
+    background-image:
+      linear-gradient(45deg, transparent 50%, gray 50%),
+      linear-gradient(135deg, gray 50%, transparent 50%),
+      linear-gradient(to right, #ccc, #ccc);
+    background-position:
+      calc(100% - 20px) calc(1em + 2px),
+      calc(100% - 15px) calc(1em + 2px),
+      calc(100% - 2.5em) 0.5em;
+    background-size:
+      5px 5px,
+      5px 5px,
+      1px 1.5em;
+    background-repeat: no-repeat;
+  }
+</style>
 <p class="text-center">
   <img
     src="https://user-images.githubusercontent.com/43026681/101325266-63126600-3863-11eb-9382-4a2924f0e540.png"
@@ -49,7 +85,7 @@
         <select class="form-control" id="deviceSelect"></select>
       </div>
     </form>
-    <table class="table w-100" id="deviceTable" style="display: none;">
+    <table class="table w-100 mt-3" id="deviceTable" style="display: none;">
       <thead>
         <tr class="table-active">
           <th scope="col" style="width: 40%;">Device Name</th>
