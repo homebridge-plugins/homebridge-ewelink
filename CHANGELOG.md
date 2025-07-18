@@ -2,6 +2,12 @@
 
 All notable changes to homebridge-ewelink will be documented in this file.
 
+## v12.6.1 (Unreleased)
+
+### Other Changes
+
+- add maintainer message
+
 ## v12.6.0 (2025-07-13)
 
 ### Notable Changes

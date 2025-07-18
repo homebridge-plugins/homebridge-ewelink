@@ -26,6 +26,8 @@ Homebridge plugin to integrate eWeLink devices into HomeKit
   - listens for real-time device updates when controlled externally
   - supports removing your eWeLink credentials from the configuration in certain situations, see [wiki](https://github.com/homebridge-plugins/homebridge-ewelink/wiki/Connection-Methods#lan-mode-without-ewelink-credentials)
 
+> I'm looking for some lovely people to help maintain this plugin, please get in touch on GitHub or Discord if you'd like to help out 😄
+
 ### Prerequisites
 
 - To use this plugin, you will need to already have:
