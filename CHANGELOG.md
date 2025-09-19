@@ -1,15 +1,17 @@
 # Change Log
 
-All notable changes to homebridge-ewelink will be documented in this file.
+All notable changes to `@homebridge-plugins/homebridge-ewelink` will be documented in this file.
 
-### v12.7.0 (2025-09-19)
+## v12.7.0 (2025-09-19)
+
+### Changes
 
 - dependency updates
 - added new devices
 
 ## v12.6.2 (2025-07-24)
 
-### Other Changes
+### Changes
 
 - dependency updates
 
