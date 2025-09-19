@@ -2,7 +2,7 @@
 
 All notable changes to homebridge-ewelink will be documented in this file.
 
-### v12.7.0 (Unreleased)
+### v12.7.0 (2025-09-19)
 
 - dependency updates
 - added new devices
