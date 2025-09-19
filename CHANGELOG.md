@@ -2,6 +2,12 @@
 
 All notable changes to `@homebridge-plugins/homebridge-ewelink` will be documented in this file.
 
+## v12.7.1 (Unreleased)
+
+### Changes
+
+- feat: add support for Virtual Switch (UIID 264) and Virtual Button (UIID 265)
+
 ## v12.7.0 (2025-09-19)
 
 ### Changes
