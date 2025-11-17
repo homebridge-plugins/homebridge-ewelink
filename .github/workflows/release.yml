@@ -1,0 +1,77 @@
+name: Release
+
+# This workflow handles latest, beta, and alpha releases:
+# - Latest: Triggered by GitHub releases (tag vX.Y.Z)
+# - Beta: Triggered by pushes to beta-X.Y.Z branches
+# - Alpha: Triggered by pushes to alpha-X.Y.Z branches
+
+on:
+  release:
+    types: [published]
+  push:
+    branches:
+      - beta-*.*.*
+      - alpha-*.*.*
+
+permissions:
+  id-token: write
+  contents: read
+
+jobs:
+  eslint:
+    uses: homebridge/.github/.github/workflows/eslint.yml@latest
+
+  publish:
+    if: ${{ github.repository == 'homebridge-plugins/homebridge-ewelink' }}
+    needs: eslint
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v5
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: 24
+          registry-url: 'https://registry.npmjs.org'
+
+      - name: Upgrade npm for OIDC support
+        run: npm install -g npm@latest
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Determine release type
+        id: release-type
+        run: |
+          if [[ "${{ github.event_name }}" == "release" ]]; then
+            echo "type=latest" >> $GITHUB_OUTPUT
+            echo "tag=latest" >> $GITHUB_OUTPUT
+          elif [[ "${{ github.ref }}" == refs/heads/beta-* ]]; then
+            echo "type=beta" >> $GITHUB_OUTPUT
+            echo "tag=beta" >> $GITHUB_OUTPUT
+          elif [[ "${{ github.ref }}" == refs/heads/alpha-* ]]; then
+            echo "type=alpha" >> $GITHUB_OUTPUT
+            echo "tag=alpha" >> $GITHUB_OUTPUT
+          else
+            echo "type=none" >> $GITHUB_OUTPUT
+            echo "tag=none" >> $GITHUB_OUTPUT
+            echo "No valid release type detected - skipping publish"
+          fi
+
+      - name: Handle prerelease versioning
+        if: steps.release-type.outputs.type == 'beta' || steps.release-type.outputs.type == 'alpha'
+        run: |
+          # Download versioning script from homebridge/.github
+          mkdir -p .github
+          wget -q https://raw.githubusercontent.com/homebridge/.github/latest/.github/npm-version-script-esm.js -O .github/npm-version-script-esm.js
+
+          # Run the script to set base version
+          node .github/npm-version-script-esm.js ${{ github.ref }} ${{ steps.release-type.outputs.type }}
+
+          # Add prerelease suffix
+          npm version pre --preid=${{ steps.release-type.outputs.type }} --no-git-tag-version
+
+      - name: Publish to npm with OIDC
+        if: steps.release-type.outputs.type != 'none'
+        run: npm publish --tag ${{ steps.release-type.outputs.tag }} --provenance --access public
