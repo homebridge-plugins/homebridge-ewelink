@@ -10,6 +10,7 @@ All notable changes to `@homebridge-plugins/homebridge-ewelink` will be document
 - support more devices
 - update readme badges (use `shields.io`)
 - update workflows and npm publish via oidc
+- updated dependencies
 
 ## v12.7.0 (2025-09-19)
 
