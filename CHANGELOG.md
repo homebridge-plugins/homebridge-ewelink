@@ -7,6 +7,7 @@ All notable changes to `@homebridge-plugins/homebridge-ewelink` will be document
 ### Changes
 
 - determine debug mode from `-D` flag
+- updated dependencies
 
 ## v12.8.0 (2025-12-05)
 
