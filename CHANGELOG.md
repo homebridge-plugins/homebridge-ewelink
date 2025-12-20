@@ -2,6 +2,12 @@
 
 All notable changes to `@homebridge-plugins/homebridge-ewelink` will be documented in this file.
 
+## v12.8.1 (Unreleased)
+
+### Changes
+
+- determine debug mode from `-D` flag
+
 ## v12.8.0 (2025-12-05)
 
 ### Changes
