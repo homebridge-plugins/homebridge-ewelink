@@ -8,6 +8,8 @@ All notable changes to `@homebridge-plugins/homebridge-ewelink` will be document
 
 - determine debug mode from `-D` flag
 - updated dependencies
+- feat: adds support for SAWF-08P (#729) (@say4n)
+- updated dependencies + lint rules
 
 ## v12.8.0 (2025-12-05)
 
