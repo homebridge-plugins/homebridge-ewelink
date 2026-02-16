@@ -7,6 +7,7 @@ All notable changes to `@homebridge-plugins/homebridge-ewelink` will be document
 ### Changed
 
 - updated dependencies + lint rules
+- update workflow action versions
 
 ## v12.9.0 (2026-01-27)
 
