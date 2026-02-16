@@ -31,9 +31,9 @@ jobs:
           echo "Latest version found in package.json: $LATEST_VERSION"
           echo ""
           DEPRECATED_VERSIONS=()
-          echo "Fetching pre-release versions of @homebridge-plugins/homebridge-ecovacs from npm..."
+          echo "Fetching pre-release versions of @homebridge-plugins/homebridge-ewelink from npm..."
           # Fetch all non-deprecated pre-release versions from the registry
-          RESPONSE=$(curl -s -H "accept: application/vnd.npm.install-v1+json" "https://registry.npmjs.org/@homebridge-plugins/homebridge-ecovacs")
+          RESPONSE=$(curl -s -H "accept: application/vnd.npm.install-v1+json" "https://registry.npmjs.org/@homebridge-plugins/homebridge-ewelink")
           BETA_VERSIONS=$(echo "$RESPONSE" | jq -c '[.versions[] | select(.deprecated == null and (.version | test("-"))) | .version]')
           echo "Found $(echo "$BETA_VERSIONS" | jq 'length') pre-release versions:"
           for VERSION in $(echo "$BETA_VERSIONS" | jq -r '.[]'); do
@@ -41,7 +41,7 @@ jobs:
             BASE_VERSION="${VERSION%%-*}"  # Strip pre-release part
             # Deprecate if base version is less than or equal to latest version
             if [ "$(printf "%s\n%s" "$BASE_VERSION" "$LATEST_VERSION" | sort -V | tail -n1)" == "$LATEST_VERSION" ]; then
-              if ! OUTPUT=$(npm deprecate @homebridge-plugins/homebridge-ecovacs@"$VERSION" "This beta version is deprecated in favor of the latest release." 2>&1); then
+              if ! OUTPUT=$(npm deprecate @homebridge-plugins/homebridge-ewelink@"$VERSION" "This beta version is deprecated in favor of the latest release." 2>&1); then
                 echo "$OUTPUT" >&2
                 if echo "$OUTPUT" | grep -q "E429"; then
                   echo "* Error: Rate limit exceeded (429). Stopping the step." >&2
