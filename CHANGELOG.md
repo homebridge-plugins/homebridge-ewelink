@@ -4,6 +4,10 @@ All notable changes to `@homebridge-plugins/homebridge-ewelink` will be document
 
 ## v12.9.1 (Unreleased)
 
+### Added
+
+- support zigbee e27 bulb (18w), with UIID `7009`
+
 ### Changed
 
 - updated dependencies + lint rules
