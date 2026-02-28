@@ -3,7 +3,7 @@
 </p>
 <span align="center">
 
-# homebridge-ewelink
+## homebridge-ewelink
 
 Homebridge plugin to integrate eWeLink devices into HomeKit
 

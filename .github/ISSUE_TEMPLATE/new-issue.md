@@ -34,6 +34,6 @@ assignees: ''
      logs are formatted in a way which is easier to read.
 -->
 
-```
+```plaintext
 
 ```
