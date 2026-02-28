@@ -2,7 +2,7 @@
 
 All notable changes to `@homebridge-plugins/homebridge-ewelink` will be documented in this file.
 
-## v12.10.1 (Pending Release)
+## v12.11.0 (2026-02-28)
 
 ### Added
 
