@@ -4,6 +4,11 @@ All notable changes to `@homebridge-plugins/homebridge-ewelink` will be document
 
 ## v12.10.1 (Pending Release)
 
+### Added
+
+- support more models
+  - `7029`, `7033`, `20001`, `20004`
+
 ### Changed
 
 - dependency updates + maintenance
