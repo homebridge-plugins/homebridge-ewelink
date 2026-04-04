@@ -17,6 +17,7 @@ All notable changes to `@homebridge-plugins/homebridge-ewelink` will be document
 - fix: missing await in group update request
 - fix: fakegato unsubscribe removing wrong service
 - fix: fakegato immediate callback missing averaging
+- fix: string radix in fakegato toString call
 
 ## v12.11.0 (2026-02-28)
 
