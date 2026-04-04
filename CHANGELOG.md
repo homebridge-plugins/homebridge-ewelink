@@ -2,6 +2,12 @@
 
 All notable changes to `@homebridge-plugins/homebridge-ewelink` will be documented in this file.
 
+## v12.11.1 (Pending Release)
+
+### Changed
+
+- fix: wrong parseInt radix in channel name lookup
+
 ## v12.11.0 (2026-02-28)
 
 ### Added
