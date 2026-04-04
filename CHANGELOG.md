@@ -15,6 +15,7 @@ All notable changes to `@homebridge-plugins/homebridge-ewelink` will be document
 - fix: wrong characteristic in outlet-multi cleanup
 - fix: incorrect bit shifts in DNS header parsing
 - fix: missing await in group update request
+- fix: fakegato unsubscribe removing wrong service
 
 ## v12.11.0 (2026-02-28)
 
