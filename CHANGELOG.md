@@ -12,6 +12,7 @@ All notable changes to `@homebridge-plugins/homebridge-ewelink` will be document
 - fix: color temp diff always zero in adaptive lighting
 - fix: hue cache overwritten to zero on CT update
 - fix: panel channel 2 returning channel 1 state
+- fix: wrong characteristic in outlet-multi cleanup
 
 ## v12.11.0 (2026-02-28)
 
