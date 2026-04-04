@@ -9,6 +9,7 @@ All notable changes to `@homebridge-plugins/homebridge-ewelink` will be document
 - fix: wrong parseInt radix in channel name lookup
 - fix: undefined variable in apiPort config check
 - fix: copy-paste errors in RGB color comparison
+- fix: color temp diff always zero in adaptive lighting
 
 ## v12.11.0 (2026-02-28)
 
