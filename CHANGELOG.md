@@ -11,6 +11,7 @@ All notable changes to `@homebridge-plugins/homebridge-ewelink` will be document
 - fix: copy-paste errors in RGB color comparison
 - fix: color temp diff always zero in adaptive lighting
 - fix: hue cache overwritten to zero on CT update
+- fix: panel channel 2 returning channel 1 state
 
 ## v12.11.0 (2026-02-28)
 
