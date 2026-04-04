@@ -7,6 +7,7 @@ All notable changes to `@homebridge-plugins/homebridge-ewelink` will be document
 ### Changed
 
 - fix: wrong parseInt radix in channel name lookup
+- fix: undefined variable in apiPort config check
 
 ## v12.11.0 (2026-02-28)
 
