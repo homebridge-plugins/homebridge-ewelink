@@ -19,6 +19,7 @@ All notable changes to `@homebridge-plugins/homebridge-ewelink` will be document
 - fix: fakegato immediate callback missing averaging
 - fix: string radix in fakegato toString call
 - fix: incorrect unit casing in eve characteristic
+- dependency updates + code lint fixes
 
 ## v12.11.0 (2026-02-28)
 
