@@ -26,6 +26,7 @@ All notable changes to `@homebridge-plugins/homebridge-ewelink` will be document
 - fix: ws minimum interval between messages
 - fix: MINI-DIM brightness params
 - fix: ws unmatched response device updates
+- fix: skip stale zigbee `subDevRssi` updates
 
 ## v12.11.1 (2026-04-05)
 
