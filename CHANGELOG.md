@@ -36,6 +36,7 @@ All notable changes to `@homebridge-plugins/homebridge-ewelink` will be document
 - fix: cover position boundary clamping
 - fix: HTTP 401 automatic token refresh
 - fix: clean stale services on category change
+- feat: `sledonline` LAN power monitoring trick
 
 ## v12.11.1 (2026-04-05)
 
