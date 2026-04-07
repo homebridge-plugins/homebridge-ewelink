@@ -10,6 +10,7 @@ All notable changes to `@homebridge-plugins/homebridge-ewelink` will be document
 - fix: filter glitched sensor readings
 - fix: LAN packet parse errors
 - fix: ws 406 auth re-login with backoff
+- fix: ws dispatch fallback hosts
 
 ## v12.11.1 (2026-04-05)
 
