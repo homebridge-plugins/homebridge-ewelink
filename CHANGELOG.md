@@ -27,6 +27,7 @@ All notable changes to `@homebridge-plugins/homebridge-ewelink` will be document
 - fix: MINI-DIM brightness params
 - fix: ws unmatched response device updates
 - fix: skip stale zigbee `subDevRssi` updates
+- fix: zigbee motion reset on bridge offline
 
 ## v12.11.1 (2026-04-05)
 
