@@ -47,6 +47,7 @@ All notable changes to `@homebridge-plugins/homebridge-ewelink` will be document
 - refactor: replace per-device shutdown listeners with `destroy()`
 - feat: add UIID 52 CCT light support
 - fix: simulation switches array bounds
+- fix: audit fixes from code review
 
 ## v12.11.1 (2026-04-05)
 
