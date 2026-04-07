@@ -40,6 +40,7 @@ All notable changes to `@homebridge-plugins/homebridge-ewelink` will be document
 - feat: T5 (UIID 211) cover motor mode
 - fix: clear command queue on shutdown
 - fix: switches array bounds checking
+- fix: guard `accessory.control` access
 
 ## v12.11.1 (2026-04-05)
 
