@@ -35,6 +35,7 @@ All notable changes to `@homebridge-plugins/homebridge-ewelink` will be document
 - feat: LAN discovery summary logging
 - fix: cover position boundary clamping
 - fix: HTTP 401 automatic token refresh
+- fix: clean stale services on category change
 
 ## v12.11.1 (2026-04-05)
 
