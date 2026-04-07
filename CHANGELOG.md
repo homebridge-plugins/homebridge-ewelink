@@ -33,6 +33,7 @@ All notable changes to `@homebridge-plugins/homebridge-ewelink` will be document
 - fix: ws reconnection exponential backoff
 - perf: in-memory temperature cache for simulations
 - feat: LAN discovery summary logging
+- fix: cover position boundary clamping
 
 ## v12.11.1 (2026-04-05)
 
