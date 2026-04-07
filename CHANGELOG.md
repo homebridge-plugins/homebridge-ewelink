@@ -48,6 +48,7 @@ All notable changes to `@homebridge-plugins/homebridge-ewelink` will be document
 - feat: add UIID 52 CCT light support
 - fix: simulation switches array bounds
 - fix: audit fixes from code review
+- chore: dependency updates
 
 ## v12.11.1 (2026-04-05)
 
