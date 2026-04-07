@@ -41,6 +41,7 @@ All notable changes to `@homebridge-plugins/homebridge-ewelink` will be document
 - fix: clear command queue on shutdown
 - fix: switches array bounds checking
 - fix: guard `accessory.control` access
+- fix: async forEach to for...of loop
 
 ## v12.11.1 (2026-04-05)
 
