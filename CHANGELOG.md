@@ -34,6 +34,7 @@ All notable changes to `@homebridge-plugins/homebridge-ewelink` will be document
 - perf: in-memory temperature cache for simulations
 - feat: LAN discovery summary logging
 - fix: cover position boundary clamping
+- fix: HTTP 401 automatic token refresh
 
 ## v12.11.1 (2026-04-05)
 
