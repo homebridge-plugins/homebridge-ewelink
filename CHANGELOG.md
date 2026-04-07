@@ -14,6 +14,7 @@ All notable changes to `@homebridge-plugins/homebridge-ewelink` will be document
 - fix: ws command timeout and retry
 - fix: LAN retry on `ECONNRESET`
 - perf: LAN commands bypass queue
+- feat: add new device UIIDs
 
 ## v12.11.1 (2026-04-05)
 
