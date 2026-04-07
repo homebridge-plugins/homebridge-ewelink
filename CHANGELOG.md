@@ -2,6 +2,12 @@
 
 All notable changes to `@homebridge-plugins/homebridge-ewelink` will be documented in this file.
 
+## v12.11.2 (Pending Release)
+
+### Changed
+
+- fix: replace `Math.random()` nonce generation with `crypto.randomBytes()`
+
 ## v12.11.1 (2026-04-05)
 
 ### Changed
