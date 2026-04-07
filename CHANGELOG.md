@@ -45,6 +45,7 @@ All notable changes to `@homebridge-plugins/homebridge-ewelink` will be document
 - fix: `getHost()` unbounded recursion limit
 - fix: cap energy readings array size
 - refactor: replace per-device shutdown listeners with `destroy()`
+- feat: add UIID 52 CCT light support
 
 ## v12.11.1 (2026-04-05)
 
