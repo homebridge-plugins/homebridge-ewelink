@@ -39,6 +39,7 @@ All notable changes to `@homebridge-plugins/homebridge-ewelink` will be document
 - feat: `sledonline` LAN power monitoring trick
 - feat: T5 (UIID 211) cover motor mode
 - fix: clear command queue on shutdown
+- fix: switches array bounds checking
 
 ## v12.11.1 (2026-04-05)
 
