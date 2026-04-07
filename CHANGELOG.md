@@ -19,6 +19,7 @@ All notable changes to `@homebridge-plugins/homebridge-ewelink` will be document
 - fix: dimmer brightness requires switch on
 - feat: curtain mid-movement stop
 - feat: `offlineAsOff` for switches and outlets
+- fix: RF button `ConfiguredName` display
 
 ## v12.11.1 (2026-04-05)
 
