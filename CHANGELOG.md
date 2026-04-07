@@ -42,6 +42,7 @@ All notable changes to `@homebridge-plugins/homebridge-ewelink` will be document
 - fix: switches array bounds checking
 - fix: guard `accessory.control` access
 - fix: async forEach to for...of loop
+- fix: `getHost()` unbounded recursion limit
 
 ## v12.11.1 (2026-04-05)
 
