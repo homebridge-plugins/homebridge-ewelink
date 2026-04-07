@@ -44,6 +44,7 @@ All notable changes to `@homebridge-plugins/homebridge-ewelink` will be document
 - fix: async forEach to for...of loop
 - fix: `getHost()` unbounded recursion limit
 - fix: cap energy readings array size
+- refactor: replace per-device shutdown listeners with `destroy()`
 
 ## v12.11.1 (2026-04-05)
 
