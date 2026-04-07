@@ -37,6 +37,7 @@ All notable changes to `@homebridge-plugins/homebridge-ewelink` will be document
 - fix: HTTP 401 automatic token refresh
 - fix: clean stale services on category change
 - feat: `sledonline` LAN power monitoring trick
+- feat: T5 (UIID 211) cover motor mode
 
 ## v12.11.1 (2026-04-05)
 
