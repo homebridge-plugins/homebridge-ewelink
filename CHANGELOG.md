@@ -25,6 +25,7 @@ All notable changes to `@homebridge-plugins/homebridge-ewelink` will be document
 - fix: button event deduplication via `trigTime`
 - fix: ws minimum interval between messages
 - fix: MINI-DIM brightness params
+- fix: ws unmatched response device updates
 
 ## v12.11.1 (2026-04-05)
 
