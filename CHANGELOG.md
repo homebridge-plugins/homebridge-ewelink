@@ -7,6 +7,7 @@ All notable changes to `@homebridge-plugins/homebridge-ewelink` will be document
 ### Changed
 
 - fix: replace `Math.random()` nonce generation with `crypto.randomBytes()`
+- fix: filter glitched sensor readings
 
 ## v12.11.1 (2026-04-05)
 
