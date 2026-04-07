@@ -24,6 +24,7 @@ All notable changes to `@homebridge-plugins/homebridge-ewelink` will be document
 - fix: zigbee multi-channel send all channels
 - fix: button event deduplication via `trigTime`
 - fix: ws minimum interval between messages
+- fix: MINI-DIM brightness params
 
 ## v12.11.1 (2026-04-05)
 
