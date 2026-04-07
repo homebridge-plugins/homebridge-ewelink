@@ -20,6 +20,7 @@ All notable changes to `@homebridge-plugins/homebridge-ewelink` will be document
 - feat: curtain mid-movement stop
 - feat: `offlineAsOff` for switches and outlets
 - fix: RF button `ConfiguredName` display
+- fix: LAN `operSide` passthrough
 
 ## v12.11.1 (2026-04-05)
 
