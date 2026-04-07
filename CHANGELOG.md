@@ -12,6 +12,7 @@ All notable changes to `@homebridge-plugins/homebridge-ewelink` will be document
 - fix: ws 406 auth re-login with backoff
 - fix: ws dispatch fallback hosts
 - fix: ws command timeout and retry
+- fix: LAN retry on `ECONNRESET`
 
 ## v12.11.1 (2026-04-05)
 
