@@ -21,6 +21,7 @@ All notable changes to `@homebridge-plugins/homebridge-ewelink` will be document
 - feat: `offlineAsOff` for switches and outlets
 - fix: RF button `ConfiguredName` display
 - fix: LAN `operSide` passthrough
+- fix: zigbee multi-channel send all channels
 
 ## v12.11.1 (2026-04-05)
 
