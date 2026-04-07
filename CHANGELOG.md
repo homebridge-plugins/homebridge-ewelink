@@ -31,6 +31,7 @@ All notable changes to `@homebridge-plugins/homebridge-ewelink` will be document
 - fix: TRVZB firmware type coercion
 - fix: UIID 104 `ltype` undefined in params
 - fix: ws reconnection exponential backoff
+- perf: in-memory temperature cache for simulations
 
 ## v12.11.1 (2026-04-05)
 
