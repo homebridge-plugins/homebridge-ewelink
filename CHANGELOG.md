@@ -29,6 +29,7 @@ All notable changes to `@homebridge-plugins/homebridge-ewelink` will be document
 - fix: skip stale zigbee `subDevRssi` updates
 - fix: zigbee motion reset on bridge offline
 - fix: TRVZB firmware type coercion
+- fix: UIID 104 `ltype` undefined in params
 
 ## v12.11.1 (2026-04-05)
 
