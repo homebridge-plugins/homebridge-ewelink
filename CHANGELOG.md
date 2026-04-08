@@ -50,6 +50,7 @@ All notable changes to `@homebridge-plugins/homebridge-ewelink` will be document
 - fix: audit fixes from code review
 - chore: dependency updates
 - feat: UIID 276 power monitoring support
+- fix: suppress warnings for UIIDs 204, 223, 20000
 
 ## v12.11.1 (2026-04-05)
 
