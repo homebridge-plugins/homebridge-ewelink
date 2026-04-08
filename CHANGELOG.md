@@ -54,6 +54,7 @@ All notable changes to `@homebridge-plugins/homebridge-ewelink` will be document
 - fix: SNZB-06P occupancy sensor `human` param
 - fix: UIID 226 boolean switch format
 - feat: add UIID 216 gate controller
+- fix: TRVZB auto mode and target temp
 
 ## v12.11.1 (2026-04-05)
 
