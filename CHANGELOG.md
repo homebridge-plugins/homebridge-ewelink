@@ -49,6 +49,7 @@ All notable changes to `@homebridge-plugins/homebridge-ewelink` will be document
 - fix: simulation switches array bounds
 - fix: audit fixes from code review
 - chore: dependency updates
+- feat: UIID 276 power monitoring support
 
 ## v12.11.1 (2026-04-05)
 
