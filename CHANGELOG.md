@@ -52,6 +52,7 @@ All notable changes to `@homebridge-plugins/homebridge-ewelink` will be document
 - feat: UIID 276 power monitoring support
 - fix: suppress warnings for UIIDs 204, 223, 20000
 - fix: SNZB-06P occupancy sensor `human` param
+- fix: UIID 226 boolean switch format
 
 ## v12.11.1 (2026-04-05)
 
