@@ -54,7 +54,7 @@
   "main": "lib/index.js",
   "engines": {
     "homebridge": "^1.6.0 || ^2.0.0-beta.0",
-    "node": "^20 || ^22 || ^24"
+    "node": "^22 || ^24"
   },
   "scripts": {
     "lint": "eslint . --max-warnings=0",
@@ -69,6 +69,6 @@
     "ws": "^8.20.0"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "^8.1.0"
+    "@antfu/eslint-config": "^8.1.1"
   }
 }
