@@ -7,6 +7,7 @@ All notable changes to `@homebridge-plugins/homebridge-ewelink` will be document
 ### Changed
 
 - feat: implement `ZBM5-1C-80/86` and `ZBM5-3C-80/86`
+- chore: dependency updates
 
 ## v12.12.0 (2026-04-09)
 
