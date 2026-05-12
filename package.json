@@ -69,6 +69,6 @@
     "ws": "^8.20.0"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "^8.2.0"
+    "@antfu/eslint-config": "^9.0.0"
   }
 }
