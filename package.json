@@ -61,14 +61,14 @@
     "lint:fix": "npm run lint -- --fix"
   },
   "dependencies": {
-    "@homebridge/plugin-ui-utils": "^2.2.3",
-    "axios": "^1.16.0",
+    "@homebridge/plugin-ui-utils": "^2.2.4",
+    "axios": "^1.17.0",
     "node-persist": "^4.0.4",
-    "p-queue": "^9.2.0",
+    "p-queue": "^9.3.0",
     "websocket-as-promised": "^3.0.1",
-    "ws": "^8.20.0"
+    "ws": "^8.21.0"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "^8.2.0"
+    "@antfu/eslint-config": "^9.0.0"
   }
 }

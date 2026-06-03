@@ -9,6 +9,7 @@ All notable changes to `@homebridge-plugins/homebridge-ewelink` will be document
 - fix(garage-one): send single-outlet payload on switchSCM devices (#774) (@nico81)
 - fix(ws): do not retry sendUpdate on timeout (#775) (@nico81)
 - fix(platform): do not serialize hidden accessories to the cache
+- chore: dependency updates
 
 ## v12.14.0 (2026-05-05)
 
