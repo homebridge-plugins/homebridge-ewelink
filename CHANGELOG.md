@@ -9,6 +9,7 @@ All notable changes to `@homebridge-plugins/homebridge-ewelink` will be document
 - chore: update `actions/checkout` workflow action to v7
 - chore: remove stray `exit 1` from the deprecation workflow script
 - chore: dependency updates
+- docs: note homebridge v2 support in the prerequisites
 
 ## v12.14.1 (2026-06-03)
 
