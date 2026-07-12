@@ -423,6 +423,14 @@
                 "functionBody": "return (model.singleDevices && model.singleDevices[arrayIndices] && ['garage'].includes(model.singleDevices[arrayIndices].showAs) && !model.singleDevices[arrayIndices].ignoreDevice);"
               }
             },
+            "invertGarageState": {
+              "type": "boolean",
+              "title": "Invert Garage State",
+              "description": "Swap the reported open and closed states for this garage door. Useful if HomeKit shows the door as open when it is physically closed (and vice versa). This applies to garage doors without a defined contact sensor.",
+              "condition": {
+                "functionBody": "return (model.singleDevices && model.singleDevices[arrayIndices] && ['garage'].includes(model.singleDevices[arrayIndices].showAs) && !model.singleDevices[arrayIndices].sensorId && !model.singleDevices[arrayIndices].ignoreDevice);"
+              }
+            },
             "sensorId": {
               "type": "string",
               "title": "Sensor",

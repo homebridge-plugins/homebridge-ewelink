@@ -6,6 +6,7 @@ All notable changes to `@homebridge-plugins/homebridge-ewelink` will be document
 
 ### Changed
 
+- feat: add a per-device `invertGarageState` option to swap the reported open/closed state on garage doors without a contact sensor (#787)
 - chore: update `actions/checkout` workflow action to v7
 - chore: remove stray `exit 1` from the deprecation workflow script
 - chore: dependency updates
