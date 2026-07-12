@@ -2,6 +2,12 @@
 
 All notable changes to `@homebridge-plugins/homebridge-ewelink` will be documented in this file.
 
+## v12.14.2 (Pending Release)
+
+### Changed
+
+- chore: update `actions/checkout` workflow action to v7
+
 ## v12.14.1 (2026-06-03)
 
 ### Changed
