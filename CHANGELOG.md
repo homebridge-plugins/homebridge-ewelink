@@ -7,6 +7,7 @@ All notable changes to `@homebridge-plugins/homebridge-ewelink` will be document
 ### Changed
 
 - feat: add a per-device `invertGarageState` option to swap the reported open/closed state on garage doors without a contact sensor (#787)
+- feat: add support for UIID 20006 dimmable LED controller (#780), the SONOFF AirGuard TH sensor (7038) (#767) and the SONOFF MINI DUO 2-gang switch (7040) (#768)
 - chore: update `actions/checkout` workflow action to v7
 - chore: remove stray `exit 1` from the deprecation workflow script
 - chore: dependency updates
