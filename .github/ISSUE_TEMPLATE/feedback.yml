@@ -1,0 +1,9 @@
+name: ℹ️ Information/Feedback Request
+description: Ask general information about this plugin or give valuable feedback.
+body:
+  - type: textarea
+    id: feedback
+    attributes:
+      label: What would you like to ask or share?
+    validations:
+      required: true

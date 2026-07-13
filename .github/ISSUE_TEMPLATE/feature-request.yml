@@ -1,0 +1,23 @@
+name: 🆕 Device/Feature Request
+description: Submit new ideas for the plugin.
+body:
+  - type: textarea
+    id: describe-the-request
+    attributes:
+      label: Describe your feature request
+      description: Please explain your feature request in one or two sentences.
+    validations:
+      required: true
+  - type: textarea
+    id: related-problem
+    attributes:
+      label: Is your feature request related to a problem?
+      description: If so, please describe the problem.
+  - type: input
+    id: devices
+    attributes:
+      label: Any particular eWeLink devices that this relates to?
+  - type: textarea
+    id: anything-else
+    attributes:
+      label: Anything else?

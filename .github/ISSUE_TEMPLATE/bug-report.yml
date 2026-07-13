@@ -1,0 +1,60 @@
+name: 🚨 Problem/Bug Alert
+description: The plugin isn't working as expected or it's showing an error.
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to fill out this report! Things that may seem unimportant are often helpful in finding the cause of an issue.
+  - type: textarea
+    id: describe-the-issue
+    attributes:
+      label: What issue do you have?
+      description: Please be as thorough and explicit as possible.
+      placeholder: |
+        Tip: You can attach images or files by clicking this area to highlight it and then dragging files in.
+    validations:
+      required: true
+  - type: dropdown
+    id: homebridge-interface
+    attributes:
+      label: How do you run Homebridge?
+      options:
+        - Homebridge UI
+        - Homebridge CLI
+        - HOOBS
+        - Other (please specify in the issue description)
+    validations:
+      required: true
+  - type: input
+    id: homebridge-version
+    attributes:
+      label: Homebridge/HOOBS Version
+    validations:
+      required: true
+  - type: input
+    id: platform
+    attributes:
+      label: Which platform do you run Homebridge on?
+      description: For example Raspberry Pi, Windows, macOS, Docker, HOOBS Box. Please also mention your version of Node.js/NPM if known.
+    validations:
+      required: true
+  - type: input
+    id: plugin-version
+    attributes:
+      label: Plugin Version
+      description: Has the issue started since upgrading from a previous version?
+    validations:
+      required: true
+  - type: input
+    id: devices
+    attributes:
+      label: Which eWeLink devices do you have that are causing issues?
+      description: Please include product models if applicable.
+  - type: textarea
+    id: logs
+    attributes:
+      label: Relevant Logs
+      render: shell
+      description: |
+        * More logging can be enabled with 'Debug Logging' in the plugin settings.
+        * If you are posting an error, please include the previous few lines too, as these can show the cause of the error.
