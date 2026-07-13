@@ -2,6 +2,12 @@
 
 All notable changes to `@homebridge-plugins/homebridge-ewelink` will be documented in this file.
 
+## v12.15.1 (Pending Release)
+
+### Changed
+
+- fix: do not drop the co2 param from incoming device updates (#784)
+
 ## v12.15.0 (2026-07-12)
 
 ### Changed
