@@ -7,6 +7,7 @@ All notable changes to `@homebridge-plugins/homebridge-ewelink` will be document
 ### Changed
 
 - fix: do not drop the co2 param from incoming device updates (#784)
+- feat: add support for the SONOFF Zigbee irrigation valve (7047) (#778)
 
 ## v12.15.0 (2026-07-12)
 
