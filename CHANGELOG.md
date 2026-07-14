@@ -2,6 +2,12 @@
 
 All notable changes to `@homebridge-plugins/homebridge-ewelink` will be documented in this file.
 
+## v12.15.2 (Pending Release)
+
+### Changed
+
+- fix: never pass external accessories to the homebridge cache so saving no longer fails
+
 ## v12.15.1 (2026-07-13)
 
 ### Changed
