@@ -2,6 +2,12 @@
 
 All notable changes to `@homebridge-plugins/homebridge-ewelink` will be documented in this file.
 
+## v12.15.3 (Pending Release)
+
+### Changed
+
+- chore: remove the looking-for-maintainers message
+
 ## v12.15.2 (2026-07-14)
 
 ### Changed
