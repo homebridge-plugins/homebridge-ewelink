@@ -14,6 +14,7 @@ All notable changes to `@homebridge-plugins/homebridge-ewelink` will be document
 - feat: add power readings for outlets reporting phase values (226)
 - feat: add power readings for the mini dimmer (277)
 - feat: expose the spm-4relay sub units as multi channel outlets with power readings (130)
+- feat: expose the dust and light levels on the sonoff sc (18)
 - fix: correct the multi channel format and add power readings for the s60zbtpf zigbee outlet (7032)
 - fix: stop treating the dualr3 lite as a power monitoring device (165)
 - fix: time out stalled http requests so device fetching cannot hang forever (#788) (@glenmarks-hub)
