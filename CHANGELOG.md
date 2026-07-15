@@ -7,6 +7,7 @@ All notable changes to `@homebridge-plugins/homebridge-ewelink` will be document
 ### Changed
 
 - chore: remove the looking-for-maintainers message
+- fix: stop treating the dualr3 lite as a power monitoring device (165)
 - fix: time out stalled http requests so device fetching cannot hang forever (#788) (@glenmarks-hub)
 - fix: use the switch_00 param for the swv-zne irrigation valve (7047) (#778)
 - chore(github): update the setup-node action to v7
