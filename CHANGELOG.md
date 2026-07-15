@@ -8,6 +8,7 @@ All notable changes to `@homebridge-plugins/homebridge-ewelink` will be document
 
 - chore: remove the looking-for-maintainers message
 - fix: use the switch_00 param for the swv-zne irrigation valve (7047) (#778)
+- chore(github): update the setup-node action to v7
 
 ## v12.15.2 (2026-07-14)
 
