@@ -20,6 +20,7 @@ All notable changes to `@homebridge-plugins/homebridge-ewelink` will be document
 - fix: correct the multi channel format and add power readings for the s60zbtpf zigbee outlet (7032)
 - fix: stop treating the dualr3 lite as a power monitoring device (165)
 - fix: time out stalled http requests so device fetching cannot hang forever (#788) (@glenmarks-hub)
+- fix: apply the request timeout to the login request too (#788)
 - fix: use the switch_00 param for the swv-zne irrigation valve (7047) (#778)
 - chore(github): update the setup-node action to v7
 
