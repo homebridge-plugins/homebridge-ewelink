@@ -3,7 +3,7 @@
   "displayName": "Homebridge eWeLink",
   "alias": "eWeLink",
   "type": "module",
-  "version": "12.15.2",
+  "version": "12.16.0",
   "description": "Homebridge plugin to integrate eWeLink devices into HomeKit.",
   "author": {
     "name": "bwp91",
