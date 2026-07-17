@@ -2,13 +2,13 @@
 
 All notable changes to `@homebridge-plugins/homebridge-ewelink` will be documented in this file.
 
-## v12.16.1 (Pending Release)
+## v12.16.1 (2026-07-17)
 
 ### Changed
 
-- fix: restore roller shutters on the dualr3 lite in motor mode (#778) (@zcwtpbn2d9-cell)
-- fix: ignore repeat commands sent to the zigbee water valve (#778) (@zcwtpbn2d9-cell)
-- fix: stop stale valve state echoes overriding a newer command (#778) (@zcwtpbn2d9-cell)
+- fix: restore roller shutters on the dualr3 lite in motor mode (#778) (@Jerry-sch)
+- fix: ignore repeat commands sent to the zigbee water valve (#778) (@Jerry-sch)
+- fix: stop stale valve state echoes overriding a newer command (#778) (@Jerry-sch)
 
 ## v12.16.0 (2026-07-16)
 
