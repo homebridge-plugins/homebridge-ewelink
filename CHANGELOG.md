@@ -2,6 +2,12 @@
 
 All notable changes to `@homebridge-plugins/homebridge-ewelink` will be documented in this file.
 
+## v12.16.2 (2026-07-18)
+
+### Changed
+
+- chore(deps): dependency updates
+
 ## v12.16.1 (2026-07-17)
 
 ### Changed
