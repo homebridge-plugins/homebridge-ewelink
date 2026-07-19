@@ -34,7 +34,7 @@ Homebridge plugin to integrate eWeLink devices into HomeKit
 
 - [Installation](https://github.com/homebridge-plugins/homebridge-ewelink/wiki/Installation)
 - [Configuration](https://github.com/homebridge-plugins/homebridge-ewelink/wiki/Configuration)
-- [Beta Version](https://github.com/homebridge/homebridge/wiki/How-to-Install-Alternate-Plugin-Versions)
+- [Beta Version](https://github.com/homebridge-plugins/homebridge-ewelink/wiki/Beta-Version)
 - [Node Version](https://github.com/homebridge-plugins/homebridge-ewelink/wiki/Node-Version)
 
 ### Features
