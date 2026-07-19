@@ -1,5 +1,5 @@
 <p align="center">
-   <a href="https://github.com/homebridge-plugins/homebridge-ewelink"><img alt="Homebridge Verified" src="https://user-images.githubusercontent.com/43026681/101325266-63126600-3863-11eb-9382-4a2924f0e540.png" width="600px"></a>
+   <a href="https://github.com/homebridge-plugins/homebridge-ewelink"><img alt="Homebridge Verified" src="https://raw.githubusercontent.com/homebridge-plugins/homebridge-ewelink/latest/branding/Homebridge_x_eWeLink.png" width="600px"></a>
 </p>
 <span align="center">
 

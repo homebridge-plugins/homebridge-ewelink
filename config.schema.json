@@ -5,7 +5,7 @@
   "strictValidation": true,
   "customUi": true,
   "customUiPath": "./lib/homebridge-ui",
-  "headerDisplay": "<p align=\"center\"><img width=\"60%\" src=\"https://user-images.githubusercontent.com/43026681/101325266-63126600-3863-11eb-9382-4a2924f0e540.png\"></p><p align=\"center\">For help and support please visit our <a href=\"https://github.com/homebridge-plugins/homebridge-ewelink/wiki\">GitHub Wiki</a>. We hope you find this plugin useful!</p>",
+  "headerDisplay": "<p align=\"center\"><img width=\"250px\" src=\"https://raw.githubusercontent.com/homebridge-plugins/homebridge-ewelink/latest/branding/Homebridge_x_eWeLink.png\"></p><p align=\"center\">For help and support please visit our <a href=\"https://github.com/homebridge-plugins/homebridge-ewelink/wiki\">GitHub Wiki</a>. We hope you find this plugin useful!</p>",
   "schema": {
     "type": "object",
     "properties": {
