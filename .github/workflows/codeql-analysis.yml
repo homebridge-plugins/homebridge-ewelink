@@ -18,6 +18,9 @@ on:
     branches: [latest]
   schedule:
     - cron: '40 11 * * 1'
+  # Allows the scan to be started by hand, which is the only way to retest it
+  # after changing the workflow or the repository's code scanning settings.
+  workflow_dispatch:
 
 jobs:
   analyze:
