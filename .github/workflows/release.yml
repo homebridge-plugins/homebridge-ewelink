@@ -17,6 +17,12 @@ permissions:
   id-token: write
   contents: read
 
+# Cancel any in-progress workflow for the same branch. A new push should
+# supersede the previous run rather than racing it to publish.
+concurrency:
+  group: release-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   eslint:
     uses: homebridge/.github/.github/workflows/eslint.yml@latest
