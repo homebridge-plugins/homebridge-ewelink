@@ -2,6 +2,12 @@
 
 All notable changes to `@homebridge-plugins/homebridge-ewelink` will be documented in this file.
 
+## v12.18.0 (Pending Release)
+
+### Changed
+
+- feat(ui): add a remove all devices action to the my devices tab
+
 ## v12.17.0 (2026-07-25)
 
 ### Changed

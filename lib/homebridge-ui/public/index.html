@@ -116,6 +116,17 @@
       <li class="list-group-item">
         <div class="d-flex justify-content-between align-items-center">
           <div class="pr-2">
+            <div>Remove All Devices</div>
+            <div class="text-muted action-desc" id="removeAllText">Remove every device from the plugin config.</div>
+          </div>
+          <button type="button" class="btn btn-primary m-0 ml-3 py-1 min-w-50" id="removeAllBtn" aria-label="Remove all devices from the config">
+            <i aria-hidden="true" class="fas fa-arrow-right"></i>
+          </button>
+        </div>
+      </li>
+      <li class="list-group-item">
+        <div class="d-flex justify-content-between align-items-center">
+          <div class="pr-2">
             <div id="deviceConfigTitle">Add This Device</div>
             <div class="text-muted action-desc" id="deviceConfigText">Add this device to the plugin config.</div>
           </div>
@@ -269,6 +280,7 @@
       let pickerAccessories = []
       let pickerUiidMap = {}
       let removeConfirmTimer
+      let removeAllConfirmTimer
 
       // The action buttons always show the settings-page arrow; the row text
       // (and the button's aria-label) says what the arrow will do
@@ -476,6 +488,58 @@
           homebridge.toast.error(err.message, 'Error')
         }
       })
+      const resetRemoveAllButton = () => {
+        const btn = document.getElementById('removeAllBtn')
+        clearTimeout(removeAllConfirmTimer)
+        delete btn.dataset.confirm
+        btn.classList.remove('btn-danger')
+        btn.classList.add('btn-primary')
+        btn.innerHTML = actionArrow
+        btn.setAttribute('aria-label', 'Remove all devices from the config')
+        document.getElementById('removeAllText').innerHTML = 'Remove every device from the plugin config.'
+      }
+
+      document.getElementById('removeAllBtn').addEventListener('click', async () => {
+        try {
+          const btn = document.getElementById('removeAllBtn')
+          const blocks = await getConfigBlocks()
+          const config = blocks[0]
+          let total = 0
+          deviceArrays.forEach((key) => {
+            if (Array.isArray(config[key])) {
+              total += config[key].length
+            }
+          })
+          if (total === 0) {
+            resetRemoveAllButton()
+            homebridge.toast.info('There are no devices in the config.', 'Nothing To Remove')
+            return
+          }
+          if (btn.dataset.confirm !== 'yes') {
+            // Removing everything always asks for a second click, since any
+            // settings on the entries would be lost
+            btn.dataset.confirm = 'yes'
+            btn.classList.remove('btn-primary')
+            btn.classList.add('btn-danger')
+            btn.innerHTML = actionArrow
+            btn.setAttribute('aria-label', 'Confirm removing all devices from the config')
+            document.getElementById('removeAllText').innerHTML = 'Any settings on these entries will be lost. Click again to remove all ' + total + (total === 1 ? ' entry.' : ' entries.')
+            removeAllConfirmTimer = setTimeout(resetRemoveAllButton, 5000)
+            return
+          }
+          deviceArrays.forEach((key) => {
+            delete config[key]
+          })
+          await homebridge.updatePluginConfig(blocks)
+          resetRemoveAllButton()
+          setConfigButton(false)
+          setHideControl(false)
+          homebridge.toast.success(total + ' device entr' + (total === 1 ? 'y' : 'ies') + ' removed - press Save to apply.', 'Removed From Config')
+        } catch (err) {
+          homebridge.toast.error(err.message, 'Error')
+        }
+      })
+
       // ===== End device picker =====
       showIntro = () => {
         homebridge.disableSaveButton?.()
