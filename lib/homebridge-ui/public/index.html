@@ -17,6 +17,22 @@
       color: #eeeeee !important;
       font-weight: 500 !important;
     }
+
+    .list-group-item {
+      background-color: #333333;
+      border-color: #444444;
+      color: #eeeeee;
+    }
+
+    .text-muted {
+      color: #aaaaaa !important;
+    }
+  }
+  .min-w-50 {
+    min-width: 50px;
+  }
+  .action-desc {
+    font-size: 0.85rem;
   }
   select {
     background-image:
@@ -81,11 +97,46 @@
 <div id="pageDevices" class="mt-4" style="display: none;">
   <div id="deviceInfo">
     <form>
-      <div class="form-group">
+      <div class="form-group mb-0">
         <select class="form-control" id="deviceSelect"></select>
       </div>
     </form>
-    <table class="table w-100 mt-3" id="deviceTable" style="display: none;">
+    <ul class="list-group mt-4 mb-4 mx-0" id="configActionList" style="display: none;">
+      <li class="list-group-item">
+        <div class="d-flex justify-content-between align-items-center">
+          <div class="pr-2">
+            <div>Add All Devices</div>
+            <div class="text-muted action-desc">Add all devices to the config that are not already in the config.</div>
+          </div>
+          <button type="button" class="btn btn-primary m-0 ml-3 py-1 min-w-50" id="addAllBtn" aria-label="Add all devices to the config">
+            <i aria-hidden="true" class="fas fa-arrow-right"></i>
+          </button>
+        </div>
+      </li>
+      <li class="list-group-item">
+        <div class="d-flex justify-content-between align-items-center">
+          <div class="pr-2">
+            <div id="deviceConfigTitle">Add This Device</div>
+            <div class="text-muted action-desc" id="deviceConfigText">Add this device to the plugin config.</div>
+          </div>
+          <button type="button" class="btn btn-primary m-0 ml-3 py-1 min-w-50" id="deviceConfigBtn" aria-label="Add this device to the config">
+            <i aria-hidden="true" class="fas fa-arrow-right"></i>
+          </button>
+        </div>
+      </li>
+      <li class="list-group-item">
+        <div class="d-flex justify-content-between align-items-center">
+          <div class="pr-2">
+            <div id="hideDeviceTitle">Hide This Device</div>
+            <div class="text-muted action-desc" id="hideDeviceText">Hide this device from HomeKit. This adds the device to the config if needed.</div>
+          </div>
+          <button type="button" class="btn btn-primary m-0 ml-3 py-1 min-w-50" id="hideDeviceBtn" aria-label="Hide this device from HomeKit">
+            <i aria-hidden="true" class="fas fa-arrow-right"></i>
+          </button>
+        </div>
+      </li>
+    </ul>
+    <table class="table w-100 mt-0" id="deviceTable" style="display: none;">
       <thead>
         <tr class="table-active">
           <th scope="col" style="width: 40%;">Device Name</th>
@@ -258,6 +309,232 @@
   ;(async () => {
     try {
       const currentConfig = await homebridge.getPluginConfig()
+
+      // ===== Device picker (add/remove/hide config entries from the My Devices tab) =====
+      // The control state is always computed from a fresh getPluginConfig() call,
+      // so staged-but-unsaved edits made in the Settings tab are respected.
+      // Config entries are matched by the base eWeLink device id, so the
+      // channels of a multi-channel device all share one config entry.
+      const deviceArrays = [
+        'singleDevices',
+        'multiDevices',
+        'lightDevices',
+        'thDevices',
+        'fanDevices',
+        'sensorDevices',
+        'rfDevices',
+      ]
+      let pickerAccessories = []
+      let pickerUiidMap = {}
+      let removeConfirmTimer
+
+      // The action buttons always show the settings-page arrow; the row text
+      // (and the button's aria-label) says what the arrow will do
+      const actionArrow = '<i aria-hidden="true" class="fas fa-arrow-right"></i>'
+
+      // Compare device ids ignoring case and separators, so an entry typed by
+      // hand in a different format still counts as the same device
+      const looseId = id => (id || '').toString().toLowerCase().replace(/[^a-z0-9]+/g, '')
+
+      const getConfigBlocks = async () => {
+        const blocks = await homebridge.getPluginConfig()
+        if (!blocks.length) {
+          blocks.push({ name: 'eWeLink' })
+        }
+        return blocks
+      }
+
+      const findInConfig = (config, deviceId) => {
+        const target = looseId(deviceId)
+        for (const key of deviceArrays) {
+          if (Array.isArray(config[key])) {
+            const index = config[key].findIndex(entry => entry && looseId(entry.deviceId) === target)
+            if (index !== -1) {
+              return { key, index }
+            }
+          }
+        }
+        return null
+      }
+
+      const selectedAccessory = () => {
+        const hbId = document.getElementById('deviceSelect').value
+        return pickerAccessories.find(x => x.context.hbDeviceId === hbId)
+      }
+
+      const setHideControl = hidden => {
+        const btn = document.getElementById('hideDeviceBtn')
+        btn.dataset.hidden = hidden ? 'yes' : 'no'
+        btn.innerHTML = actionArrow
+        btn.setAttribute('aria-label', hidden ? 'Show this device in HomeKit' : 'Hide this device from HomeKit')
+        document.getElementById('hideDeviceTitle').innerHTML = hidden ? 'Show This Device' : 'Hide This Device'
+        document.getElementById('hideDeviceText').innerHTML = hidden
+          ? 'Show this device in HomeKit again. The config entry is kept.'
+          : 'Hide this device from HomeKit. This adds the device to the config if needed.'
+      }
+
+      const setConfigButton = inConfig => {
+        const btn = document.getElementById('deviceConfigBtn')
+        clearTimeout(removeConfirmTimer)
+        delete btn.dataset.confirm
+        btn.dataset.state = inConfig ? 'remove' : 'add'
+        btn.classList.remove('btn-danger')
+        btn.classList.add('btn-primary')
+        btn.innerHTML = actionArrow
+        btn.setAttribute('aria-label', inConfig ? 'Remove this device from the config' : 'Add this device to the config')
+        document.getElementById('deviceConfigTitle').innerHTML = inConfig ? 'Remove This Device' : 'Add This Device'
+        document.getElementById('deviceConfigText').innerHTML = inConfig
+          ? 'Remove this device from the plugin config.'
+          : 'Add this device to the plugin config.'
+      }
+
+      const addDeviceToConfig = (config, acc) => {
+        // Which array a device belongs in comes from its uiid via the plugin's
+        // own lists; anything unknown is safe in singleDevices because the
+        // platform merges every array into one lookup by device id
+        const arrayKey = pickerUiidMap[acc.context.eweUIID] || 'singleDevices'
+        if (!Array.isArray(config[arrayKey])) {
+          config[arrayKey] = []
+        }
+        // label is included so the entry is identifiable in the config editor
+        config[arrayKey].push({ label: acc.displayName, deviceId: acc.context.eweDeviceId })
+      }
+
+      document.getElementById('deviceConfigBtn').addEventListener('click', async () => {
+        try {
+          const btn = document.getElementById('deviceConfigBtn')
+          const acc = selectedAccessory()
+          if (!acc) {
+            return
+          }
+          const blocks = await getConfigBlocks()
+          const config = blocks[0]
+          const found = findInConfig(config, acc.context.eweDeviceId)
+          if (btn.dataset.state === 'add') {
+            // The config may have changed since the button was drawn, so
+            // re-check and never add a duplicate - just correct the button
+            if (found) {
+              setConfigButton(true)
+              setHideControl(!!config[found.key][found.index].ignoreDevice)
+              homebridge.toast.info(acc.displayName + ' is already in the config.', 'Not Added')
+              return
+            }
+            addDeviceToConfig(config, acc)
+            await homebridge.updatePluginConfig(blocks)
+            setConfigButton(true)
+            setHideControl(false)
+            homebridge.toast.success(acc.displayName + ' added - press Save to apply.', 'Added To Config')
+          } else {
+            if (!found) {
+              setConfigButton(false)
+              setHideControl(false)
+              homebridge.toast.info(acc.displayName + ' is not in the config.', 'Not Removed')
+              return
+            }
+            const entry = config[found.key][found.index]
+            const extraKeys = Object.keys(entry).filter(k => !['deviceId', 'label'].includes(k))
+            if (extraKeys.length > 0 && btn.dataset.confirm !== 'yes') {
+              // The entry has settings beyond id and label which would be
+              // lost, so ask for a second click within five seconds
+              btn.dataset.confirm = 'yes'
+              btn.classList.remove('btn-primary')
+              btn.classList.add('btn-danger')
+              btn.innerHTML = actionArrow
+              btn.setAttribute('aria-label', 'Confirm removing this device from the config')
+              document.getElementById('deviceConfigText').innerHTML = 'This entry has extra settings which will be lost. Click again to remove it.'
+              removeConfirmTimer = setTimeout(() => setConfigButton(true), 5000)
+              return
+            }
+            config[found.key].splice(found.index, 1)
+            if (config[found.key].length === 0) {
+              delete config[found.key]
+            }
+            await homebridge.updatePluginConfig(blocks)
+            setConfigButton(false)
+            setHideControl(false)
+            homebridge.toast.success(acc.displayName + ' removed - press Save to apply.', 'Removed From Config')
+          }
+        } catch (err) {
+          homebridge.toast.error(err.message, 'Error')
+        }
+      })
+
+      document.getElementById('hideDeviceBtn').addEventListener('click', async () => {
+        try {
+          const acc = selectedAccessory()
+          if (!acc) {
+            return
+          }
+          const blocks = await getConfigBlocks()
+          const config = blocks[0]
+          let found = findInConfig(config, acc.context.eweDeviceId)
+          const currentlyHidden = document.getElementById('hideDeviceBtn').dataset.hidden === 'yes'
+          if (!currentlyHidden) {
+            // Hiding needs a config entry to carry the flag, so create one if
+            // the device is not in the config yet
+            if (!found) {
+              addDeviceToConfig(config, acc)
+              found = findInConfig(config, acc.context.eweDeviceId)
+            }
+            config[found.key][found.index].ignoreDevice = true
+            await homebridge.updatePluginConfig(blocks)
+            setConfigButton(true)
+            setHideControl(true)
+            homebridge.toast.success(acc.displayName + ' will be hidden from HomeKit - press Save to apply.', 'Device Hidden')
+          } else {
+            if (found) {
+              // Drop the flag rather than storing ignoreDevice false, to keep
+              // the entry clean
+              delete config[found.key][found.index].ignoreDevice
+              await homebridge.updatePluginConfig(blocks)
+            }
+            setConfigButton(!!found)
+            setHideControl(false)
+            homebridge.toast.success(acc.displayName + ' will be shown in HomeKit - press Save to apply.', 'Device Unhidden')
+          }
+        } catch (err) {
+          homebridge.toast.error(err.message, 'Error')
+        }
+      })
+
+      document.getElementById('addAllBtn').addEventListener('click', async () => {
+        try {
+          const blocks = await getConfigBlocks()
+          const config = blocks[0]
+          let added = 0
+          let skipped = 0
+          pickerAccessories.forEach(acc => {
+            if (!acc.context?.eweDeviceId) {
+              return
+            }
+            // Channels of a multi-channel device share one entry, so once the
+            // first channel is added the rest count as already in the config
+            if (findInConfig(config, acc.context.eweDeviceId)) {
+              skipped += 1
+              return
+            }
+            addDeviceToConfig(config, acc)
+            added += 1
+          })
+          if (added > 0) {
+            await homebridge.updatePluginConfig(blocks)
+            homebridge.toast.success(added + ' device(s) added, ' + skipped + ' already in the config - press Save to apply.', 'Added To Config')
+          } else {
+            homebridge.toast.info('All devices are already in the config.', 'Nothing To Add')
+          }
+          const acc = selectedAccessory()
+          if (acc) {
+            const nowFound = findInConfig(config, acc.context.eweDeviceId)
+            setConfigButton(!!nowFound)
+            if (nowFound) {
+              setHideControl(!!config[nowFound.key][nowFound.index].ignoreDevice)
+            }
+          }
+        } catch (err) {
+          homebridge.toast.error(err.message, 'Error')
+        }
+      })
+      // ===== End device picker =====
       showIntro = () => {
         homebridge.disableSaveButton?.()
         const introContinue = document.getElementById('introContinue')
@@ -272,7 +549,9 @@
       }
       showDevices = async () => {
         homebridge.showSpinner()
-        homebridge.disableSaveButton?.()
+        // The save button stays enabled here so entries staged by the picker
+        // buttons can be saved without switching back to the Settings tab
+        homebridge.enableSaveButton?.()
         homebridge.hideSchemaForm()
         document.getElementById('menuHome').classList.remove('btn-elegant')
         document.getElementById('menuHome').classList.add('btn-primary')
@@ -294,6 +573,16 @@
               ? -1
               : 0
           })
+        }
+        pickerAccessories = cachedAccessories
+        if (Object.keys(pickerUiidMap).length === 0) {
+          try {
+            pickerUiidMap = await homebridge.request('/getUiidMap')
+          } catch (err) {
+            // Without the map every added device falls back to singleDevices,
+            // which still works because the platform merges all the arrays
+            pickerUiidMap = {}
+          }
         }
         const deviceSelect = document.getElementById('deviceSelect')
         deviceSelect.innerHTML = ''
@@ -329,6 +618,11 @@
             ? '<img src="' + context.eweBrandLogo + '" style="width: 150px;">'
             : ''
           document.getElementById('deviceTable').style.display = 'inline-table'
+          const configBlocks = await getConfigBlocks()
+          const configEntry = findInConfig(configBlocks[0], context.eweDeviceId)
+          setConfigButton(!!configEntry)
+          setHideControl(!!(configEntry && configBlocks[0][configEntry.key][configEntry.index].ignoreDevice))
+          document.getElementById('configActionList').style.display = 'block'
           homebridge.hideSpinner()
         }
         deviceSelect.addEventListener('change', event => showDeviceInfo(event.target.value))
@@ -339,6 +633,7 @@
           option.text = 'No Devices'
           deviceSelect.add(option)
           deviceSelect.disabled = true
+          document.getElementById('configActionList').style.display = 'none'
         }
         homebridge.hideSpinner()
       }
