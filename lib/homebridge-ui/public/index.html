@@ -191,119 +191,61 @@
     </table>
   </div>
 </div>
-<div id="pageSupport" class="mt-4" style="display: none;">
+<div id="pageSupport" class="mt-4" style="display: none">
   <p class="text-center lead">Thank you for using <strong>homebridge-ewelink</strong></p>
-  <p class="text-center">The links below will take you to our GitHub wiki</p>
-  <h4>Setup</h4>
+  <h5>Plugin Information</h5>
+<ul>
+  <li>This plugin allows you to view and control your eWeLink devices within HomeKit. The plugin:</li>
   <ul>
-    <li>
-      <a href="https://github.com/homebridge-plugins/homebridge-ewelink/wiki/Installation" target="_blank"
-        >Installation</a
-      >
-    </li>
-    <li>
-      <a href="https://github.com/homebridge-plugins/homebridge-ewelink/wiki/Configuration" target="_blank"
-        >Configuration</a
-      >
-    </li>
-    <li>
-      <a href="https://github.com/homebridge/homebridge/wiki/How-to-Install-Alternate-Plugin-Versions" target="_blank"
-        >Beta Version</a
-      >
-    </li>
-    <li>
-      <a href="https://github.com/homebridge-plugins/homebridge-ewelink/wiki/Node-Version" target="_blank"
-        >Node Version</a
-      >
-    </li>
+    <li>requires your eWeLink credentials to download a device list</li>
+    <li>attempts to control your supported devices locally, reverting to cloud control if necessary</li>
+    <li>listens for real-time device updates when controlled externally</li>
+    <li>supports removing your eWeLink credentials from the configuration in certain situations, see <a href="https://github.com/homebridge-plugins/homebridge-ewelink/wiki/Connection-Methods#lan-mode-without-ewelink-credentials" target="_blank">wiki</a></li>
   </ul>
-  <h4>Features</h4>
+</ul>
+  <h5>Prerequisites</h5>
+<ul>
+  <li>To use this plugin, you will need to already have:</li>
   <ul>
-    <li>
-      <a href="https://github.com/homebridge-plugins/homebridge-ewelink/wiki/Supported-Devices" target="_blank"
-        >Supported Devices</a
-      >
-    </li>
-    <li>
-      <a
-        href="https://github.com/homebridge-plugins/homebridge-ewelink/wiki/Accessory-Simulations"
-        target="_blank"
-        >Accessory Simulations</a
-      >
-    </li>
-    <li>
-      <a href="https://github.com/homebridge-plugins/homebridge-ewelink/wiki/Connection-Methods" target="_blank"
-        >Connection Methods</a
-      >
-    </li>
-    <li>
-      <a href="https://github.com/homebridge-plugins/homebridge-ewelink/wiki/Internal-API" target="_blank"
-        >Internal API</a
-      >
-    </li>
+    <li><a href="https://nodejs.org" target="_blank">Node</a>: latest version of <code>v22</code> or <code>v24</code> - any other major version is not supported.</li>
+    <li><a href="https://homebridge.io" target="_blank">Homebridge</a>: <code>v1.6</code> or above - refer to link for more information and installation instructions.</li>
   </ul>
-  <h4>Help/About</h4>
-  <ul>
-    <li>
-      <a href="https://github.com/homebridge-plugins/homebridge-ewelink/wiki/Common-Errors" target="_blank"
-        >Common Errors</a
-      >
-    </li>
-    <li>
-      <a href="https://github.com/homebridge-plugins/homebridge-ewelink/issues/new/choose" target="_blank"
-        >Support Request</a
-      >
-    </li>
-    <li>
-      <a href="https://github.com/homebridge-plugins/homebridge-ewelink/blob/latest/CHANGELOG.md" target="_blank"
-        >Changelog</a
-      >
-    </li>
-    <li>
-      <a href="https://github.com/sponsors/bwp91" target="_blank">About Me</a>
-    </li>
-  </ul>
-  <h4>Credits</h4>
-  <ul>
-    <li>
-      To the original plugin maintainer:
-      <a href="https://github.com/gbro115" target="_blank">@gbro115</a>.
-    </li>
-    <li>
-      To successive contributors:
-      <a href="https://github.com/MrTomAsh" target="_blank">@MrTomAsh</a> and
-      <a href="https://github.com/howanghk" target="_blank">@howanghk</a> for
-      <a href="https://github.com/howanghk/homebridge-ewelink" target="_blank"
-        >homebridge-ewelink-max</a
-      >.
-    </li>
-    <li>
-      To the creators/contributors of
-      <a href="https://homebridge.io" target="_blank">Homebridge</a> who make this plugin possible.
-    </li>
-    <li>
-      To the creators/contributors of
-      <a href="https://github.com/simont77/fakegato-history" target="_blank">Fakegato</a>:
-      <a href="https://github.com/simont77" target="_blank">@simont77</a> and
-      <a href="https://github.com/NorthernMan54" target="_blank">@NorthernMan54</a>.
-    </li>
-    <li>
-      To the creator of the awesome plugin header logo:
-      <a href="https://www.instagram.com/keryan.me" target="_blank">Keryan Belahcene</a>.
-    </li>
-    <li>To all users who have shared their devices to enable functionality.</li>
-  </ul>
-
-  <h4>Disclaimer</h4>
-  <ul>
-    <li>
-      I am in no way affiliated with eWeLink nor any of the device brands (like Sonoff) and this
-      plugin is a personal project that I maintain in my free time.
-    </li>
-    <li>
-      Use this plugin entirely at your own risk - please see licence for more information.
-    </li>
-  </ul>
+</ul>
+  <h5>Setup</h5>
+<ul>
+  <li><a href="https://github.com/homebridge-plugins/homebridge-ewelink/wiki/Installation" target="_blank">Installation</a></li>
+  <li><a href="https://github.com/homebridge-plugins/homebridge-ewelink/wiki/Configuration" target="_blank">Configuration</a></li>
+  <li><a href="https://github.com/homebridge-plugins/homebridge-ewelink/wiki/Beta-Version" target="_blank">Beta Version</a></li>
+  <li><a href="https://github.com/homebridge-plugins/homebridge-ewelink/wiki/Node-Version" target="_blank">Node Version</a></li>
+</ul>
+  <h5>Features</h5>
+<ul>
+  <li><a href="https://github.com/homebridge-plugins/homebridge-ewelink/wiki/Supported-Devices" target="_blank">Supported Devices</a></li>
+  <li><a href="https://github.com/homebridge-plugins/homebridge-ewelink/wiki/Accessory-Simulations" target="_blank">Accessory Simulations</a></li>
+  <li><a href="https://github.com/homebridge-plugins/homebridge-ewelink/wiki/Connection-Methods" target="_blank">Connection Methods</a></li>
+  <li><a href="https://github.com/homebridge-plugins/homebridge-ewelink/wiki/Internal-API" target="_blank">Internal API</a></li>
+</ul>
+  <h5>Help/About</h5>
+<ul>
+  <li><a href="https://github.com/homebridge-plugins/homebridge-ewelink/wiki/Common-Errors" target="_blank">Common Errors</a></li>
+  <li><a href="https://github.com/homebridge-plugins/homebridge-ewelink/issues/new/choose" target="_blank">Support Request</a></li>
+  <li><a href="https://github.com/homebridge-plugins/homebridge-ewelink/blob/latest/CHANGELOG.md" target="_blank">Changelog</a></li>
+  <li><a href="https://github.com/sponsors/bwp91" target="_blank">About Me</a></li>
+</ul>
+  <h5>Credits</h5>
+<ul>
+  <li>To the original plugin maintainer: <a href="https://github.com/gbro115" target="_blank">@gbro115</a>.</li>
+  <li>To successive contributors: <a href="https://github.com/MrTomAsh" target="_blank">@MrTomAsh</a> and <a href="https://github.com/howanghk" target="_blank">@howanghk</a> for <a href="https://github.com/howanghk/homebridge-ewelink" target="_blank">homebridge-ewelink-max</a>.</li>
+  <li>To the creators/contributors of <a href="https://homebridge.io" target="_blank">Homebridge</a> who make this plugin possible.</li>
+  <li>To the creators/contributors of <a href="https://github.com/simont77/fakegato-history" target="_blank">Fakegato</a>: <a href="https://github.com/simont77" target="_blank">@simont77</a> and <a href="https://github.com/NorthernMan54" target="_blank">@NorthernMan54</a>.</li>
+  <li>To the creator of the awesome plugin header logo: <a href="https://www.instagram.com/keryan.me" target="_blank">Keryan Belahcene</a>.</li>
+  <li>To all users who have shared their devices to enable functionality.</li>
+</ul>
+  <h5>Disclaimer</h5>
+<ul>
+  <li>I am in no way affiliated with eWeLink nor any of the device brands (like Sonoff) and this plugin is a personal project that I maintain in my free time.</li>
+  <li>Use this plugin entirely at your own risk - please see licence for more information.</li>
+</ul>
 </div>
 <script>
   ;(async () => {
