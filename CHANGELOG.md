@@ -9,6 +9,7 @@ All notable changes to `@homebridge-plugins/homebridge-ewelink` will be document
 - fix: fire the button press for R5 and SwitchMan scene controllers when the action time arrives as a number, so HomeKit sees the press (#762)
 - feat(ui): add, remove and hide devices from the config via the my devices tab
 - style(ui): standardise the custom ui layout and sync the support tab with the readme
+- chore(deps): dependency updates
 
 ## v12.16.2 (2026-07-18)
 
