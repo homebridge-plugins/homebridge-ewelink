@@ -39,6 +39,7 @@
   "keywords": [
     "homebridge",
     "homebridge-plugin",
+    "supports-hap",
     "homebridge-ewelink",
     "hoobs",
     "hoobs-plugin",
