@@ -8,6 +8,7 @@
   "headerDisplay": "<p align=\"center\"><img width=\"250px\" src=\"https://raw.githubusercontent.com/homebridge-plugins/homebridge-ewelink/latest/branding/Homebridge_x_eWeLink.png\"></p><p align=\"center\">For help and support please visit our <a href=\"https://github.com/homebridge-plugins/homebridge-ewelink/wiki\">GitHub Wiki</a>. We hope you find this plugin useful!</p>",
   "schema": {
     "type": "object",
+    "required": ["username", "password"],
     "properties": {
       "name": {
         "type": "string",
@@ -17,14 +18,12 @@
       "username": {
         "type": "string",
         "title": "Username",
-        "required": true,
         "placeholder": "Email or full phone (e.g. +8613185260282)",
         "description": "Your eWeLink username, please use your main eWeLink credentials (not a secondary/shared account)."
       },
       "password": {
         "type": "string",
         "title": "Password",
-        "required": true,
         "description": "Your eWeLink password, can also be a base64 encoded version of your password."
       },
       "mode": {

@@ -7,6 +7,7 @@ All notable changes to `@homebridge-plugins/homebridge-ewelink` will be document
 ### Changed
 
 - feat(ui): add a remove all devices action to the my devices tab
+- fix(schema): declare required fields the standard way so the homebridge ui stops reporting a config validation failure
 
 ## v12.17.0 (2026-07-25)
 
