@@ -59,7 +59,10 @@
   },
   "scripts": {
     "lint": "eslint . --max-warnings=0",
-    "lint:fix": "npm run lint -- --fix"
+    "lint:fix": "npm run lint -- --fix",
+    "test": "vitest run",
+    "test:watch": "vitest watch",
+    "test-coverage": "npm run test -- --coverage"
   },
   "dependencies": {
     "@homebridge/plugin-ui-utils": "^2.2.5",
@@ -70,6 +73,8 @@
     "ws": "^8.21.1"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "9.2.0"
+    "@antfu/eslint-config": "9.2.0",
+    "@vitest/coverage-v8": "^4.1.10",
+    "vitest": "^4.1.10"
   }
 }

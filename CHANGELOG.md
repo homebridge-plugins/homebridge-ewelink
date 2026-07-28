@@ -2,6 +2,12 @@
 
 All notable changes to `@homebridge-plugins/homebridge-ewelink` will be documented in this file.
 
+## v12.18.1 (Pending Release)
+
+### Changed
+
+- chore: add a test setup with tests for the shared helper functions
+
 ## v12.18.0 (2026-07-27)
 
 ### Changed
