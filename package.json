@@ -62,7 +62,8 @@
     "lint:fix": "npm run lint -- --fix",
     "test": "vitest run",
     "test:watch": "vitest watch",
-    "test-coverage": "npm run test -- --coverage"
+    "test-coverage": "npm run test -- --coverage",
+    "changelog:sync": "node .github/scripts/sync-changelog.mjs"
   },
   "dependencies": {
     "@homebridge/plugin-ui-utils": "^2.2.5",
