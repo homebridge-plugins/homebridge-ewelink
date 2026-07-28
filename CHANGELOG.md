@@ -7,7 +7,6 @@ All notable changes to `@homebridge-plugins/homebridge-ewelink` will be document
 ### Changed
 
 - chore: add a test setup with tests for the shared helper functions
-- chore: declare support for node 26
 - chore(github): run the build and tests in ci, on node 22, 24 and 26
 - chore: use the same lint setup across every plugin
 
