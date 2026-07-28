@@ -16,7 +16,8 @@ import process from 'node:process'
  *   npm run changelog:sync
  *
  * Existing " (@user)" credits are preserved. Nothing else in the file is
- * touched, and running it twice changes nothing the second time.
+ * touched, and running it twice changes nothing the second time. A subject that
+ * appears more than once gets a single bullet.
  */
 
 const sh = cmd => execSync(cmd, { encoding: 'utf8' }).trim()
@@ -40,10 +41,22 @@ try {
   process.exit(1)
 }
 
+const seen = new Set()
 const commits = sh(`git log --reverse --format=%s ${tag}..HEAD`)
   .split('\n')
   .filter(Boolean)
   .filter(subject => !IGNORED_SUBJECTS.some(re => re.test(subject)))
+  // A fix cherry-picked onto a release branch as well as the main one shows up
+  // once per branch after they are merged. It is still a single change and wants
+  // a single bullet, so keep only the first sighting - the point at which it
+  // entered this release. The CI check collapses them the same way.
+  .filter((subject) => {
+    if (seen.has(subject)) {
+      return false
+    }
+    seen.add(subject)
+    return true
+  })
 
 if (commits.length === 0) {
   console.log(`No unreleased commits since ${tag}. Nothing to do.`)
