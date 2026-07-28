@@ -14,3 +14,8 @@ jobs:
   # which have no build script - they run the tests only.
   build-and-test:
     uses: homebridge/.github/.github/workflows/nodejs-build-and-test.yml@latest
+    with:
+      # Fails the build when the changelog's top section does not list every
+      # unreleased commit, in order. Without it the mismatch only shows up at
+      # release time. `npm run changelog:sync` fixes one up locally.
+      check_changelog: true
