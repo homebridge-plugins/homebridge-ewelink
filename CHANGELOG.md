@@ -2,6 +2,12 @@
 
 All notable changes to `@homebridge-plugins/homebridge-ewelink` will be documented in this file.
 
+## v12.18.2 (Pending Release)
+
+### Changed
+
+- chore: exclude test files and the test config from the published package
+
 ## v12.18.1 (2026-08-02)
 
 ### Changed
