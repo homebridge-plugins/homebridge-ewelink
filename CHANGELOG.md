@@ -13,6 +13,7 @@ All notable changes to `@homebridge-plugins/homebridge-ewelink` will be document
 - chore: count a repeated commit subject once when syncing the changelog
 - chore(github): check the changelog against the commits in ci
 - chore(deps): dependency updates
+- docs: add node 26 to the supported node versions
 
 ## v12.18.0 (2026-07-27)
 
