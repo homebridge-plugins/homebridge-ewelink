@@ -11,6 +11,7 @@ All notable changes to `@homebridge-plugins/homebridge-ewelink` will be document
 - fix: only turn adaptive lighting off when a colour is genuinely chosen elsewhere
 - fix: send a colour change when only the saturation moves, and mend the al cleanup
 - fix: follow the saturation on the b1 bulb, in both directions
+- fix: explain a port clash on the built-in api instead of crashing the bridge
 
 ## v12.18.1 (2026-08-02)
 
