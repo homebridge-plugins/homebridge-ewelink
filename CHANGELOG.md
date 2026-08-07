@@ -7,6 +7,7 @@ All notable changes to `@homebridge-plugins/homebridge-ewelink` will be document
 ### Changed
 
 - chore: exclude test files and the test config from the published package
+- fix: restore debug logging when the plugin runs in a child bridge
 
 ## v12.18.1 (2026-08-02)
 
