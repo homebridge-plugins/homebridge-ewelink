@@ -14,6 +14,7 @@ All notable changes to `@homebridge-plugins/homebridge-ewelink` will be document
 - fix: explain a port clash on the built-in api instead of crashing the bridge
 - fix: survive a network change on the lan discovery socket instead of crashing the bridge
 - fix: set a garage's sensor up after the garage, so it gets its open and closed feedback
+- fix: make the per-device logging override settable, and drop the debug option that never was
 
 ## v12.18.1 (2026-08-02)
 

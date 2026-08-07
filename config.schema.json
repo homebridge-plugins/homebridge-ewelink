@@ -154,6 +154,19 @@
               "minLength": 10,
               "maxLength": 10
             },
+            "overrideLogging": {
+              "type": "string",
+              "title": "Device Logging Override",
+              "description": "Override the plugin-wide logging setting for this device only.",
+              "oneOf": [
+                { "title": "Standard", "enum": ["standard"] },
+                { "title": "Debug", "enum": ["debug"] },
+                { "title": "Disable", "enum": ["disable"] }
+              ],
+              "condition": {
+                "functionBody": "return (model.singleDevices && model.singleDevices[arrayIndices] && model.singleDevices[arrayIndices].deviceId && model.singleDevices[arrayIndices].deviceId.length === 10);"
+              }
+            },
             "ignoreDevice": {
               "type": "boolean",
               "title": "Hide From HomeKit",
@@ -486,6 +499,19 @@
               "minLength": 10,
               "maxLength": 10
             },
+            "overrideLogging": {
+              "type": "string",
+              "title": "Device Logging Override",
+              "description": "Override the plugin-wide logging setting for this device only.",
+              "oneOf": [
+                { "title": "Standard", "enum": ["standard"] },
+                { "title": "Debug", "enum": ["debug"] },
+                { "title": "Disable", "enum": ["disable"] }
+              ],
+              "condition": {
+                "functionBody": "return (model.multiDevices && model.multiDevices[arrayIndices] && model.multiDevices[arrayIndices].deviceId && model.multiDevices[arrayIndices].deviceId.length === 10);"
+              }
+            },
             "ignoreDevice": {
               "type": "boolean",
               "title": "Hide From HomeKit",
@@ -804,6 +830,19 @@
               "minLength": 10,
               "maxLength": 10
             },
+            "overrideLogging": {
+              "type": "string",
+              "title": "Device Logging Override",
+              "description": "Override the plugin-wide logging setting for this device only.",
+              "oneOf": [
+                { "title": "Standard", "enum": ["standard"] },
+                { "title": "Debug", "enum": ["debug"] },
+                { "title": "Disable", "enum": ["disable"] }
+              ],
+              "condition": {
+                "functionBody": "return (model.lightDevices && model.lightDevices[arrayIndices] && model.lightDevices[arrayIndices].deviceId && model.lightDevices[arrayIndices].deviceId.length === 10);"
+              }
+            },
             "ignoreDevice": {
               "type": "boolean",
               "title": "Hide From HomeKit",
@@ -941,6 +980,19 @@
               "description": "Enter the 10 digit eWeLink Device ID to begin.",
               "minLength": 10,
               "maxLength": 10
+            },
+            "overrideLogging": {
+              "type": "string",
+              "title": "Device Logging Override",
+              "description": "Override the plugin-wide logging setting for this device only.",
+              "oneOf": [
+                { "title": "Standard", "enum": ["standard"] },
+                { "title": "Debug", "enum": ["debug"] },
+                { "title": "Disable", "enum": ["disable"] }
+              ],
+              "condition": {
+                "functionBody": "return (model.thDevices && model.thDevices[arrayIndices] && model.thDevices[arrayIndices].deviceId && model.thDevices[arrayIndices].deviceId.length === 10);"
+              }
             },
             "ignoreDevice": {
               "type": "boolean",
@@ -1119,6 +1171,19 @@
               "minLength": 10,
               "maxLength": 10
             },
+            "overrideLogging": {
+              "type": "string",
+              "title": "Device Logging Override",
+              "description": "Override the plugin-wide logging setting for this device only.",
+              "oneOf": [
+                { "title": "Standard", "enum": ["standard"] },
+                { "title": "Debug", "enum": ["debug"] },
+                { "title": "Disable", "enum": ["disable"] }
+              ],
+              "condition": {
+                "functionBody": "return (model.fanDevices && model.fanDevices[arrayIndices] && model.fanDevices[arrayIndices].deviceId && model.fanDevices[arrayIndices].deviceId.length === 10);"
+              }
+            },
             "ignoreDevice": {
               "type": "boolean",
               "title": "Hide From HomeKit",
@@ -1178,6 +1243,19 @@
               "description": "Enter the 10 digit eWeLink Device ID to begin.",
               "minLength": 10,
               "maxLength": 10
+            },
+            "overrideLogging": {
+              "type": "string",
+              "title": "Device Logging Override",
+              "description": "Override the plugin-wide logging setting for this device only.",
+              "oneOf": [
+                { "title": "Standard", "enum": ["standard"] },
+                { "title": "Debug", "enum": ["debug"] },
+                { "title": "Disable", "enum": ["disable"] }
+              ],
+              "condition": {
+                "functionBody": "return (model.sensorDevices && model.sensorDevices[arrayIndices] && model.sensorDevices[arrayIndices].deviceId && model.sensorDevices[arrayIndices].deviceId.length === 10);"
+              }
             },
             "ignoreDevice": {
               "type": "boolean",
@@ -1330,6 +1408,19 @@
               "description": "Enter the 10 digit eWeLink Device ID to begin.",
               "minLength": 10,
               "maxLength": 10
+            },
+            "overrideLogging": {
+              "type": "string",
+              "title": "Device Logging Override",
+              "description": "Override the plugin-wide logging setting for this device only.",
+              "oneOf": [
+                { "title": "Standard", "enum": ["standard"] },
+                { "title": "Debug", "enum": ["debug"] },
+                { "title": "Disable", "enum": ["disable"] }
+              ],
+              "condition": {
+                "functionBody": "return (model.rfDevices && model.rfDevices[arrayIndices] && model.rfDevices[arrayIndices].deviceId && model.rfDevices[arrayIndices].deviceId.length === 10);"
+              }
             },
             "ignoreDevice": {
               "type": "boolean",
@@ -1562,6 +1653,7 @@
             "singleDevices[].label",
             "singleDevices[].deviceId",
             "singleDevices[].ignoreDevice",
+            "singleDevices[].overrideLogging",
             "singleDevices[].deviceModel",
             "singleDevices[].showAs",
             "singleDevices[].showAsMotor",
@@ -1595,6 +1687,7 @@
             "multiDevices[].label",
             "multiDevices[].deviceId",
             "multiDevices[].ignoreDevice",
+            "multiDevices[].overrideLogging",
             "multiDevices[].deviceModel",
             "multiDevices[].showAs",
             "multiDevices[].showAsMotor",
@@ -1627,6 +1720,7 @@
             "lightDevices[].label",
             "lightDevices[].deviceId",
             "lightDevices[].ignoreDevice",
+            "lightDevices[].overrideLogging",
             "lightDevices[].deviceModel",
             "lightDevices[].showAs",
             "lightDevices[].brightnessStep",
@@ -1651,6 +1745,7 @@
             "thDevices[].label",
             "thDevices[].deviceId",
             "thDevices[].ignoreDevice",
+            "thDevices[].overrideLogging",
             "thDevices[].deviceModel",
             "thDevices[].showAs",
             "thDevices[].showHeatCool",
@@ -1681,6 +1776,7 @@
             "fanDevices[].label",
             "fanDevices[].deviceId",
             "fanDevices[].ignoreDevice",
+            "fanDevices[].overrideLogging",
             "fanDevices[].deviceModel",
             "fanDevices[].hideLight",
             "fanDevices[].ipAddress"
@@ -1702,6 +1798,7 @@
             "sensorDevices[].label",
             "sensorDevices[].deviceId",
             "sensorDevices[].ignoreDevice",
+            "sensorDevices[].overrideLogging",
             "sensorDevices[].deviceModel",
             "sensorDevices[].showAs",
             "sensorDevices[].lowBattThreshold",
@@ -1730,6 +1827,7 @@
             "rfDevices[].label",
             "rfDevices[].deviceId",
             "rfDevices[].ignoreDevice",
+            "rfDevices[].overrideLogging",
             "rfDevices[].resetOnStartup",
             "rfDevices[].ipAddress"
           ]
