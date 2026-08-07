@@ -12,6 +12,7 @@ All notable changes to `@homebridge-plugins/homebridge-ewelink` will be document
 - fix: send a colour change when only the saturation moves, and mend the al cleanup
 - fix: follow the saturation on the b1 bulb, in both directions
 - fix: explain a port clash on the built-in api instead of crashing the bridge
+- fix: survive a network change on the lan discovery socket instead of crashing the bridge
 
 ## v12.18.1 (2026-08-02)
 
