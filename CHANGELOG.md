@@ -21,6 +21,7 @@ All notable changes to `@homebridge-plugins/homebridge-ewelink` will be document
 - fix: reject an operation or sensor time so large it would make the reset timer fire immediately
 - fix(zigbee): stop forcing debug logs on zigbee motors, which ignored the logging setting
 - test: record what every device handler builds, so a refactor can be shown to change nothing
+- fix: honour the per-device logging setting on groups and the zigbee water valve
 
 ## v12.18.1 (2026-08-02)
 

@@ -85,17 +85,6 @@ const KNOWN_EXCEPTIONS = new Map([
     // rather than its own, and has no debug level of its own to set.
     'follows the paired device\'s setting, and has no debug level',
   ],
-  [
-    'zb.deviceZigbeeWaterValve',
-    // Reads only the global setting. A per-device override set on one of these
-    // has no effect, which is a gap rather than a decision - raised separately.
-    'honours only the global setting, not a per-device override',
-  ],
-  [
-    'deviceGroup',
-    // Same gap as the Zigbee water valve above.
-    'honours only the global setting, not a per-device override',
-  ],
 ])
 
 describe('the per-device logging setting', () => {
