@@ -1,0 +1,640 @@
+deviceAirConditioner
+  logging: on
+  service: HeaterCooler
+    Active
+    CoolingThresholdTemperature  [minValue=16, maxValue=32, minStep=1]
+    CurrentHeaterCoolerState
+    CurrentTemperature  [minStep=0.1]
+    HeatingThresholdTemperature  [minValue=16, maxValue=32, minStep=1]
+    RotationSpeed  [minValue=0, maxValue=100, minStep=25]
+    TargetHeaterCoolerState  [minValue=0, maxValue=2, validValues=[0,1,2]]
+
+deviceCurtain
+  logging: on
+  service: WindowCovering
+    CurrentPosition
+    TargetPosition
+
+deviceDiffuser
+  logging: on
+  service: Fan [diffuser]
+    On
+    RotationSpeed  [minStep=50]
+  service: Lightbulb [light]
+    Brightness
+    Hue
+    On
+
+deviceFan
+  logging: on
+  service: Fan *primary
+    On
+    RotationSpeed  [maxValue=3, minStep=1, minValue=0, unit="unitless"]
+  service: Lightbulb
+    On
+
+deviceFanGear
+  logging: on
+  service: Fan
+    On
+    RotationSpeed  [maxValue=3, minStep=1, minValue=0, unit="unitless"]
+    SwingMode
+
+deviceGroup
+  logging: on
+  service: Switch
+    On
+
+deviceHumidifier
+  logging: on
+  service: Fan
+    On
+    RotationSpeed  [minStep=33]
+
+deviceLightCCT
+  logging: on
+  service: Lightbulb
+    Brightness  [minStep=1]
+    ColorTemperature
+    On
+
+deviceLightDimmer
+  logging: on
+  service: Lightbulb
+    Brightness  [minStep=1]
+    On
+
+deviceLightRGB
+  logging: on
+  service: Lightbulb
+    Brightness  [minStep=100]
+    Hue
+    On
+    Saturation
+
+deviceLightRGBCCT
+  logging: on
+  service: Lightbulb
+    Brightness  [minStep=1]
+    ColorTemperature
+    Hue
+    On
+    Saturation
+
+deviceMotor
+  logging: on
+  service: WindowCovering
+    CurrentConsumption
+    CurrentPosition
+    ElectricCurrent
+    TargetPosition
+    Voltage
+
+deviceOutletMulti
+  logging: on
+  service: Outlet
+    On
+
+deviceOutletSingle
+  logging: on
+  service: Outlet
+    On
+
+deviceOutletSingleInched
+  logging: on
+  service: Outlet
+    InvertSwitch
+    On
+
+devicePanel
+  logging: on
+  service: Switch [channel1]
+    On
+  service: Switch [channel2]
+    On
+  service: TemperatureSensor
+    CurrentTemperature  [minStep=0.1]
+
+deviceRfBridge
+  logging: on
+
+deviceRfButton
+  logging: on
+  service: Switch [switch0]
+    ConfiguredName
+    On
+
+deviceRfSensor
+  logging: on
+  service: MotionSensor
+    LastActivation
+    MotionDetected
+
+deviceSensorAirQuality
+  logging: on
+  service: AirQualitySensor
+    AirQuality
+  service: CarbonDioxideSensor
+    CarbonDioxideDetected
+    CarbonDioxideLevel
+  service: HumiditySensor
+    CurrentRelativeHumidity
+  service: TemperatureSensor
+    CurrentTemperature  [minStep=0.1]
+
+deviceSensorAmbient
+  logging: on
+  service: HumiditySensor
+    CurrentRelativeHumidity
+  service: Switch *primary
+    On
+  service: TemperatureSensor
+    CurrentTemperature  [minStep=0.1]
+
+deviceSensorContact
+  logging: on
+  service: Battery
+  service: ContactSensor
+    ClosedDuration
+    ContactSensorState
+    LastActivation
+    OpenDuration
+    ResetTotal
+    TimesOpened
+
+deviceSensorTempHumi
+  logging: on
+  service: HumiditySensor
+    CurrentRelativeHumidity
+  service: TemperatureSensor
+    CurrentTemperature  [minStep=0.1]
+
+deviceSwitchMan
+  logging: on
+  service: StatelessProgrammableSwitch [channel1]
+    ConfiguredName
+    ServiceLabelIndex
+  service: StatelessProgrammableSwitch [channel2]
+    ConfiguredName
+    ServiceLabelIndex
+  service: StatelessProgrammableSwitch [channel3]
+    ConfiguredName
+    ServiceLabelIndex
+  service: StatelessProgrammableSwitch [channel4]
+    ConfiguredName
+    ServiceLabelIndex
+  service: StatelessProgrammableSwitch [channel5]
+    ConfiguredName
+    ServiceLabelIndex
+  service: StatelessProgrammableSwitch [channel6]
+    ConfiguredName
+    ServiceLabelIndex
+
+deviceSwitchMate
+  logging: on
+  service: StatelessProgrammableSwitch
+
+deviceSwitchMulti
+  logging: on
+  service: Switch
+    On
+
+deviceSwitchSingle
+  logging: on
+  service: Switch
+    On
+
+deviceSwitchSingleInched
+  logging: on
+  service: Switch
+    InvertSwitch
+    On
+
+deviceTemplate
+  logging: on (debug)
+
+deviceThermostat
+  logging: on
+  service: Thermostat
+    CurrentHeatingCoolingState
+    CurrentTemperature  [minStep=0.1]
+    TargetHeatingCoolingState  [minValue=0, maxValue=1, validValues=[0,1]]
+    TargetTemperature  [minValue=5, maxValue=45, minStep=0.5]
+
+deviceVirtual
+  logging: on
+  service: Switch
+    On
+
+sim.deviceBlind
+  logging: on
+  service: WindowCovering
+    CurrentPosition
+    PositionState
+    TargetPosition
+
+sim.deviceCooler
+  logging: on
+  service: HeaterCooler
+    Active
+    CoolingThresholdTemperature  [minStep=0.5]
+    CurrentHeaterCoolerState
+    CurrentTemperature  [minStep=0.1]
+    TargetHeaterCoolerState  [minValue=0, maxValue=0, validValues=[0]]
+
+sim.deviceDoor
+  logging: on
+  service: Door
+    CurrentPosition
+    PositionState
+    TargetPosition
+
+sim.deviceDoorbell
+  logging: on
+  service: Doorbell
+    ProgrammableSwitchEvent
+
+sim.deviceGarageEachen
+  logging: on
+  service: GarageDoorOpener
+    CurrentDoorState
+    LastActivation
+    ObstructionDetected
+    ResetTotal
+    TargetDoorState
+    TimesOpened
+
+sim.deviceGarageFour
+  logging: on
+  service: GarageDoorOpener [garageA]
+    CurrentDoorState
+    ObstructionDetected
+    TargetDoorState
+  service: GarageDoorOpener [garageB]
+    CurrentDoorState
+    ObstructionDetected
+    TargetDoorState
+  service: GarageDoorOpener [garageC]
+    CurrentDoorState
+    ObstructionDetected
+    TargetDoorState
+  service: GarageDoorOpener [garageD]
+    CurrentDoorState
+    ObstructionDetected
+    TargetDoorState
+
+sim.deviceGarageOdSwitch
+
+sim.deviceGarageOne
+  logging: on
+  service: GarageDoorOpener
+    CurrentDoorState
+    LastActivation
+    ObstructionDetected
+    ResetTotal
+    TargetDoorState
+    TimesOpened
+
+sim.deviceGarageTwo
+  logging: on
+  service: GarageDoorOpener [garage1]
+    CurrentDoorState
+    ObstructionDetected
+    TargetDoorState
+  service: GarageDoorOpener [garage2]
+    CurrentDoorState
+    ObstructionDetected
+    TargetDoorState
+
+sim.deviceGateOne
+  logging: on
+  service: GarageDoorOpener
+    CurrentDoorState
+    LastActivation
+    ObstructionDetected
+    ResetTotal
+    TargetDoorState
+    TimesOpened
+
+sim.deviceHeater
+  logging: on
+  service: HeaterCooler
+    Active
+    CurrentHeaterCoolerState
+    CurrentTemperature  [minStep=0.1]
+    HeatingThresholdTemperature  [minStep=0.5]
+    TargetHeaterCoolerState  [minValue=0, maxValue=0, validValues=[0]]
+
+sim.deviceLightFan
+  logging: on
+  service: Fan
+    On
+    RotationSpeed  [minStep=1]
+
+sim.deviceLockEachen
+  logging: on
+  service: LockMechanism
+    LockCurrentState
+    LockTargetState
+
+sim.deviceLockOne
+  logging: on
+  service: LockMechanism
+    LockCurrentState
+    LockTargetState
+
+sim.devicePButton
+  logging: on
+  service: StatelessProgrammableSwitch
+    ProgrammableSwitchEvent  [validValues=[0]]
+
+sim.devicePurifier
+  logging: on
+  service: AirPurifier
+    Active
+    CurrentAirPurifierState
+    TargetAirPurifierState  [minValue=1, maxValue=1, validValues=[1]]
+
+sim.deviceRfBlind
+  logging: on
+  service: WindowCovering
+    CurrentPosition
+    PositionState
+    TargetPosition
+
+sim.deviceRfDoor
+  logging: on
+  service: Door
+    CurrentPosition
+    PositionState
+    TargetPosition
+
+sim.deviceRfWindow
+  logging: on
+  service: Window
+    CurrentPosition
+    PositionState
+    TargetPosition
+
+sim.deviceSensor
+  logging: on
+  service: MotionSensor
+    LastActivation
+    MotionDetected
+
+sim.deviceSensorHidden
+  logging: on
+
+sim.deviceSensorLeak
+  logging: on
+  service: Battery
+  service: LeakSensor
+    LastActivation
+
+sim.deviceSensorVisible
+  logging: on
+  service: ContactSensor
+    ClosedDuration
+    ContactSensorState
+    LastActivation
+    OpenDuration
+    ResetTotal
+    TimesOpened
+
+sim.deviceSwitchValve
+  logging: on
+  service: Switch
+    On
+  service: Valve
+    Active
+    InUse
+    RemainingDuration
+    SetDuration
+    ValveType
+
+sim.deviceTapOne
+  logging: on
+  service: Valve
+    Active
+    InUse
+    ValveType
+
+sim.deviceTapTwo
+  logging: on
+  service: Valve [tap1]
+    Active
+    InUse
+    ValveType
+  service: Valve [tap2]
+    Active
+    InUse
+    ValveType
+
+sim.deviceThCooler
+  logging: on
+  service: HeaterCooler *primary
+    Active
+    CoolingThresholdTemperature  [minValue=10, maxValue=30, minStep=0.5]
+    CurrentHeaterCoolerState
+    CurrentTemperature  [minStep=0.1]
+    TargetHeaterCoolerState  [minValue=0, maxValue=0, validValues=[0]]
+  service: HumiditySensor
+    CurrentRelativeHumidity
+
+sim.deviceThDehumidifier
+  logging: on
+  service: HumidifierDehumidifier *primary
+    Active
+    CurrentHumidifierDehumidifierState
+    CurrentRelativeHumidity
+    RelativeHumidityDehumidifierThreshold
+    TargetHumidifierDehumidifierState  [minValue=2, maxValue=2, validValues=[2]]
+  service: TemperatureSensor
+    CurrentTemperature
+
+sim.deviceThHeater
+  logging: on
+  service: HeaterCooler *primary
+    Active
+    CurrentHeaterCoolerState
+    CurrentTemperature  [minStep=0.1]
+    HeatingThresholdTemperature  [minValue=10, maxValue=30, minStep=0.5]
+    TargetHeaterCoolerState  [minValue=0, maxValue=0, validValues=[0]]
+  service: HumiditySensor
+    CurrentRelativeHumidity
+
+sim.deviceThHumidifier
+  logging: on
+  service: HumidifierDehumidifier *primary
+    Active
+    CurrentHumidifierDehumidifierState
+    CurrentRelativeHumidity
+    RelativeHumidityHumidifierThreshold
+    TargetHumidifierDehumidifierState  [minValue=1, maxValue=1, validValues=[1]]
+  service: TemperatureSensor
+    CurrentTemperature
+
+sim.deviceThThermostat
+  logging: on
+  service: Thermostat
+    CurrentHeatingCoolingState
+    CurrentRelativeHumidity
+    CurrentTemperature  [minStep=0.1]
+    TargetHeatingCoolingState  [validValues=[0,3]]
+    TargetTemperature  [minValue=10, maxValue=30, minStep=0.5]
+
+sim.deviceTv
+  logging: on
+  service: Television
+    Active
+
+sim.deviceValveFour
+  logging: on
+  service: Valve [valvea]
+    Active
+    InUse
+    RemainingDuration
+    SetDuration
+    ValveType
+  service: Valve [valveb]
+    Active
+    InUse
+    RemainingDuration
+    SetDuration
+    ValveType
+  service: Valve [valvec]
+    Active
+    InUse
+    RemainingDuration
+    SetDuration
+    ValveType
+  service: Valve [valved]
+    Active
+    InUse
+    RemainingDuration
+    SetDuration
+    ValveType
+
+sim.deviceValveOne
+  logging: on
+  service: Valve
+    Active
+    InUse
+    RemainingDuration
+    SetDuration
+    ValveType
+
+sim.deviceValveTwo
+  logging: on
+  service: Valve [valve1]
+    Active
+    InUse
+    RemainingDuration
+    SetDuration
+    ValveType
+  service: Valve [valve2]
+    Active
+    InUse
+    RemainingDuration
+    SetDuration
+    ValveType
+
+sim.deviceWindow
+  logging: on
+  service: Window
+    CurrentPosition
+    PositionState
+    TargetPosition
+
+zb.deviceLightCCT
+  logging: on
+  service: Lightbulb
+    Brightness  [minStep=1]
+    ColorTemperature
+    On
+
+zb.deviceLightDimmer
+  logging: on
+  service: Lightbulb
+    Brightness  [minStep=1]
+    On
+
+zb.deviceLightRGBCCT
+  logging: on
+  service: Lightbulb
+    Brightness  [minStep=1]
+    ColorTemperature
+    Hue
+    On
+    Saturation
+
+zb.deviceMotor
+  logging: on
+  service: Battery
+    BatteryLevel
+  service: WindowCovering
+    CurrentPosition
+    TargetPosition
+
+zb.deviceSensorAmbient
+  logging: on
+  service: Battery
+  service: HumiditySensor
+  service: TemperatureSensor
+    CurrentTemperature  [minStep=0.1]
+
+zb.deviceSensorContact
+  logging: on
+  service: Battery
+  service: ContactSensor
+    ClosedDuration
+    LastActivation
+    OpenDuration
+    ResetTotal
+    TimesOpened
+
+zb.deviceSensorLeak
+  logging: on
+  service: Battery
+  service: LeakSensor
+    LastActivation
+
+zb.deviceSensorMotion
+  logging: on
+  service: Battery
+  service: MotionSensor
+    LastActivation
+
+zb.deviceSensorOccupancy
+  logging: on
+  service: Battery
+  service: OccupancySensor
+    LastActivation
+
+zb.deviceSensorSmoke
+  logging: on
+  service: Battery
+  service: SmokeSensor
+
+zb.deviceSwitchStateless
+  logging: on
+  service: Battery
+  service: StatelessProgrammableSwitch
+
+zb.deviceThermostat
+  logging: on
+  service: Thermostat
+    CurrentHeatingCoolingState
+    CurrentTemperature  [minStep=0.1]
+    LockPhysicalControls
+    TargetHeatingCoolingState  [minValue=0, maxValue=3, validValues=[0,1,3]]
+    TargetTemperature  [minValue=5, maxValue=45, minStep=0.5]
+
+zb.deviceZigbeeWaterValve
+  logging: on
+  service: Valve
+    Active
+    InUse
+    RemainingDuration
+    SetDuration
+    ValveType

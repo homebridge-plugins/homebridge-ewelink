@@ -20,6 +20,7 @@ All notable changes to `@homebridge-plugins/homebridge-ewelink` will be document
 - fix: trigger rf sensor channels one at a time, so the reset delay is actually waited on
 - fix: reject an operation or sensor time so large it would make the reset timer fire immediately
 - fix(zigbee): stop forcing debug logs on zigbee motors, which ignored the logging setting
+- test: record what every device handler builds, so a refactor can be shown to change nothing
 
 ## v12.18.1 (2026-08-02)
 
