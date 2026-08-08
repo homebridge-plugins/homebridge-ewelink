@@ -421,6 +421,7 @@
               "description": "Garage doors: the time to open/close the device. Locks: the time to show as unlocked. This setting is in deciseconds - count the time in seconds and multiply by 10, for example 75 for 7.5 seconds. Must be 20 or more.",
               "placeholder": 100,
               "minimum": 20,
+              "maximum": 2073600,
               "condition": {
                 "functionBody": "return (model.singleDevices && model.singleDevices[arrayIndices] && ((model.singleDevices[arrayIndices].deviceModel === 'gddc5' && model.singleDevices[arrayIndices].showAsEachen !== 'lock') || ['garage', 'lock', 'gate'].includes(model.singleDevices[arrayIndices].showAs)) && !model.singleDevices[arrayIndices].ignoreDevice);"
               }
@@ -431,6 +432,7 @@
               "description": "If your garage door has a different operation time for up and down, use this setting to specify the operation time DOWN (in deciseconds) and the other setting to specify the operation time UP. Otherwise leave blank. Must be 20 or more.",
               "placeholder": 100,
               "minimum": 20,
+              "maximum": 2073600,
               "condition": {
                 "functionBody": "return (model.singleDevices && model.singleDevices[arrayIndices] && ['garage'].includes(model.singleDevices[arrayIndices].showAs) && !model.singleDevices[arrayIndices].ignoreDevice);"
               }
@@ -760,6 +762,7 @@
               "description": "Blinds/garage doors: the time to open/close the device. Locks: the time to show as unlocked. This setting is in deciseconds - count the time in seconds and multiply by 10, for example 75 for 7.5 seconds. Must be 20 or more.",
               "placeholder": 100,
               "minimum": 20,
+              "maximum": 2073600,
               "condition": {
                 "functionBody": "return (model.multiDevices && model.multiDevices[arrayIndices] && ['garage', 'garage_two', 'garage_four', 'blind', 'door', 'window', 'lock', 'gate'].includes(model.multiDevices[arrayIndices].showAs) && !model.multiDevices[arrayIndices].ignoreDevice);"
               }
@@ -770,6 +773,7 @@
               "description": "If your garage door or blind has a different operation time for up and down, use this setting to specify the operation time DOWN (in deciseconds) and the other setting to specify the operation time UP. Otherwise leave blank. Must be 20 or more.",
               "placeholder": 100,
               "minimum": 20,
+              "maximum": 2073600,
               "condition": {
                 "functionBody": "return (model.multiDevices && model.multiDevices[arrayIndices] && ['garage', 'garage_two', 'garage_four', 'blind', 'door', 'window'].includes(model.multiDevices[arrayIndices].showAs) && !model.multiDevices[arrayIndices].ignoreDevice);"
               }
@@ -1383,6 +1387,7 @@
               "description": "An offset in seconds to ignore notifications if the delay between this Zigbee Motion/Leak activating or Zigbee Button press and the plugin receiving the notification is greater than this number. Must be 5 or more.",
               "placeholder": 60,
               "minimum": 5,
+              "maximum": 2073600,
               "condition": {
                 "functionBody": "return (model.sensorDevices && model.sensorDevices[arrayIndices] && ['snzb01', 'snzb03', 'leak'].includes(model.sensorDevices[arrayIndices].deviceModel) && !model.sensorDevices[arrayIndices].ignoreDevice);"
               }
@@ -1522,6 +1527,7 @@
               "description": "The time to open/close the device. This setting is in deciseconds - count the time in seconds and multiply by 10, for example 75 for 7.5 seconds. Must be 20 or more.",
               "placeholder": 100,
               "minimum": 20,
+              "maximum": 2073600,
               "condition": {
                 "functionBody": "return (model.bridgeSensors && model.bridgeSensors[arrayIndices] && model.bridgeSensors[arrayIndices].fullDeviceId && model.bridgeSensors[arrayIndices].fullDeviceId.length >= 13 && model.bridgeSensors[arrayIndices].deviceType === 'curtain' && ['blind', 'door', 'window'].includes(model.bridgeSensors[arrayIndices].curtainType));"
               }
@@ -1532,6 +1538,7 @@
               "description": "If your device has a different operation time for up and down, use this setting to specify the operation time DOWN (in deciseconds) and the other setting to specify the operation time UP. Otherwise leave blank. Must be 20 or more.",
               "placeholder": 100,
               "minimum": 20,
+              "maximum": 2073600,
               "condition": {
                 "functionBody": "return (model.bridgeSensors && model.bridgeSensors[arrayIndices] && model.bridgeSensors[arrayIndices].fullDeviceId && model.bridgeSensors[arrayIndices].fullDeviceId.length >= 13 && model.bridgeSensors[arrayIndices].deviceType === 'curtain' && ['blind', 'door', 'window'].includes(model.bridgeSensors[arrayIndices].curtainType));"
               }
@@ -1588,6 +1595,7 @@
               "description": "The number of seconds which the sensor tile in the Home app will light up for if this sensor is activated. Must be 1 or more.",
               "placeholder": 60,
               "minimum": 1,
+              "maximum": 2073600,
               "condition": {
                 "functionBody": "return (model.bridgeSensors && model.bridgeSensors[arrayIndices] && model.bridgeSensors[arrayIndices].type && model.bridgeSensors[arrayIndices].deviceType === 'sensor' && ['motion', 'smoke', 'water', 'co', 'co2', 'occupancy', 'contact'].includes(model.bridgeSensors[arrayIndices].type));"
               }
@@ -1598,6 +1606,7 @@
               "description": "An offset in seconds to ignore notifications if the delay between this sensor activating and the plugin receiving the notification is greater than this number. Must be 5 or more.",
               "placeholder": 60,
               "minimum": 5,
+              "maximum": 2073600,
               "condition": {
                 "functionBody": "return (model.bridgeSensors && model.bridgeSensors[arrayIndices] && model.bridgeSensors[arrayIndices].type && model.bridgeSensors[arrayIndices].deviceType === 'sensor' && ['motion', 'smoke', 'water', 'co', 'co2', 'occupancy', 'contact'].includes(model.bridgeSensors[arrayIndices].type));"
               }
