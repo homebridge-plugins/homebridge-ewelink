@@ -23,6 +23,7 @@ All notable changes to `@homebridge-plugins/homebridge-ewelink` will be document
 - test: record what every device handler builds, so a refactor can be shown to change nothing
 - fix: honour the per-device logging setting on groups and the zigbee water valve
 - fix(zigbee): read the snzb-02ld temperature as degrees, so 18.4c stops showing as 0.18c
+- test: check the device handlers against payloads real devices sent
 
 ## v12.18.1 (2026-08-02)
 

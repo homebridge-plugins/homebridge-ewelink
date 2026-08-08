@@ -109,15 +109,30 @@ export function everyHandler() {
  * Returns the failure rather than throwing, so a caller checking all of them at
  * once can report every problem instead of stopping at the first.
  */
-export function buildHandler(name, Handler, platformOverrides = {}) {
+export function buildHandler(name, Handler, platformOverrides = {}, contextOverrides = {}) {
   const shortName = name.split('.').pop()
   const platform = makePlatform(platformOverrides)
-  const accessory = makeAccessory(name, CONTEXT_FOR[shortName] ?? {})
+  const accessory = makeAccessory(name, { ...(CONTEXT_FOR[shortName] ?? {}), ...contextOverrides })
   const extra = EXTRA_ARGS_FOR[shortName]?.(platform, accessory) ?? []
 
+  // Several handlers start a polling timer, which would otherwise keep the
+  // process alive after the test that built them has finished
+  const cleanup = () => {
+    clearInterval(accessory.refreshInterval)
+    ;['intervalPoll', 'intervalPower', 'initialTimeout'].forEach((timer) => {
+      clearInterval(accessory[timer])
+      clearTimeout(accessory[timer])
+    })
+  }
+
   try {
-    return { device: new Handler(platform, accessory, ...extra), platform, accessory }
+    const device = new Handler(platform, accessory, ...extra)
+    ;['intervalPoll', 'intervalPower', 'initialTimeout'].forEach((timer) => {
+      clearInterval(device[timer])
+      clearTimeout(device[timer])
+    })
+    return { device, platform, accessory, cleanup }
   } catch (err) {
-    return { error: err.message, platform, accessory }
+    return { error: err.message, platform, accessory, cleanup }
   }
 }
