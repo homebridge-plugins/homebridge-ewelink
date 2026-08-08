@@ -17,6 +17,7 @@ All notable changes to `@homebridge-plugins/homebridge-ewelink` will be document
 - fix: make the per-device logging override settable, and drop the debug option that never was
 - fix: move the two-door garage one door at a time, so the second is not cut short
 - fix: stop the lan discovery printing straight to the console, whatever the log level
+- fix: trigger rf sensor channels one at a time, so the reset delay is actually waited on
 
 ## v12.18.1 (2026-08-02)
 
