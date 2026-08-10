@@ -67,14 +67,14 @@
   },
   "dependencies": {
     "@homebridge/plugin-ui-utils": "^2.2.5",
-    "axios": "^1.18.1",
+    "axios": "^1.19.0",
     "node-persist": "^4.0.4",
     "p-queue": "^9.3.3",
     "websocket-as-promised": "^3.0.1",
-    "ws": "^8.21.1"
+    "ws": "^8.21.3"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "^9.2.0",
+    "@antfu/eslint-config": "^9.3.0",
     "@vitest/coverage-v8": "^4.1.10",
     "vitest": "^4.1.10"
   }
