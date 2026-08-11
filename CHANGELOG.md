@@ -8,6 +8,7 @@ All notable changes to `@homebridge-plugins/homebridge-ewelink` will be document
 
 - fix: keep saving eve history for a device with a slash in its name
 - fix: write eve history atomically, so an interrupted write cannot corrupt it
+- fix: recover from an unreadable eve history instead of retrying forever
 
 ## v12.18.2 (2026-08-09)
 
