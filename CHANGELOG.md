@@ -2,6 +2,12 @@
 
 All notable changes to `@homebridge-plugins/homebridge-ewelink` will be documented in this file.
 
+## v12.18.3 (Pending Release)
+
+### Changed
+
+- fix: keep saving eve history for a device with a slash in its name
+
 ## v12.18.2 (2026-08-09)
 
 ### Changed
