@@ -616,6 +616,12 @@ zb.deviceSensorSmoke
   service: Battery
   service: SmokeSensor
 
+zb.deviceSiren
+  logging: on
+  service: Battery
+  service: Switch
+    On
+
 zb.deviceSwitchStateless
   logging: on
   service: Battery

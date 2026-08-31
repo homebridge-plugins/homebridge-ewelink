@@ -7,6 +7,7 @@ All notable changes to `@homebridge-plugins/homebridge-ewelink` will be document
 ### Changed
 
 - feat(zigbee): add the snzb-03pr2 presence sensor, with occupancy and light level
+- feat(zigbee): add the snzb-09p indoor siren, as a switch that sounds the alarm
 
 ## v12.18.3 (2026-08-11)
 

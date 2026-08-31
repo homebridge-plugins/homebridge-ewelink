@@ -144,3 +144,45 @@ describe('the zigbee occupancy sensor, on a presence model', () => {
     expect(accessory.getService('Battery').getCharacteristic('BatteryLevel').value).toBe(92)
   })
 })
+
+describe('the zigbee siren', () => {
+  const Handler = deviceTypes.zb.deviceSiren
+  const name = 'zb.deviceSiren'
+
+  it('triggers the alarm without losing the device\'s own settings', async () => {
+    const { device, accessory, platform } = feed(name, Handler, {}, { eweUIID: 7056 })
+
+    // The device reports its configured volume and duration; a later trigger
+    // has to send those back alongside the flag, or the device would fall
+    // back to its defaults
+    await device.externalUpdate({ alarmSetting: { volume: 2, time: 10 }, updateSource: 'WS' })
+    await accessory.getService('Switch').getCharacteristic('On').setHandler(true)
+
+    expect(platform.sent).toHaveLength(1)
+    expect(platform.sent[0].params).toEqual({
+      alarmSetting: { volume: 2, time: 10, test: true },
+    })
+
+    // Clear the tile-reset timer so it does not outlive the test
+    device.destroy()
+  })
+
+  it('sends nothing when the tile is switched off', async () => {
+    // The device stops on its own after its configured duration and offers no
+    // early stop, so an off is only the tile resetting
+    const { device, accessory, platform } = feed(name, Handler, {}, { eweUIID: 7056 })
+
+    await device.externalUpdate({ alarmSetting: { volume: 2, time: 10 }, updateSource: 'WS' })
+    await accessory.getService('Switch').getCharacteristic('On').setHandler(false)
+
+    expect(platform.sent).toHaveLength(0)
+  })
+
+  it('carries the battery level across, and flags a low one', async () => {
+    const { device, accessory } = feed(name, Handler, {}, { eweUIID: 7056 })
+
+    await device.externalUpdate({ battery: 15, updateSource: 'WS' })
+    expect(accessory.getService('Battery').getCharacteristic('BatteryLevel').value).toBe(15)
+    expect(accessory.getService('Battery').getCharacteristic('StatusLowBattery').value).toBe(1)
+  })
+})
