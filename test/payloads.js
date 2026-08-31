@@ -103,4 +103,22 @@ export const payloads = {
       voltage: 0,
     },
   },
+  /**
+   * SONOFF SNZB-03PR2, a Zigbee presence sensor on UIID 7055.
+   *
+   * The exception in this file: no owner has pasted one of these yet. The
+   * parameter names are the vocabulary the device is known to report -
+   * presence as `human`, a numeric `illumination`, and `battery` - with no
+   * per-report timestamp. The first owner report should be checked against it.
+   */
+  snzb03pr2: {
+    uiid: 7055,
+    params: {
+      battery: 92,
+      human: 1,
+      illumination: 56,
+      subDevId: SUB_DEVICE_ID,
+      updateSource: 'WS',
+    },
+  },
 }

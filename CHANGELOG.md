@@ -2,6 +2,12 @@
 
 All notable changes to `@homebridge-plugins/homebridge-ewelink` will be documented in this file.
 
+## v12.18.4 (Pending Release)
+
+### Changed
+
+- feat(zigbee): add the snzb-03pr2 presence sensor, with occupancy and light level
+
 ## v12.18.3 (2026-08-11)
 
 ### Changed

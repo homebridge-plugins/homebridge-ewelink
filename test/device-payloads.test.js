@@ -101,3 +101,46 @@ describe('a power-reporting outlet, on payloads from a real device', () => {
     expect(accessory.getService('Outlet').getCharacteristic('On').value).toBe(false)
   })
 })
+
+describe('the zigbee occupancy sensor, on a presence model', () => {
+  const Handler = deviceTypes.zb.deviceSensorOccupancy
+  const name = 'zb.deviceSensorOccupancy'
+  const context = { eweUIID: payloads.snzb03pr2.uiid }
+
+  it('reports occupancy from a live report that carries no timestamp', async () => {
+    // The older occupancy model timestamps each report and the handler used to
+    // insist on that, so a presence model's reports were dropped entirely
+    const { device, accessory } = feed(name, Handler, payloads.snzb03pr2.params, context)
+
+    await device.externalUpdate(payloads.snzb03pr2.params)
+    expect(accessory.getService('OccupancySensor')
+      .getCharacteristic('OccupancyDetected').value).toBe(true)
+
+    await device.externalUpdate({ ...payloads.snzb03pr2.params, human: 0 })
+    expect(accessory.getService('OccupancySensor')
+      .getCharacteristic('OccupancyDetected').value).toBe(false)
+  })
+
+  it('shows the numeric light reading', async () => {
+    const { device, accessory } = feed(name, Handler, payloads.snzb03pr2.params, context)
+
+    await device.externalUpdate(payloads.snzb03pr2.params)
+    expect(accessory.getService('LightSensor')
+      .getCharacteristic('CurrentAmbientLightLevel').value).toBe(56)
+  })
+
+  it('keeps a zero light reading inside the range homekit accepts', async () => {
+    const { device, accessory } = feed(name, Handler, payloads.snzb03pr2.params, context)
+
+    await device.externalUpdate({ ...payloads.snzb03pr2.params, illumination: 0 })
+    expect(accessory.getService('LightSensor')
+      .getCharacteristic('CurrentAmbientLightLevel').value).toBe(0.0001)
+  })
+
+  it('carries the battery level across', async () => {
+    const { device, accessory } = feed(name, Handler, payloads.snzb03pr2.params, context)
+
+    await device.externalUpdate(payloads.snzb03pr2.params)
+    expect(accessory.getService('Battery').getCharacteristic('BatteryLevel').value).toBe(92)
+  })
+})
