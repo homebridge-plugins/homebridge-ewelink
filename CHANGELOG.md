@@ -2,6 +2,12 @@
 
 All notable changes to `@homebridge-plugins/homebridge-ewelink` will be documented in this file.
 
+## v12.19.1 (Pending Release)
+
+### Changed
+
+- feat(fan): add an option to show ifan speed as a percentage, so siri's levels work (#551)
+
 ## v12.19.0 (2026-10-18)
 
 ### Changed
