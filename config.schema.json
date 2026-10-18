@@ -1218,6 +1218,14 @@
                 "functionBody": "return (model.fanDevices && model.fanDevices[arrayIndices] && ['ifan'].includes(model.fanDevices[arrayIndices].deviceModel) && !model.fanDevices[arrayIndices].ignoreDevice);"
               }
             },
+            "speedAsPercent": {
+              "type": "boolean",
+              "title": "Show Speed As Percentage",
+              "description": "If true, the fan speed shows as a percentage (low 33%, medium 66%, high 99%) instead of levels 1 to 3. Siri's low, medium and high only work with a percentage. Changing this re-adds the fan to HomeKit, so check any scenes or automations that use it.",
+              "condition": {
+                "functionBody": "return (model.fanDevices && model.fanDevices[arrayIndices] && ['ifan'].includes(model.fanDevices[arrayIndices].deviceModel) && !model.fanDevices[arrayIndices].ignoreDevice);"
+              }
+            },
             "ipAddress": {
               "type": "string",
               "title": "IP Address",
@@ -1788,6 +1796,7 @@
             "fanDevices[].overrideLogging",
             "fanDevices[].deviceModel",
             "fanDevices[].hideLight",
+            "fanDevices[].speedAsPercent",
             "fanDevices[].ipAddress"
           ]
         }
