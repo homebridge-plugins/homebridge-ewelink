@@ -1,5 +1,8 @@
+import { Buffer } from 'node:buffer'
+
 import { describe, expect, it } from 'vitest'
 
+import ApiServer from '../lib/connection/api.js'
 import deviceTypes from '../lib/device/index.js'
 import { buildHandler, configFor } from './build-handlers.js'
 import { makeAccessory, makePlatform } from './harness.js'
@@ -47,5 +50,37 @@ describe('the iFan speed scale (#551)', () => {
     new Handler(makePlatform(configFor(name, { speedAsPercent: true })), accessory)
     expect(accessory.getService('Fan')).not.toBe(old)
     expect(speedChar(accessory).props.maxValue).toBe(100)
+  })
+})
+
+/**
+ * The plugin's own HTTP control api names speeds low, medium and high, and
+ * always turned them into a percentage. A fan that counts in levels 1 to 3
+ * read 66 as out of range - so asking for medium switched the fan off.
+ */
+describe('setting a fan speed through the http api', () => {
+  async function setSpeedOverApi(overrides, speed) {
+    const built = buildHandler(name, Handler, overrides)
+    built.accessory.context.hbDeviceId = 'fan-1'
+    built.accessory.control = built.device
+    built.platform.config.username = 'user'
+    built.platform.config.password = 'pass'
+    const devicesInHB = new Map([[built.platform.api.hap.uuid.generate('fan-1'), built.accessory]])
+    const api = new ApiServer(built.platform, devicesInHB)
+    await api.action({
+      url: `/set/fan-1/fan/speed/${speed}`,
+      headers: { authorization: `Basic ${Buffer.from('user:pass').toString('base64')}` },
+    })
+    return built
+  }
+
+  it('sends medium as medium to a fan on the level scale', async () => {
+    const { platform } = await setSpeedOverApi(undefined, 'medium')
+    expect(outlets(platform.sent[0])).toEqual(['on', 'on', 'off'])
+  })
+
+  it('sends medium as medium to a fan on the percentage scale', async () => {
+    const { platform } = await setSpeedOverApi(configFor(name, { speedAsPercent: true }), 'medium')
+    expect(outlets(platform.sent[0])).toEqual(['on', 'on', 'off'])
   })
 })
