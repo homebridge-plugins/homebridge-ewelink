@@ -8,7 +8,7 @@ All notable changes to `@homebridge-plugins/homebridge-ewelink` will be document
 
 - feat(fan): add an option to show ifan speed as a percentage, so siri's levels work (#551)
 - fix(api): send fan speeds on the fan's own scale, so medium no longer turns it off
-- ci: update github actions to their latest versions
+- ci: update github actions to their latest versions (#809)
 
 ## v12.19.0 (2026-10-18)
 
