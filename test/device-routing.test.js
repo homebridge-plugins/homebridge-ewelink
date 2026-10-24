@@ -143,3 +143,24 @@ describe('the mini-zb1gp zigbee switch (7054)', () => {
     expect(accessory.getService('Outlet').getCharacteristic('CurrentConsumption').value).toBe(12.5)
   })
 })
+
+describe('the mini-1gsp switch (283)', () => {
+  it('sets up as a single switch', async () => {
+    expect(handlersOf(await route(283))).toEqual([deviceTypes.deviceSwitchSingle])
+  })
+
+  it('follows the first channel and reads power in hundredths', async () => {
+    const [accessory] = await route(283)
+
+    await accessory.control.externalUpdate({
+      switches: [
+        { switch: 'on', outlet: 0 },
+      ],
+      power: '6025',
+    })
+
+    const service = accessory.getService('Switch')
+    expect(service.getCharacteristic('On').value).toBe(true)
+    expect(service.getCharacteristic('CurrentConsumption').value).toBe(60.25)
+  })
+})
