@@ -18,6 +18,7 @@ All notable changes to `@homebridge-plugins/homebridge-ewelink` will be document
 - fix: stop live updates dropping readings like light level, child lock and fan oscillation
 - fix: show power readings on the 226 and 7032 when they are shown as an outlet
 - fix: read inched power devices in hundredths, so a powr316 or s61 no longer shows 5500w for 55w
+- fix: log in again when the cloud reports an expired token, so group commands keep working
 
 ## v12.19.0 (2026-10-18)
 
