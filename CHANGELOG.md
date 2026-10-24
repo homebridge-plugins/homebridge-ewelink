@@ -15,6 +15,7 @@ All notable changes to `@homebridge-plugins/homebridge-ewelink` will be document
 - fix(zigbee): keep a curtain motor shown as a garage door in step with its door
 - fix(zigbee): flip the zbu-curt-7006 position, which counts 0 as open (#810)
 - fix: stop live updates dropping readings like light level, child lock and fan oscillation
+- fix: show power readings on the 226 and 7032 when they are shown as an outlet
 
 ## v12.19.0 (2026-10-18)
 
