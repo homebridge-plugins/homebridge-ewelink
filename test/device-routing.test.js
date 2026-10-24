@@ -197,3 +197,9 @@ describe('the second generation zigbee radiator valve (7049)', () => {
       .getCharacteristic('CurrentTemperature').value).toBe(21.5)
   })
 })
+
+describe('the two-zone zigbee irrigation valve (7048)', () => {
+  it('sets up as a zigbee water valve', async () => {
+    expect(handlersOf(await route(7048))).toEqual([deviceTypes.zb.deviceZigbeeWaterValve])
+  })
+})
