@@ -164,3 +164,21 @@ describe('the mini-1gsp switch (283)', () => {
     expect(service.getCharacteristic('CurrentConsumption').value).toBe(60.25)
   })
 })
+
+describe('the nspanel86pb relay (278)', () => {
+  it('sets up as a two-channel switch', async () => {
+    const accessories = await route(278)
+
+    // The hidden main accessory, then one per channel
+    expect(handlersOf(accessories)).toEqual([
+      deviceTypes.deviceSwitchMulti,
+      deviceTypes.deviceSwitchMulti,
+      deviceTypes.deviceSwitchMulti,
+    ])
+    expect(accessories.map(accessory => accessory.context.hbDeviceId)).toEqual([
+      '10001abcdeSW0',
+      '10001abcdeSW1',
+      '10001abcdeSW2',
+    ])
+  })
+})
