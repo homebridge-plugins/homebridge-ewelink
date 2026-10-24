@@ -56,3 +56,19 @@ describe('the zigbee curtain motor position', () => {
     expect(service.getCharacteristic('PositionState').value).toBe(2)
   })
 })
+
+describe('the zigbee curtain motor shown as a garage door', () => {
+  it('moves the target with the door, so Home does not show it stuck closing', async () => {
+    const built = buildHandler(name, Handler, {
+      deviceConf: { '10001abcde': { showAsMotor: 'garage' } },
+    }, { eweUIID: 1514 })
+    const service = built.accessory.getService('GarageDoorOpener')
+
+    await built.device.externalUpdate({ curPercent: 0, openPercent: 0 })
+
+    // The target was looked up as this.TargetDoorState, which does not exist,
+    // so it was never moved to match the door
+    expect(service.getCharacteristic('CurrentDoorState').value).toBe(1)
+    expect(service.getCharacteristic('TargetDoorState').value).toBe(1)
+  })
+})
