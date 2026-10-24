@@ -20,6 +20,7 @@ All notable changes to `@homebridge-plugins/homebridge-ewelink` will be document
 - fix: read inched power devices in hundredths, so a powr316 or s61 no longer shows 5500w for 55w
 - fix: log in again when the cloud reports an expired token, so group commands keep working
 - feat(zigbee): add the snzb-02b and snzb-02m temperature and humidity sensors
+- feat(zigbee): add the snzb-06p24 presence sensor, with occupancy and light level
 
 ## v12.19.0 (2026-10-18)
 
