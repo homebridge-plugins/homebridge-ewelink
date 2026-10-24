@@ -10,6 +10,7 @@ All notable changes to `@homebridge-plugins/homebridge-ewelink` will be document
 - fix(api): send fan speeds on the fan's own scale, so medium no longer turns it off
 - ci: update github actions to their latest versions (#809)
 - fix: keep the decimals of a power reading, so 5.5w is no longer shown as 6w
+- fix(zigbee): stop curtain motors showing no response while they are online (#810)
 
 ## v12.19.0 (2026-10-18)
 
