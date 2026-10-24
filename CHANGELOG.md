@@ -26,6 +26,7 @@ All notable changes to `@homebridge-plugins/homebridge-ewelink` will be document
 - feat: add the nspanel86pb relay, as a two-channel switch
 - feat(zigbee): add the second generation trvzb radiator valve, on the existing thermostat
 - feat(zigbee): add the swv-zf2e two-zone irrigation valve, with a valve for each zone
+- feat: show pm2.5 and pm10 on the air quality sensors that measure them
 
 ## v12.19.0 (2026-10-18)
 
