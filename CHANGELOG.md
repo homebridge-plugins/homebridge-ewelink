@@ -24,6 +24,7 @@ All notable changes to `@homebridge-plugins/homebridge-ewelink` will be document
 - feat(zigbee): add the mini-zb1gp switch, with power readings
 - feat: add the mini-1gsp switch, with power readings
 - feat: add the nspanel86pb relay, as a two-channel switch
+- feat(zigbee): add the second generation trvzb radiator valve, on the existing thermostat
 
 ## v12.19.0 (2026-10-18)
 

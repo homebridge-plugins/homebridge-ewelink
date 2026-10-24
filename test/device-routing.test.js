@@ -182,3 +182,18 @@ describe('the nspanel86pb relay (278)', () => {
     ])
   })
 })
+
+describe('the second generation zigbee radiator valve (7049)', () => {
+  it('sets up on the same thermostat as the first (7017)', async () => {
+    expect(handlersOf(await route(7049))).toEqual([deviceTypes.zb.deviceThermostat])
+  })
+
+  it('reads tenths of a degree, as the first generation does', async () => {
+    const [accessory] = await route(7049)
+
+    await accessory.control.externalUpdate({ temperature: 215 })
+
+    expect(accessory.getService('Thermostat')
+      .getCharacteristic('CurrentTemperature').value).toBe(21.5)
+  })
+})
