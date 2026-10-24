@@ -92,3 +92,20 @@ describe('the snzb-02b (7052) and snzb-02m (7057) sensors', () => {
       .getCharacteristic('CurrentRelativeHumidity').value).toBe(48)
   })
 })
+
+describe('the snzb-06p24 presence sensor (7051)', () => {
+  it('sets up as an occupancy sensor', async () => {
+    expect(handlersOf(await route(7051))).toEqual([deviceTypes.zb.deviceSensorOccupancy])
+  })
+
+  it('shows its presence and its numeric light reading', async () => {
+    const [accessory] = await route(7051)
+
+    await accessory.control.externalUpdate({ human: 1, illumination: 120, updateSource: 'WS' })
+
+    expect(accessory.getService('OccupancySensor')
+      .getCharacteristic('OccupancyDetected').value).toBe(true)
+    expect(accessory.getService('LightSensor')
+      .getCharacteristic('CurrentAmbientLightLevel').value).toBe(120)
+  })
+})
