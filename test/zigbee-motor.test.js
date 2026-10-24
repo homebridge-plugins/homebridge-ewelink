@@ -45,10 +45,10 @@ describe('the zigbee curtain motor position', () => {
 
     // A closed curtain at startup, then asked to open
     await device.externalUpdate({ curPercent: 0, openPercent: 0 })
-    await device.externalUpdate({ openPercent: 100 })
+    await device.externalUpdate({ openPercent: 100, updateSource: 'WS' })
     expect(service.getCharacteristic('PositionState').value).toBe(1)
 
-    await device.externalUpdate({ curPercent: 100 })
+    await device.externalUpdate({ curPercent: 100, updateSource: 'WS' })
 
     // The handler read 'curPercen', which never arrives, so the position never
     // moved and Home showed the curtain opening for ever
@@ -104,5 +104,33 @@ describe('the zbu-curt-7006, which counts 0 as open', () => {
     expect(accessory.getService('WindowCovering')
       .getCharacteristic('CurrentPosition').value).toBe(0)
     expect(platform.sent.at(-1).params).toEqual({ openPercent: 100 })
+  })
+})
+
+describe('the zigbee curtain motor after a restart', () => {
+  it('shows a curtain that finished moving as stopped, from the state the cloud hands over at startup', async () => {
+    const { device, accessory } = build()
+    const service = accessory.getService('WindowCovering')
+    // What the cache held: the position from before the curtain last moved
+    service.getCharacteristic('CurrentPosition').value = 0
+
+    // The startup state has no updateSource, and only the target - fully open
+    // on a ZBU-CURT-7006, which counts 0 as open
+    await device.externalUpdate({ battery: 100, openPercent: 0 })
+
+    expect(service.getCharacteristic('CurrentPosition').value).toBe(100)
+    expect(service.getCharacteristic('PositionState').value).toBe(2)
+  })
+
+  it('still follows a live target change, which starts a real movement', async () => {
+    const { device, accessory } = build()
+    const service = accessory.getService('WindowCovering')
+
+    await device.externalUpdate({ curPercent: 100, openPercent: 100 })
+    await device.externalUpdate({ openPercent: 0, updateSource: 'WS' })
+
+    // a closed curtain asked to open is opening, not already open
+    expect(service.getCharacteristic('CurrentPosition').value).toBe(0)
+    expect(service.getCharacteristic('PositionState').value).toBe(1)
   })
 })
