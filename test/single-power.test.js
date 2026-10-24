@@ -53,3 +53,33 @@ describe('a smart circuit breaker (226) shown as an outlet', () => {
     expect(powerOf(accessory, 'Outlet')).toBe(12.5)
   })
 })
+
+describe('a power device set to inching', () => {
+  it('reads a powr316 (190) in hundredths, so 55W is not shown as 5500W', async () => {
+    const { device, accessory } = build('deviceSwitchSingleInched', 190)
+
+    await device.externalUpdate({ power: '5500', voltage: '23000', current: '24' })
+
+    // The inched handlers never divided, so the reading was a hundred times too big
+    const service = accessory.getService('Switch')
+    expect(service.getCharacteristic('CurrentConsumption').value).toBe(55)
+    expect(service.getCharacteristic('Voltage').value).toBe(230)
+    expect(service.getCharacteristic('ElectricCurrent').value).toBe(0.24)
+  })
+
+  it('reads an s61 (276) shown as an outlet in hundredths', async () => {
+    const { device, accessory } = build('deviceOutletSingleInched', 276)
+
+    await device.externalUpdate({ power: '5500' })
+
+    expect(powerOf(accessory, 'Outlet')).toBe(55)
+  })
+
+  it('shows the power of a zigbee power plug (7032) at all', async () => {
+    const { device, accessory } = build('deviceSwitchSingleInched', 7032)
+
+    await device.externalUpdate({ power: '5500' })
+
+    expect(powerOf(accessory, 'Switch')).toBe(55)
+  })
+})
