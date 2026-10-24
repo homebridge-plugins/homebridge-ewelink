@@ -72,3 +72,35 @@ describe('the zigbee curtain motor shown as a garage door', () => {
     expect(service.getCharacteristic('TargetDoorState').value).toBe(1)
   })
 })
+
+describe('the zbu-curt-7006, which counts 0 as open', () => {
+  it('shows a curtain the motor reports as 0 as open', async () => {
+    const { device, accessory } = build()
+    const service = accessory.getService('WindowCovering')
+
+    await device.externalUpdate({ curPercent: 0, openPercent: 0 })
+
+    expect(service.getCharacteristic('CurrentPosition').value).toBe(100)
+    expect(service.getCharacteristic('TargetPosition').value).toBe(100)
+    expect(service.getCharacteristic('PositionState').value).toBe(2)
+  })
+
+  it('sends 0 when Home asks for the curtain to open', async () => {
+    const { device, platform } = build()
+
+    await device.internalPositionUpdate(100)
+
+    expect(platform.sent.at(-1).params).toEqual({ openPercent: 0 })
+  })
+
+  it('leaves other curtain motors counting the HomeKit way', async () => {
+    const { device, platform, accessory } = build({ eweUIID: 1514 })
+
+    await device.externalUpdate({ curPercent: 0, openPercent: 0 })
+    await device.internalPositionUpdate(100)
+
+    expect(accessory.getService('WindowCovering')
+      .getCharacteristic('CurrentPosition').value).toBe(0)
+    expect(platform.sent.at(-1).params).toEqual({ openPercent: 100 })
+  })
+})

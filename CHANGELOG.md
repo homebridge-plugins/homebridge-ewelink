@@ -13,6 +13,7 @@ All notable changes to `@homebridge-plugins/homebridge-ewelink` will be document
 - fix(zigbee): stop curtain motors showing no response while they are online (#810)
 - fix(zigbee): read the curtain motor's position, so home stops showing it opening (#810)
 - fix(zigbee): keep a curtain motor shown as a garage door in step with its door
+- fix(zigbee): flip the zbu-curt-7006 position, which counts 0 as open (#810)
 
 ## v12.19.0 (2026-10-18)
 
