@@ -109,3 +109,37 @@ describe('the snzb-06p24 presence sensor (7051)', () => {
       .getCharacteristic('CurrentAmbientLightLevel').value).toBe(120)
   })
 })
+
+describe('the mini-zb1gp zigbee switch (7054)', () => {
+  it('sets up as a single switch', async () => {
+    expect(handlersOf(await route(7054))).toEqual([deviceTypes.deviceSwitchSingle])
+  })
+
+  it('follows the first channel and reads power in hundredths', async () => {
+    const [accessory] = await route(7054)
+
+    await accessory.control.externalUpdate({
+      switches: [
+        { switch: 'on', outlet: 0 },
+      ],
+      power: '1250',
+      voltage: '23010',
+      current: '6',
+    })
+
+    const service = accessory.getService('Switch')
+    expect(service.getCharacteristic('On').value).toBe(true)
+    expect(service.getCharacteristic('CurrentConsumption').value).toBe(12.5)
+    expect(service.getCharacteristic('Voltage').value).toBe(230.1)
+  })
+
+  it('reads power the same when shown as an outlet', async () => {
+    const [accessory] = await route(7054, {}, {
+      '10001abcde': { showAs: 'outlet' },
+    })
+
+    await accessory.control.externalUpdate({ power: '1250' })
+
+    expect(accessory.getService('Outlet').getCharacteristic('CurrentConsumption').value).toBe(12.5)
+  })
+})

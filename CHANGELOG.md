@@ -21,6 +21,7 @@ All notable changes to `@homebridge-plugins/homebridge-ewelink` will be document
 - fix: log in again when the cloud reports an expired token, so group commands keep working
 - feat(zigbee): add the snzb-02b and snzb-02m temperature and humidity sensors
 - feat(zigbee): add the snzb-06p24 presence sensor, with occupancy and light level
+- feat(zigbee): add the mini-zb1gp switch, with power readings
 
 ## v12.19.0 (2026-10-18)
 
