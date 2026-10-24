@@ -22,6 +22,7 @@ All notable changes to `@homebridge-plugins/homebridge-ewelink` will be document
 - feat(zigbee): add the snzb-02b and snzb-02m temperature and humidity sensors
 - feat(zigbee): add the snzb-06p24 presence sensor, with occupancy and light level
 - feat(zigbee): add the mini-zb1gp switch, with power readings
+- feat: add the mini-1gsp switch, with power readings
 
 ## v12.19.0 (2026-10-18)
 
