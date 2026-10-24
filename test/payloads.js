@@ -86,7 +86,9 @@ export const payloads = {
       current: 0,
       online: true,
       power: 0,
-      switches: [{ outlet: 0, switch: 'on' }],
+      switches: [
+        { outlet: 0, switch: 'on' },
+      ],
       updateSource: 'LAN',
       voltage: 0,
     },
@@ -98,7 +100,9 @@ export const payloads = {
       current: 0,
       online: true,
       power: 0,
-      switches: [{ outlet: 0, switch: 'off' }],
+      switches: [
+        { outlet: 0, switch: 'off' },
+      ],
       updateSource: 'LAN',
       voltage: 0,
     },

@@ -36,7 +36,15 @@ describe('the iFan speed scale (#551)', () => {
     await speedChar(accessory).setHandler(66)
     expect(outlets(platform.sent[0])).toEqual(['on', 'on', 'off'])
 
-    await device.externalUpdate({ switches: [{ switch: 'off' }, { switch: 'on' }, { switch: 'off' }, { switch: 'on' }], updateSource: 'WS' })
+    await device.externalUpdate({
+      switches: [
+        { switch: 'off' },
+        { switch: 'on' },
+        { switch: 'off' },
+        { switch: 'on' },
+      ],
+      updateSource: 'WS',
+    })
     expect(speedChar(accessory).value).toBe(99)
     expect(device.currentState().fan.speed).toBe('high')
   })
@@ -65,7 +73,12 @@ describe('setting a fan speed through the http api', () => {
     built.accessory.control = built.device
     built.platform.config.username = 'user'
     built.platform.config.password = 'pass'
-    const devicesInHB = new Map([[built.platform.api.hap.uuid.generate('fan-1'), built.accessory]])
+    const devicesInHB = new Map([
+      [
+        built.platform.api.hap.uuid.generate('fan-1'),
+        built.accessory,
+      ],
+    ])
     const api = new ApiServer(built.platform, devicesInHB)
     await api.action({
       url: `/set/fan-1/fan/speed/${speed}`,

@@ -45,9 +45,13 @@ function describeHandler(name, Handler) {
     .sort((a, b) => `${a.type}${a.subtype ?? ''}`.localeCompare(`${b.type}${b.subtype ?? ''}`))
 
   services.forEach((service) => {
-    const subtype = service.subtype ? ` [${service.subtype}]` : ''
+    const subtype = service.subtype
+      ? ` [${service.subtype}]`
+      : ''
     lines.push(`  service: ${service.type}${subtype}${service.isPrimary ? ' *primary' : ''}`)
-    ;[...service.characteristics.keys()].sort().forEach((char) => {
+    ;[
+      ...service.characteristics.keys(),
+    ].sort().forEach((char) => {
       const props = service.characteristics.get(char).props
       const shown = Object.keys(props).length > 0
         ? `  [${Object.entries(props).map(([k, v]) => `${k}=${JSON.stringify(v)}`).join(', ')}]`

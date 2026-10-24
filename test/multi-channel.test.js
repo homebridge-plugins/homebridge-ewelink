@@ -16,7 +16,11 @@ function twoChannel(Handler, serviceType) {
   const primary = makeAccessory('Two Gang', { channelCount: 2, hbDeviceId: '10001abcdeSW0' })
   const devicesInHB = new Map()
   const channels = [1, 2].map((i) => {
-    const sub = makeAccessory(`Two Gang ${i}`, { channelCount: 2, hbDeviceId: `10001abcdeSW${i}`, switchNumber: String(i) })
+    const sub = makeAccessory(`Two Gang ${i}`, {
+      channelCount: 2,
+      hbDeviceId: `10001abcdeSW${i}`,
+      switchNumber: String(i),
+    })
     sub.addService(serviceType)
     sub.eveService = new platform.eveService('switch', sub)
     devicesInHB.set(platform.api.hap.uuid.generate(`10001abcdeSW${i}`), sub)
@@ -24,7 +28,13 @@ function twoChannel(Handler, serviceType) {
   })
   const device = new Handler(platform, primary, devicesInHB)
   const on = sub => sub.getService(serviceType).getCharacteristic('On').value
-  return { device, primary, channels, on, serviceType }
+  return {
+    device,
+    primary,
+    channels,
+    on,
+    serviceType,
+  }
 }
 
 describe.each([
@@ -34,7 +44,12 @@ describe.each([
   it('applies a change to the channel named in outlet, not to channel 1', async () => {
     const { device, channels, on } = twoChannel(Handler, serviceType)
 
-    await device.externalUpdate({ switches: [{ switch: 'on', outlet: 1 }], updateSource: 'WS' })
+    await device.externalUpdate({
+      switches: [
+        { switch: 'on', outlet: 1 },
+      ],
+      updateSource: 'WS',
+    })
 
     expect(on(channels[0])).toBeFalsy()
     expect(on(channels[1])).toBe(true)
@@ -43,8 +58,19 @@ describe.each([
   it('keeps the master tile on while another channel is still on', async () => {
     const { device, primary, on } = twoChannel(Handler, serviceType)
 
-    await device.externalUpdate({ switches: [{ switch: 'on', outlet: 0 }, { switch: 'on', outlet: 1 }], updateSource: 'WS' })
-    await device.externalUpdate({ switches: [{ switch: 'off', outlet: 1 }], updateSource: 'WS' })
+    await device.externalUpdate({
+      switches: [
+        { switch: 'on', outlet: 0 },
+        { switch: 'on', outlet: 1 },
+      ],
+      updateSource: 'WS',
+    })
+    await device.externalUpdate({
+      switches: [
+        { switch: 'off', outlet: 1 },
+      ],
+      updateSource: 'WS',
+    })
 
     expect(on(primary)).toBe(true)
   })
@@ -52,12 +78,19 @@ describe.each([
 
 describe('finding a channel in a switches array', () => {
   it('matches on outlet when the entries carry it', () => {
-    expect(switchForChannel([{ switch: 'on', outlet: 1 }], 1)).toEqual({ switch: 'on', outlet: 1 })
-    expect(switchForChannel([{ switch: 'on', outlet: 1 }], 0)).toBeUndefined()
+    expect(switchForChannel([
+      { switch: 'on', outlet: 1 },
+    ], 1)).toEqual({ switch: 'on', outlet: 1 })
+    expect(switchForChannel([
+      { switch: 'on', outlet: 1 },
+    ], 0)).toBeUndefined()
   })
 
   it('falls back to position for a list without outlet numbers', () => {
-    expect(switchForChannel([{ switch: 'off' }, { switch: 'on' }], 1)).toEqual({ switch: 'on' })
+    expect(switchForChannel([
+      { switch: 'off' },
+      { switch: 'on' },
+    ], 1)).toEqual({ switch: 'on' })
   })
 
   it('copes with no list at all', () => {

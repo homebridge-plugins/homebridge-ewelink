@@ -20,15 +20,24 @@ export const CONTEXT_FOR = {
   deviceSwitchMulti: { channelCount: 4, switchNumber: '0' },
   devicePanel: { channelCount: 4 },
   deviceRfBridge: { buttons: {}, subType: 'button' },
-  deviceRfButton: { buttons: { 0: 'Button' }, subType: 'button' },
+  deviceRfButton: {
+    buttons: { 0: 'Button' },
+    subType: 'button',
+  },
   deviceRfSensor: { subType: 'motion' },
   deviceGroup: { eweUIID: 5000 },
   // Reads eweParams to decide between a button and a switch
   deviceVirtual: { eweParams: {} },
   // Each takes its three channel numbers from the keys of `buttons`
-  deviceRfBlind: { buttons: { 0: 'Open', 1: 'Stop', 2: 'Close' } },
-  deviceRfDoor: { buttons: { 0: 'Open', 1: 'Stop', 2: 'Close' } },
-  deviceRfWindow: { buttons: { 0: 'Open', 1: 'Stop', 2: 'Close' } },
+  deviceRfBlind: {
+    buttons: { 0: 'Open', 1: 'Stop', 2: 'Close' },
+  },
+  deviceRfDoor: {
+    buttons: { 0: 'Open', 1: 'Stop', 2: 'Close' },
+  },
+  deviceRfWindow: {
+    buttons: { 0: 'Open', 1: 'Stop', 2: 'Close' },
+  },
 }
 
 /**
@@ -51,9 +60,15 @@ export const EXTRA_ARGS_FOR = {
     devicesInHB.set(platform.api.hap.uuid.generate(`${garageId}SWX`), garage)
     return [devicesInHB]
   },
-  deviceSensorHidden: () => [makeAccessory('Paired Sensor')],
-  deviceSensorVisible: () => [makeAccessory('Paired Sensor')],
-  deviceGateOne: () => [new Map()],
+  deviceSensorHidden: () => [
+    makeAccessory('Paired Sensor'),
+  ],
+  deviceSensorVisible: () => [
+    makeAccessory('Paired Sensor'),
+  ],
+  deviceGateOne: () => [
+    new Map(),
+  ],
 }
 
 /**
@@ -75,8 +90,12 @@ export const RF_SUBDEVICE_HANDLERS = new Set([
 /** The platform config that puts `settings` where the named handler will read it. */
 export function configFor(name, settings) {
   return RF_SUBDEVICE_HANDLERS.has(name)
-    ? { rfSubdevices: { '10001abcdeSW0': settings } }
-    : { deviceConf: { '10001abcde': settings } }
+    ? {
+        rfSubdevices: { '10001abcdeSW0': settings },
+      }
+    : {
+        deviceConf: { '10001abcde': settings },
+      }
 }
 
 /**
@@ -112,7 +131,10 @@ export function everyHandler() {
 export function buildHandler(name, Handler, platformOverrides = {}, contextOverrides = {}) {
   const shortName = name.split('.').pop()
   const platform = makePlatform(platformOverrides)
-  const accessory = makeAccessory(name, { ...(CONTEXT_FOR[shortName] ?? {}), ...contextOverrides })
+  const accessory = makeAccessory(name, {
+    ...(CONTEXT_FOR[shortName] ?? {}),
+    ...contextOverrides,
+  })
   const extra = EXTRA_ARGS_FOR[shortName]?.(platform, accessory) ?? []
 
   // Several handlers start a polling timer, which would otherwise keep the
@@ -133,6 +155,11 @@ export function buildHandler(name, Handler, platformOverrides = {}, contextOverr
     })
     return { device, platform, accessory, cleanup }
   } catch (err) {
-    return { error: err.message, platform, accessory, cleanup }
+    return {
+      error: err.message,
+      platform,
+      accessory,
+      cleanup,
+    }
   }
 }
