@@ -28,6 +28,7 @@ All notable changes to `@homebridge-plugins/homebridge-ewelink` will be document
 - feat(zigbee): add the swv-zf2e two-zone irrigation valve, with a valve for each zone
 - feat: show pm2.5 and pm10 on the air quality sensors that measure them
 - fix(zigbee): show a curtain motor at rest after a restart, not stuck opening (#810)
+- fix: log the state each device starts from in debug mode, to trace a wrong start (#810)
 
 ## v12.19.0 (2026-10-18)
 

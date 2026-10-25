@@ -25,14 +25,14 @@ afterEach(() => {
 })
 
 /** Sets a device of this UIID up, and returns the accessories made for it. */
-async function route(uiid, params = {}, deviceConf = {}) {
+async function route(uiid, params = {}, deviceConf = {}, platformExtras = {}) {
   const platform = Object.create(Platform.prototype)
   Object.assign(platform, makePlatform({ deviceConf }), {
     hideChannels: [],
     ignoredDevices: [],
     ipOverride: {},
     lanDevices: new Map(),
-  })
+  }, platformExtras)
   platform.addAccessory = (device, hbDeviceId) => {
     const accessory = makeAccessory(device.name, {
       channelCount: platformConsts.supportedDevices[uiid],
@@ -201,5 +201,15 @@ describe('the second generation zigbee radiator valve (7049)', () => {
 describe('the two-zone zigbee irrigation valve (7048)', () => {
   it('sets up as a zigbee water valve', async () => {
     expect(handlersOf(await route(7048))).toEqual([deviceTypes.zb.deviceZigbeeWaterValve])
+  })
+})
+
+describe('the state a device starts from', () => {
+  it('is written to the debug log, so a wrong start can be traced to the cloud (#810)', async () => {
+    // Only a cloud connection hands the device a starting state
+    const params = { curPercent: 100, openPercent: 0 }
+    const [accessory] = await route(7006, params, {}, { wsClient: {} })
+
+    expect(accessory.logDebug.messages()).toContain(`receiving update ${JSON.stringify(params)}`)
   })
 })
