@@ -74,7 +74,7 @@
     "ws": "^8.22.0"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "^9.5.1",
+    "@antfu/eslint-config": "^10.0.0",
     "@vitest/coverage-v8": "^5.0.5",
     "vitest": "^5.0.5"
   }
