@@ -19,7 +19,7 @@ import platformConsts from '../lib/utils/constants.js'
 const deviceDir = fileURLToPath(new URL('../lib/device', import.meta.url))
 
 // Params the plugin adds to an update itself, rather than receiving them
-const ADDED_BY_PLUGIN = new Set(['operSide', 'updateSource'])
+const ADDED_BY_PLUGIN = new Set(['operSide', 'storedState', 'updateSource'])
 
 /** The same check ws.js and lan.js make on each incoming param. */
 function isKept(param) {
