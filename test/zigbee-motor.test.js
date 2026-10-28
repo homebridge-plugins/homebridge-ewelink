@@ -122,6 +122,64 @@ describe('the zigbee curtain motor after a restart', () => {
     expect(service.getCharacteristic('PositionState').value).toBe(2)
   })
 
+  it('ignores the stale position the cloud hands over for a zbu-curt-7006', async () => {
+    const { device, accessory } = build()
+    const service = accessory.getService('WindowCovering')
+
+    // neoncek's startup state on #810, for a curtain that was fully open: the
+    // target says open (0 on this model) but the stored position says closed
+    await device.externalUpdate({
+      curPercent: 100,
+      openPercent: 0,
+      curtainAction: 'open',
+      motorDir: 'forward',
+      motorClb: 'calibration',
+      battery: 100,
+    })
+
+    expect(service.getCharacteristic('CurrentPosition').value).toBe(100)
+    expect(service.getCharacteristic('TargetPosition').value).toBe(100)
+    expect(service.getCharacteristic('PositionState').value).toBe(2)
+  })
+
+  it('ignores it too in the reply to a status request, which comes from the same copy', async () => {
+    const { device, accessory } = build()
+    const service = accessory.getService('WindowCovering')
+    await device.externalUpdate({ curPercent: 0, openPercent: 0, updateSource: 'WS' })
+
+    await device.externalUpdate({
+      curPercent: 100,
+      openPercent: 0,
+      updateSource: 'WS',
+      storedState: true,
+    })
+
+    expect(service.getCharacteristic('CurrentPosition').value).toBe(100)
+    expect(service.getCharacteristic('PositionState').value).toBe(2)
+  })
+
+  it('still follows a position the zbu-curt-7006 reports live', async () => {
+    const { device, accessory } = build()
+    const service = accessory.getService('WindowCovering')
+    await device.externalUpdate({ openPercent: 0 })
+
+    // asked to close, then the motor reports it halfway
+    await device.externalUpdate({ openPercent: 100, updateSource: 'WS' })
+    await device.externalUpdate({ curPercent: 50, updateSource: 'WS' })
+
+    expect(service.getCharacteristic('CurrentPosition').value).toBe(50)
+    expect(service.getCharacteristic('PositionState').value).toBe(0)
+  })
+
+  it('keeps the stored position for other curtain motors', async () => {
+    const { device, accessory } = build({ eweUIID: 1514 })
+
+    await device.externalUpdate({ curPercent: 40, openPercent: 100 })
+
+    expect(accessory.getService('WindowCovering')
+      .getCharacteristic('CurrentPosition').value).toBe(40)
+  })
+
   it('still follows a live target change, which starts a real movement', async () => {
     const { device, accessory } = build()
     const service = accessory.getService('WindowCovering')
