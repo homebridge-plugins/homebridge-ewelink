@@ -71,7 +71,7 @@
     "node-persist": "^4.0.4",
     "p-queue": "^10.0.0",
     "websocket-as-promised": "^3.0.1",
-    "ws": "^8.22.0"
+    "ws": "^8.22.1"
   },
   "devDependencies": {
     "@antfu/eslint-config": "^10.0.0",
