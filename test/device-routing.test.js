@@ -25,7 +25,7 @@ afterEach(() => {
 })
 
 /** Sets a device of this UIID up, and returns the accessories made for it. */
-async function route(uiid, params = {}, deviceConf = {}, platformExtras = {}) {
+async function route(uiid, params = {}, deviceConf = {}, platformExtras = {}, deviceExtras = {}) {
   const platform = Object.create(Platform.prototype)
   Object.assign(platform, makePlatform({ deviceConf }), {
     hideChannels: [],
@@ -33,8 +33,9 @@ async function route(uiid, params = {}, deviceConf = {}, platformExtras = {}) {
     ipOverride: {},
     lanDevices: new Map(),
   }, platformExtras)
-  platform.addAccessory = (device, hbDeviceId) => {
+  platform.addAccessory = (device, hbDeviceId, hidden, extraContext = {}) => {
     const accessory = makeAccessory(device.name, {
+      ...extraContext,
       channelCount: platformConsts.supportedDevices[uiid],
       eweDeviceId: device.deviceid,
       eweUIID: uiid,
@@ -55,6 +56,7 @@ async function route(uiid, params = {}, deviceConf = {}, platformExtras = {}) {
     online: true,
     params,
     productModel: 'TEST',
+    ...deviceExtras,
   })
 
   // A device that fails to set up is only reported in the log
@@ -211,5 +213,37 @@ describe('the state a device starts from', () => {
     const [accessory] = await route(7006, params, {}, { wsClient: {} })
 
     expect(accessory.logDebug.messages()).toContain(`receiving update ${JSON.stringify(params)}`)
+  })
+})
+
+describe('an rf bridge curtain', () => {
+  // A curtain remote (type 5) can be shown as a blind, door or window. The
+  // handler was looked up by a file path string, which is not a class, so
+  // setting one of these up threw "is not a constructor".
+  it.each([
+    ['blind', 'deviceRfBlind'],
+    ['door', 'deviceRfDoor'],
+    ['window', 'deviceRfWindow'],
+  ])('sets up a curtain shown as a %s', async (curtainType, handler) => {
+    const accessories = await route(28, {}, {}, {
+      hideMasters: [],
+      rfSubdevices: {
+        '10001abcdeSW1': { curtainType },
+      },
+    }, {
+      tags: {
+        zyx_info: [
+          {
+            name: 'Curtain',
+            remote_type: '5',
+            buttonName: [
+              { 0: 'Open' },
+            ],
+          },
+        ],
+      },
+    })
+
+    expect(handlersOf(accessories)).toContain(deviceTypes.sim[handler])
   })
 })
