@@ -31,6 +31,7 @@ All notable changes to `@homebridge-plugins/homebridge-ewelink` will be document
 - fix(zigbee): ignore the stale position the cloud keeps for a zbu-curt-7006 (#810)
 - fix(rf): set up a curtain shown as a blind, door or window, which failed to start
 - fix: accept the zigbee multi channel model the settings offer, without a false warning
+- fix(lan): send the channels a scene changes on one switch as one request (@mzsoliman)
 
 ## v12.19.0 (2026-10-18)
 
