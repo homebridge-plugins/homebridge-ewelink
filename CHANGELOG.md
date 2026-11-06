@@ -6,6 +6,7 @@ All notable changes to `@homebridge-plugins/homebridge-ewelink` will be document
 
 ### Changed
 
+- fix(lan): send the channels a scene changes on one switch as one request, so home scenes no longer fail
 - feat(fan): add an option to show ifan speed as a percentage, so siri's levels work (#551)
 - fix(api): send fan speeds on the fan's own scale, so medium no longer turns it off
 - ci: update github actions to their latest versions (#809)
