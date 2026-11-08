@@ -200,6 +200,72 @@ describe('the second generation zigbee radiator valve (7049)', () => {
   })
 })
 
+describe('the tp-wgzba zigbee wall thermostat (7050)', () => {
+  /** The thermostat's Home service, set up from a device in this state. */
+  async function thermostat(params = {}) {
+    const [accessory] = await route(7050, params)
+    return {
+      accessory,
+      service: accessory.getService('Thermostat'),
+    }
+  }
+
+  it('sets up on the same thermostat as the radiator valves', async () => {
+    expect(handlersOf(await route(7050))).toEqual([deviceTypes.zb.deviceThermostat])
+  })
+
+  it('reads its temperatures in tenths of a degree', async () => {
+    const { accessory, service } = await thermostat()
+
+    await accessory.control.externalUpdate({ temperature: 242, curTargetTemp: 220 })
+
+    expect(service.getCharacteristic('CurrentTemperature').value).toBe(24.2)
+    expect(service.getCharacteristic('TargetTemperature').value).toBe(22)
+  })
+
+  it('offers only heat and auto, as the value for off is not known', async () => {
+    const { service } = await thermostat()
+    const targetState = service.getCharacteristic('TargetHeatingCoolingState')
+
+    expect(targetState.props.validValues).toEqual([1, 3])
+    expect([1, 3]).toContain(targetState.value)
+  })
+
+  it('follows heat and auto from the device', async () => {
+    const { accessory, service } = await thermostat()
+    const targetState = service.getCharacteristic('TargetHeatingCoolingState')
+
+    await accessory.control.externalUpdate({ workMode: '2' })
+    expect(targetState.value).toBe(3)
+
+    await accessory.control.externalUpdate({ workMode: '0' })
+    expect(targetState.value).toBe(1)
+  })
+
+  it('leaves an unknown mode as it is in home, and logs it once', async () => {
+    const { accessory, service } = await thermostat()
+    const targetState = service.getCharacteristic('TargetHeatingCoolingState')
+
+    await accessory.control.externalUpdate({ workMode: '0' })
+    await accessory.control.externalUpdate({ workMode: '5' })
+    await accessory.control.externalUpdate({ workMode: '5' })
+
+    expect(targetState.value).toBe(1)
+    const logged = accessory.control.platform.log.entries
+      .filter(entry => String(entry.args[0]).includes('unknown work mode'))
+    expect(logged).toHaveLength(1)
+  })
+
+  it('still shows a radiator valve in mode 1 as off', async () => {
+    const [accessory] = await route(7017)
+
+    await accessory.control.externalUpdate({ workMode: '1' })
+
+    expect(accessory.getService('Thermostat')
+      .getCharacteristic('TargetHeatingCoolingState').value).toBe(0)
+  })
+})
+
 describe('the two-zone zigbee irrigation valve (7048)', () => {
   it('sets up as a zigbee water valve', async () => {
     expect(handlersOf(await route(7048))).toEqual([deviceTypes.zb.deviceZigbeeWaterValve])

@@ -33,6 +33,7 @@ All notable changes to `@homebridge-plugins/homebridge-ewelink` will be document
 - fix: accept the zigbee multi channel model the settings offer, without a false warning
 - fix(lan): send the channels a scene changes on one switch as one request (@mzsoliman)
 - chore: leave CLAUDE.md out of the published package
+- feat(zigbee): add the tp-wgzba wall thermostat, with heat and auto modes
 
 ## v12.19.0 (2026-10-18)
 
