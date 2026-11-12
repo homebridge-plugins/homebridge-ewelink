@@ -190,3 +190,27 @@ describe('the zigbee curtain motor after a restart', () => {
     expect(service.getCharacteristic('PositionState').value).toBe(1)
   })
 })
+
+describe('the zigbee curtain motor without its end positions set', () => {
+  const warnings = device => device.platform.log.entries
+    .filter(entry => entry.level === 'warn' && String(entry.args[2]).includes('no end positions'))
+
+  it('warns once that the end positions need setting with the remote', async () => {
+    const { device } = build()
+
+    // neoncek's motors on #810 sent this until their limits were set, and
+    // every hourly report said closed whether the curtain was open or not
+    await device.externalUpdate({ curPercent: 100, openPercent: 0, motorClb: 'calibration' })
+    await device.externalUpdate({ curPercent: 100, motorClb: 'calibration', updateSource: 'WS' })
+
+    expect(warnings(device)).toHaveLength(1)
+  })
+
+  it('says nothing once the motor reports its end positions are set', async () => {
+    const { device } = build()
+
+    await device.externalUpdate({ curPercent: 50, openPercent: 50, motorClb: 'normal' })
+
+    expect(warnings(device)).toHaveLength(0)
+  })
+})

@@ -34,6 +34,7 @@ All notable changes to `@homebridge-plugins/homebridge-ewelink` will be document
 - fix(lan): send the channels a scene changes on one switch as one request (@mzsoliman)
 - chore: leave CLAUDE.md out of the published package
 - feat(zigbee): add the tp-wgzba wall thermostat, with heat and auto modes
+- feat(zigbee): warn when a curtain motor's end positions were never set (#810)
 
 ## v12.19.0 (2026-10-18)
 
