@@ -189,6 +189,16 @@ describe('the two-way metering socket (294)', () => {
   })
 })
 
+describe('the four-channel remote switch (163)', () => {
+  it('sets up as a four-channel switch, like its 1-3 channel siblings', async () => {
+    const accessories = await route(163)
+
+    // The hidden main accessory, then one per channel
+    expect(handlersOf(accessories)).toEqual(Array.from({ length: 5 }).fill(deviceTypes.deviceSwitchMulti))
+    expect(accessories.at(-1).context.hbDeviceId).toBe('10001abcdeSW4')
+  })
+})
+
 describe('the nspanel86pb relay (278)', () => {
   it('sets up as a two-channel switch', async () => {
     const accessories = await route(278)
