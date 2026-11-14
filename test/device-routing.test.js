@@ -167,6 +167,28 @@ describe('the mini-1gsp switch (283)', () => {
   })
 })
 
+describe('the two-way metering socket (294)', () => {
+  // CoolKit's protocol says it is the same as the mini-1gsp (283)
+  it('sets up as a single switch', async () => {
+    expect(handlersOf(await route(294))).toEqual([deviceTypes.deviceSwitchSingle])
+  })
+
+  it('follows the first channel and reads power in hundredths', async () => {
+    const [accessory] = await route(294)
+
+    await accessory.control.externalUpdate({
+      switches: [
+        { switch: 'on', outlet: 0 },
+      ],
+      power: '6025',
+    })
+
+    const service = accessory.getService('Switch')
+    expect(service.getCharacteristic('On').value).toBe(true)
+    expect(service.getCharacteristic('CurrentConsumption').value).toBe(60.25)
+  })
+})
+
 describe('the nspanel86pb relay (278)', () => {
   it('sets up as a two-channel switch', async () => {
     const accessories = await route(278)
