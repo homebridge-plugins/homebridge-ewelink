@@ -36,6 +36,7 @@ All notable changes to `@homebridge-plugins/homebridge-ewelink` will be document
 - feat(zigbee): add the tp-wgzba wall thermostat, with heat and auto modes
 - feat(zigbee): warn when a curtain motor's end positions were never set (#810)
 - fix: say which server and login type the http login uses, in debug mode (#818)
+- fix: show the sonoff sc's light level the right way up, as 1 is its brightest
 
 ## v12.19.0 (2026-10-18)
 
