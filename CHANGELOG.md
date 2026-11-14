@@ -48,6 +48,7 @@ All notable changes to `@homebridge-plugins/homebridge-ewelink` will be document
 - feat: dim the sonoff b1 and set its white tone, as its protocol allows in white mode
 - feat: show the mini-1gsp's wall switch presses as a button when its relay is separated
 - fix: turn all four channels of a four-channel power switch from its main tile
+- feat: add the uiid 289 and 290 matter metering switches, with power for each channel
 
 ## v12.19.0 (2026-10-18)
 

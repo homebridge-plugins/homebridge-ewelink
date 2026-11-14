@@ -199,6 +199,17 @@ describe('the four-channel remote switch (163)', () => {
   })
 })
 
+describe('the matter metering switches (289 and 290)', () => {
+  // The hidden main accessory, then one per channel
+  it('sets up two channels on the 289', async () => {
+    expect(await route(289)).toHaveLength(3)
+  })
+
+  it('sets up four channels on the 290', async () => {
+    expect(await route(290)).toHaveLength(5)
+  })
+})
+
 describe('the nspanel86pb relay (278)', () => {
   it('sets up as a two-channel switch', async () => {
     const accessories = await route(278)
