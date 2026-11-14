@@ -43,6 +43,7 @@ All notable changes to `@homebridge-plugins/homebridge-ewelink` will be document
 - fix: switch a circuit breaker set as inched with true, as its protocol asks
 - feat: add the uiid 294 two-way metering socket, with power readings
 - feat: add the uiid 163 four-channel remote switch, like its one to three channel siblings
+- fix: control a uiid 52 light with the state and channel values its protocol uses
 
 ## v12.19.0 (2026-10-18)
 
