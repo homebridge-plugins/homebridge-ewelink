@@ -40,6 +40,7 @@ All notable changes to `@homebridge-plugins/homebridge-ewelink` will be document
 - fix: grade the sonoff sc's dust level with the bands its protocol gives
 - fix: stop a plug's total energy in eve growing 10 times too fast
 - fix: keep a pale colour pale when a uiid 104 bulb or the diffuser reports it
+- fix: switch a circuit breaker set as inched with true, as its protocol asks
 
 ## v12.19.0 (2026-10-18)
 
