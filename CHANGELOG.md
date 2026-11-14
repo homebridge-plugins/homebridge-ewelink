@@ -46,6 +46,7 @@ All notable changes to `@homebridge-plugins/homebridge-ewelink` will be document
 - fix: control a uiid 52 light with the state and channel values its protocol uses
 - feat: show the three-speed humidifier's humidity and temperature, and warn when its tank is empty
 - feat: dim the sonoff b1 and set its white tone, as its protocol allows in white mode
+- feat: show the mini-1gsp's wall switch presses as a button when its relay is separated
 
 ## v12.19.0 (2026-10-18)
 
