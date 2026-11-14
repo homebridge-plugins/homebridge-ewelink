@@ -47,6 +47,7 @@ All notable changes to `@homebridge-plugins/homebridge-ewelink` will be document
 - feat: show the three-speed humidifier's humidity and temperature, and warn when its tank is empty
 - feat: dim the sonoff b1 and set its white tone, as its protocol allows in white mode
 - feat: show the mini-1gsp's wall switch presses as a button when its relay is separated
+- fix: turn all four channels of a four-channel power switch from its main tile
 
 ## v12.19.0 (2026-10-18)
 
