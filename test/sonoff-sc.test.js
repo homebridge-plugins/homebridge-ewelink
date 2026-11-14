@@ -40,3 +40,17 @@ describe('the sonoff sc light level', () => {
     expect(dark).toBe(10)
   })
 })
+
+describe('the sonoff sc dust level', () => {
+  it('grades the level with the bands in coolkit\'s protocol', async () => {
+    const { device, accessory } = build()
+    const quality = () => accessory.getService('AirQualitySensor').getCharacteristic('AirQuality').value
+
+    await device.externalUpdate({ dusty: 3 })
+    expect(quality()).toBe(1)
+    await device.externalUpdate({ dusty: 6 })
+    expect(quality()).toBe(2)
+    await device.externalUpdate({ dusty: 7 })
+    expect(quality()).toBe(5)
+  })
+})
