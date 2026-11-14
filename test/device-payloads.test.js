@@ -155,7 +155,10 @@ describe('the zigbee siren', () => {
     // The device reports its configured volume and duration; a later trigger
     // has to send those back alongside the flag, or the device would fall
     // back to its defaults
-    await device.externalUpdate({ alarmSetting: { volume: 2, time: 10 }, updateSource: 'WS' })
+    await device.externalUpdate({
+      alarmSetting: { volume: 2, time: 10 },
+      updateSource: 'WS',
+    })
     await accessory.getService('Switch').getCharacteristic('On').setHandler(true)
 
     expect(platform.sent).toHaveLength(1)
@@ -172,7 +175,10 @@ describe('the zigbee siren', () => {
     // early stop, so an off is only the tile resetting
     const { device, accessory, platform } = feed(name, Handler, {}, { eweUIID: 7056 })
 
-    await device.externalUpdate({ alarmSetting: { volume: 2, time: 10 }, updateSource: 'WS' })
+    await device.externalUpdate({
+      alarmSetting: { volume: 2, time: 10 },
+      updateSource: 'WS',
+    })
     await accessory.getService('Switch').getCharacteristic('On').setHandler(false)
 
     expect(platform.sent).toHaveLength(0)

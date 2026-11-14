@@ -66,16 +66,16 @@
     "changelog:sync": "node .github/scripts/sync-changelog.mjs"
   },
   "dependencies": {
-    "@homebridge/plugin-ui-utils": "^2.2.6",
-    "axios": "^1.20.0",
+    "@homebridge/plugin-ui-utils": "^2.3.0",
+    "axios": "^1.21.1",
     "node-persist": "^4.0.4",
     "p-queue": "^10.0.0",
     "websocket-as-promised": "^3.0.1",
-    "ws": "^8.22.0"
+    "ws": "^8.23.0"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "^9.5.1",
-    "@vitest/coverage-v8": "^5.0.5",
-    "vitest": "^5.0.5"
+    "@antfu/eslint-config": "^10.0.0",
+    "@vitest/coverage-v8": "^5.1.0",
+    "vitest": "^5.1.0"
   }
 }

@@ -60,7 +60,9 @@ describe('the zigbee curtain motor position', () => {
 describe('the zigbee curtain motor shown as a garage door', () => {
   it('moves the target with the door, so Home does not show it stuck closing', async () => {
     const built = buildHandler(name, Handler, {
-      deviceConf: { '10001abcde': { showAsMotor: 'garage' } },
+      deviceConf: {
+        '10001abcde': { showAsMotor: 'garage' },
+      },
     }, { eweUIID: 1514 })
     const service = built.accessory.getService('GarageDoorOpener')
 

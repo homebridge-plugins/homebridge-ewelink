@@ -21,7 +21,9 @@ import platformLang from '../lib/utils/lang-en.js'
  */
 function nameProxy() {
   return new Proxy({}, {
-    get: (_target, prop) => (typeof prop === 'string' ? prop : undefined),
+    get: (_target, prop) => (typeof prop === 'string'
+      ? prop
+      : undefined),
     has: () => true,
   })
 }
@@ -200,7 +202,9 @@ export function makePlatform(overrides = {}) {
         Service: nameProxy(),
         Characteristic: nameProxy(),
         Categories: nameProxy(),
-        uuid: { generate: input => `uuid-${input}` },
+        uuid: {
+          generate: input => `uuid-${input}`,
+        },
         HapStatusError: class extends Error {},
         AdaptiveLightingController: class {
           constructor(service, options) {
@@ -226,7 +230,10 @@ export function makePlatform(overrides = {}) {
       }
     },
     storageClientData: false,
-    storageData: { getItem: async () => null, setItem: async () => {} },
+    storageData: {
+      getItem: async () => null,
+      setItem: async () => {},
+    },
     // Every outbound command is recorded rather than sent, so a test can assert
     // on what a handler would have asked the device to do
     sendDeviceUpdate: async (accessory, params) => {

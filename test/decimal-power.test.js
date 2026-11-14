@@ -27,7 +27,12 @@ class FakeCharacteristic {
 
 const hap = {
   Characteristic: FakeCharacteristic,
-  Formats: { FLOAT: 'float', UINT16: 'uint16', UINT8: 'uint8', UINT32: 'uint32' },
+  Formats: {
+    FLOAT: 'float',
+    UINT16: 'uint16',
+    UINT8: 'uint8',
+    UINT32: 'uint32',
+  },
   Perms: { PAIRED_READ: 'pr', PAIRED_WRITE: 'pw', NOTIFY: 'ev' },
   Units: { SECONDS: 'seconds' },
 }
@@ -55,7 +60,11 @@ describe('the eve current consumption characteristic', () => {
     })
     const accessory = {
       context: {},
-      services: [{ characteristics: [cached, other] }],
+      services: [
+        {
+          characteristics: [cached, other],
+        },
+      ],
     }
 
     // Built with no arguments, the platform skips its set-up, so only the

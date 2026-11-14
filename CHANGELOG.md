@@ -50,6 +50,7 @@ All notable changes to `@homebridge-plugins/homebridge-ewelink` will be document
 - fix: turn all four channels of a four-channel power switch from its main tile
 - feat: add the uiid 289 and 290 matter metering switches, with power for each channel
 - ci: publish releases with node.js v26, the current lts
+- chore(deps): dependency updates
 
 ## v12.19.0 (2026-10-18)
 

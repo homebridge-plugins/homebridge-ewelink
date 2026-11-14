@@ -148,8 +148,12 @@ describe('the per-device logging setting', () => {
 
     const built = buildHandler(name, Handler, {
       config: { disableDeviceLogging: false },
-      deviceConf: { someOtherDevice: { overrideLogging: 'disable' } },
-      rfSubdevices: { someOtherDevice: { overrideLogging: 'disable' } },
+      deviceConf: {
+        someOtherDevice: { overrideLogging: 'disable' },
+      },
+      rfSubdevices: {
+        someOtherDevice: { overrideLogging: 'disable' },
+      },
     })
 
     // The lookup is keyed on this accessory's own device id, so a setting on a
