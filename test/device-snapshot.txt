@@ -67,7 +67,8 @@ deviceLightDimmer
 deviceLightRGB
   logging: on
   service: Lightbulb
-    Brightness  [minStep=100]
+    Brightness  [minStep=1]
+    ColorTemperature
     Hue
     On
     Saturation
