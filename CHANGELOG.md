@@ -2,6 +2,12 @@
 
 All notable changes to `@homebridge-plugins/homebridge-ewelink` will be documented in this file.
 
+## v12.20.1 (Pending Release)
+
+### Changed
+
+- fix: hide the humidity sensor for the temperature-only wts01 probe (#819)
+
 ## v12.20.0 (2026-11-14)
 
 ### Changed
