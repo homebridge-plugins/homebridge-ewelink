@@ -44,6 +44,7 @@ All notable changes to `@homebridge-plugins/homebridge-ewelink` will be document
 - feat: add the uiid 294 two-way metering socket, with power readings
 - feat: add the uiid 163 four-channel remote switch, like its one to three channel siblings
 - fix: control a uiid 52 light with the state and channel values its protocol uses
+- feat: show the three-speed humidifier's humidity and temperature, and warn when its tank is empty
 
 ## v12.19.0 (2026-10-18)
 
