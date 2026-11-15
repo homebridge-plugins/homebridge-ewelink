@@ -172,6 +172,8 @@ deviceSensorTempHumi
 
 deviceSwitchMan
   logging: on
+  service: ServiceLabel
+    ServiceLabelNamespace
   service: StatelessProgrammableSwitch [channel1]
     ConfiguredName
     ServiceLabelIndex
