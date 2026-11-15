@@ -30,4 +30,17 @@ describe('the SwitchMan R5', () => {
     expect(first.accessory.services.filter(service => service.type === 'ServiceLabel')).toHaveLength(1)
     expect(first.accessory.services.filter(service => service.type === 'StatelessProgrammableSwitch')).toHaveLength(6)
   })
+
+  it('logs a press with the button name', async () => {
+    const { device, platform, cleanup } = buildHandler(name, deviceTypes[name], {}, { eweUIID: 174 })
+    await device.externalUpdate({
+      outlet: 0,
+      key: 0,
+      actionTime: Date.now(),
+      updateSource: 'WS',
+    })
+    cleanup()
+    const line = platform.log.entries.find(entry => entry.args[3] === platform.lang.curState)
+    expect(line.args[2]).toBe('Channel 1')
+  })
 })
