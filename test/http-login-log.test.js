@@ -17,8 +17,9 @@ afterEach(() => {
 
 function makeClient(username) {
   const lines = []
+  const warnings = []
   const log = () => {}
-  log.warn = () => {}
+  log.warn = (...args) => warnings.push(args)
   log.debug = (...args) => lines.push(args)
   const client = new HttpClient({
     config: {
@@ -42,7 +43,7 @@ function makeClient(username) {
     status: 200,
     statusText: 'OK',
   })
-  return { client, lines }
+  return { client, lines, warnings }
 }
 
 describe('the http login debug line', () => {
@@ -66,6 +67,20 @@ describe('the http login debug line', () => {
     const { client, lines } = makeClient('+886912345678')
     await expect(client.login()).rejects.toThrow('10014')
     expect(lines.some(args => args[1] === platformLang.loginBase64)).toBe(true)
+  })
+})
+
+describe('the 10014 hint', () => {
+  it('tells a phone login to keep a leading 0 after the country code (#818)', async () => {
+    const { client, warnings } = makeClient('+886912345678')
+    await expect(client.login()).rejects.toThrow('10014')
+    expect(warnings.some(args => args[1] === platformLang.httpLogin10014Phone)).toBe(true)
+  })
+
+  it('is not shown for an email login', async () => {
+    const { client, warnings } = makeClient('someone@example.com')
+    await expect(client.login()).rejects.toThrow('10014')
+    expect(warnings.some(args => args[1] === platformLang.httpLogin10014Phone)).toBe(false)
   })
 })
 

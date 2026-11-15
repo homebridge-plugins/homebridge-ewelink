@@ -7,6 +7,7 @@ All notable changes to `@homebridge-plugins/homebridge-ewelink` will be document
 ### Changed
 
 - fix: hide the humidity sensor for the temperature-only wts01 probe (#819)
+- fix: suggest keeping the leading 0 when a phone number login is refused with 10014 (#818)
 
 ## v12.20.0 (2026-11-14)
 
