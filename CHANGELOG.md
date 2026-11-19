@@ -10,6 +10,7 @@ All notable changes to `@homebridge-plugins/homebridge-ewelink` will be document
 - fix: suggest keeping the leading 0 when a phone number login is refused with 10014 (#818)
 - fix: let home save automations on the switchman r5 buttons (#820)
 - fix: log the switchman r5 button name on a press, not the whole characteristic (#820)
+- chore(deps): dependency updates
 
 ## v12.20.0 (2026-11-14)
 
