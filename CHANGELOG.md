@@ -8,6 +8,7 @@ All notable changes to `@homebridge-plugins/homebridge-ewelink` will be document
 
 - fix(light): send the new colour, not the old one, when home sets hue and saturation together
 - fix(light): send a colour again when home goes back to it from white
+- fix(diffuser): send a change of the light's saturation alone
 
 ## v12.20.1 (2026-11-21)
 

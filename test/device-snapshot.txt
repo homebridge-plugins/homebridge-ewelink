@@ -24,6 +24,7 @@ deviceDiffuser
     Brightness
     Hue
     On
+    Saturation
 
 deviceFan
   logging: on

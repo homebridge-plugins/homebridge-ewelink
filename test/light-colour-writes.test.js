@@ -297,23 +297,95 @@ describe.each(LIGHTS.filter(light => light.hasColourTemperature))('$name, while 
 })
 
 describe('the diffuser light', () => {
-  it('sends the new saturation when home writes hue then saturation', async () => {
-    const { device, platform } = build('deviceDiffuser', deviceTypes.deviceDiffuser, { eweUIID: 25 })
-    device.cacheState = 'on'
+  function buildDiffuser() {
+    const built = build('deviceDiffuser', deviceTypes.deviceDiffuser, { eweUIID: 25 })
+    built.device.cacheState = 'on'
+    return built
+  }
 
-    // The diffuser has no saturation handler, so HAP-NodeJS stores the
-    // saturation straight away, but only after the hue handler has started
+  function coloursSent(platform) {
+    return platform.sent
+      .map(({ params }) => params)
+      .filter(params => 'lightRcolor' in params)
+      .map(params => [params.lightRcolor, params.lightGcolor, params.lightBcolor])
+  }
+
+  function reportBlue(device) {
+    return device.externalUpdate({ lightRcolor: 0, lightGcolor: 0, lightBcolor: 255 })
+  }
+
+  it('sends the new colour once when home writes hue then saturation', async () => {
+    const { device, platform } = buildDiffuser()
+
     await homeWrites(device.lightService, [
       ['Hue', 25],
       ['Saturation', 96],
     ])
 
-    const sent = platform.sent
-      .map(({ params }) => params)
-      .filter(params => 'lightRcolor' in params)
-      .map(params => [params.lightRcolor, params.lightGcolor, params.lightBcolor])
-    expect(sent).toEqual([
+    expect(coloursSent(platform)).toEqual([
       hs2rgb(25, 96),
+    ])
+  })
+
+  it('sends the new colour once when home writes saturation then hue', async () => {
+    const { device, platform } = buildDiffuser()
+
+    await homeWrites(device.lightService, [
+      ['Saturation', 50],
+      ['Hue', 120],
+    ])
+
+    expect(coloursSent(platform)).toEqual([
+      hs2rgb(120, 50),
+    ])
+  })
+
+  it('sends a change of saturation alone, keeping the hue the light reported', async () => {
+    const { device, platform } = buildDiffuser()
+    await reportBlue(device)
+
+    await homeWrites(device.lightService, [
+      ['Saturation', 50],
+    ])
+
+    expect(coloursSent(platform)).toEqual([
+      hs2rgb(240, 50),
+    ])
+  })
+
+  it('sends a scene that keeps the hue and changes only the saturation', async () => {
+    const { device, platform } = buildDiffuser()
+    await reportBlue(device)
+
+    await homeWrites(device.lightService, [
+      ['Hue', 240],
+      ['Saturation', 50],
+    ])
+
+    expect(coloursSent(platform)).toEqual([
+      hs2rgb(240, 50),
+    ])
+  })
+
+  it('goes back to the colour the light really has after a failed send', async () => {
+    const { device, platform } = buildDiffuser()
+    await reportBlue(device)
+
+    const send = platform.sendDeviceUpdate
+    platform.sendDeviceUpdate = async () => {
+      throw new Error('offline')
+    }
+    await homeWrites(device.lightService, [
+      ['Hue', 25],
+    ])
+    platform.sendDeviceUpdate = send
+
+    await homeWrites(device.lightService, [
+      ['Saturation', 50],
+    ])
+
+    expect(coloursSent(platform)).toEqual([
+      hs2rgb(240, 50),
     ])
   })
 })
