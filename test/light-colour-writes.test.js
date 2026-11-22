@@ -72,6 +72,11 @@ const LIGHTS = [
       channel3: '0',
       channel4: '255',
     }),
+    reportWhite: device => device.externalUpdate({
+      zyx_mode: 1,
+      channel0: '255',
+      channel1: '0',
+    }),
     hasColourTemperature: false,
   },
   {
@@ -85,6 +90,10 @@ const LIGHTS = [
     reportBlue: device => device.externalUpdate({
       ltype: 'color',
       color: { br: 100, r: 0, g: 0, b: 255 },
+    }),
+    reportWhite: device => device.externalUpdate({
+      ltype: 'white',
+      white: { br: 100, ct: 128 },
     }),
     hasColourTemperature: true,
   },
@@ -101,6 +110,10 @@ const LIGHTS = [
       colorMode: 'rgb',
       hue: 240,
       saturation: 100,
+    }),
+    reportWhite: device => device.externalUpdate({
+      colorMode: 'cct',
+      colorTemp: 50,
     }),
     hasColourTemperature: true,
   },
@@ -200,6 +213,85 @@ describe.each(LIGHTS.filter(light => light.hasColourTemperature))('$name', (ligh
 
     expect(light.colours(platform)).toEqual([
       light.expected(hue, 80),
+    ])
+  })
+})
+
+/**
+ * The colour a light last showed stays in the cache while it is white, so the
+ * check for "has the colour changed" has to look at the mode as well, or going
+ * back to that colour sends nothing and the light stays white.
+ */
+describe.each(LIGHTS)('$name, going back to a colour from white', (light) => {
+  it('sends the colour again after the light reported a white', async () => {
+    const { device, platform } = light.build()
+    await light.reportBlue(device)
+    await light.reportWhite(device)
+
+    await homeWrites(device.service, [
+      ['Hue', 240],
+      ['Saturation', 100],
+    ])
+
+    expect(light.colours(platform)).toEqual([
+      light.expected(240, 100),
+    ])
+  })
+
+  it('sends the colour again after home set a white', async () => {
+    const { device, platform } = light.build()
+    await light.reportBlue(device)
+    await homeWrites(device.service, [
+      ['ColorTemperature', 300],
+    ])
+
+    await homeWrites(device.service, [
+      ['Hue', 240],
+      ['Saturation', 100],
+    ])
+
+    expect(light.colours(platform)).toEqual([
+      light.expected(240, 100),
+    ])
+  })
+})
+
+describe.each(LIGHTS.filter(light => light.hasColourTemperature))('$name, while white', (light) => {
+  it('sends the colour home shows for a white home set, when that colour is chosen', async () => {
+    const { device, platform } = light.build()
+    await light.reportBlue(device)
+    await homeWrites(device.service, [
+      ['ColorTemperature', 300],
+    ])
+
+    // Home shows a white as a hue and saturation too. Choosing exactly that
+    // colour has to turn the light to colour mode
+    const hue = device.service.getCharacteristic('Hue').value
+    const sat = device.service.getCharacteristic('Saturation').value
+    await homeWrites(device.service, [
+      ['Hue', hue],
+      ['Saturation', sat],
+    ])
+
+    expect(light.colours(platform)).toEqual([
+      light.expected(hue, sat),
+    ])
+  })
+
+  it('sends the colour home shows for a white the light reported, when that colour is chosen', async () => {
+    const { device, platform } = light.build()
+    await light.reportBlue(device)
+    await light.reportWhite(device)
+
+    const hue = device.service.getCharacteristic('Hue').value
+    const sat = device.service.getCharacteristic('Saturation').value
+    await homeWrites(device.service, [
+      ['Hue', hue],
+      ['Saturation', sat],
+    ])
+
+    expect(light.colours(platform)).toEqual([
+      light.expected(hue, sat),
     ])
   })
 })
