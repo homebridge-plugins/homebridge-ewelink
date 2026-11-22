@@ -2,6 +2,12 @@
 
 All notable changes to `@homebridge-plugins/homebridge-ewelink` will be documented in this file.
 
+## v12.20.2 (Pending Release)
+
+### Changed
+
+- fix(light): send the new colour, not the old one, when home sets hue and saturation together
+
 ## v12.20.1 (2026-11-21)
 
 ### Changed
