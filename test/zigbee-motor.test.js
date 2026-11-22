@@ -216,3 +216,46 @@ describe('the zigbee curtain motor without its end positions set', () => {
     expect(warnings(device)).toHaveLength(0)
   })
 })
+
+describe('the zigbee curtain motor moved by its own remote', () => {
+  it('shows a curtain closed with the remote as closed, not opening (#810)', async () => {
+    const { device, accessory } = build()
+    const service = accessory.getService('WindowCovering')
+    // Fully open and at rest (0 is open on a ZBU-CURT-7006)
+    await device.externalUpdate({ openPercent: 0 })
+
+    // neoncek's remote close: the motor reports its position on the way, but
+    // never a new target
+    for (const curPercent of [30, 60, 100]) {
+      await device.externalUpdate({ curPercent, updateSource: 'WS' })
+    }
+
+    expect(service.getCharacteristic('CurrentPosition').value).toBe(0)
+    expect(service.getCharacteristic('TargetPosition').value).toBe(0)
+    expect(service.getCharacteristic('PositionState').value).toBe(2)
+  })
+
+  it('shows a curtain stopped halfway with the remote as stopped there', async () => {
+    const { device, accessory } = build({ eweUIID: 1514 })
+    const service = accessory.getService('WindowCovering')
+    await device.externalUpdate({ curPercent: 0, openPercent: 0 })
+
+    await device.externalUpdate({ curPercent: 20, updateSource: 'WS' })
+    await device.externalUpdate({ curPercent: 40, updateSource: 'WS' })
+
+    expect(service.getCharacteristic('TargetPosition').value).toBe(40)
+    expect(service.getCharacteristic('PositionState').value).toBe(2)
+  })
+
+  it('keeps the target Home asked for while the curtain moves towards it', async () => {
+    const { device, accessory } = build({ eweUIID: 1514 })
+    const service = accessory.getService('WindowCovering')
+    await device.externalUpdate({ curPercent: 0, openPercent: 0 })
+
+    await device.externalUpdate({ openPercent: 100, updateSource: 'WS' })
+    await device.externalUpdate({ curPercent: 40, updateSource: 'WS' })
+
+    expect(service.getCharacteristic('TargetPosition').value).toBe(100)
+    expect(service.getCharacteristic('PositionState').value).toBe(1)
+  })
+})
