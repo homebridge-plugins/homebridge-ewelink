@@ -7,6 +7,7 @@ All notable changes to `@homebridge-plugins/homebridge-ewelink` will be document
 ### Changed
 
 - fix(zigbee): show a curtain moved with its own remote as stopped, not opening or closing
+- chore(deps): dependency updates
 
 ## v12.20.2 (2026-11-22)
 
